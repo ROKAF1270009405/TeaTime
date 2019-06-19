@@ -1,6 +1,7 @@
 
 public class test {
 	private String hi;
+	private 
 
 	public String getHi() {
 		return hi;
