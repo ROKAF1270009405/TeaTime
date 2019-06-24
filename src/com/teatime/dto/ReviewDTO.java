@@ -2,7 +2,7 @@ package com.teatime.dto;
 
 public class ReviewDTO {
 
-	private int reviewno;     // 리뷰번호
+	private int reviewno;     // 리뷰번호.
 	private String title;     // 제목
 	private String content;   // 내용
 	private String date;      // 등록일

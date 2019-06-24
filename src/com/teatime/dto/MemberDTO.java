@@ -2,7 +2,7 @@ package com.teatime.dto;
 
 public class MemberDTO {
 
-	private String id;          // 아이디
+	private String id;          // 아이디.
 	private String pwd;         // 패스워드
 	private String nickname;    // 별명
 	private String mail;        // 이메일

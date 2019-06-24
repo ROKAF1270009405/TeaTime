@@ -2,7 +2,7 @@ package com.teatime.dto;
 
 public class CustomerServiceDTO {
 
-	private int qnano;        // Q&A 게시글 번호
+	private int qnano;        // Q&A 게시글 번호.
 	private String id;        // 아이디
 	private String title;     // 제목
 	private String content;   // 내용
