@@ -5,7 +5,7 @@ public class MenuDTO {
 	private int menuno;        // 메뉴번호
 	private String name;       // 메뉴이름
 	private int price;         // 가격
-	private String foodkind;   // 음식종류1
+	private String foodkind;   // 음식종류
 
 	public int getMenuno() {
 		return menuno;

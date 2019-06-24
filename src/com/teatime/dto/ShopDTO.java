@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class ShopDTO {
 
-	private int shopno;           // 매장번호
+	private int shopno;           // 매장번호.
 	private String name;          // 이름
 	private String content;       // 내용
 	private String addr;          // 주소
