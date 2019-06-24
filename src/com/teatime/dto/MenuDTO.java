@@ -1,11 +1,11 @@
 package com.teatime.dto;
 
-public class menuDTO {
+public class MenuDTO {
 
-	private int menuno;        // ¸Ş´º ¹øÈ£
-	private String name;       // ÀÌ¸§
-	private int price;         // °¡°İ
-	private String foodkind;   // À½½Ä Á¾·ù
+	private int menuno;        // ë©”ë‰´ë²ˆí˜¸
+	private String name;       // ë©”ë‰´ì´ë¦„
+	private int price;         // ê°€ê²©
+	private String foodkind;   // ìŒì‹ì¢…ë¥˜
 
 	public int getMenuno() {
 		return menuno;
@@ -39,7 +39,7 @@ public class menuDTO {
 		this.foodkind = foodkind;
 	}
 
-	public menuDTO(int menuno, String name, int price, String foodkind) {
+	public MenuDTO(int menuno, String name, int price, String foodkind) {
 		super();
 		this.menuno = menuno;
 		this.name = name;
@@ -47,7 +47,7 @@ public class menuDTO {
 		this.foodkind = foodkind;
 	}
 
-	public menuDTO() {
+	public MenuDTO() {
 		super();
 	}
 

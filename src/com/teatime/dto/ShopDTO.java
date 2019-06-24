@@ -2,14 +2,14 @@ package com.teatime.dto;
 
 import java.util.Date;
 
-public class shopDTO {
+public class ShopDTO {
 
-	private int shopno;           // ¸ÅÀå ¹øÈ£
-	private String name;          // ÀÌ¸§
-	private String content;       // ¼Ò°³
-	private String addr;          // ÁÖ¼Ò
-	private String workingtime;   // ¿µ¾÷½Ã°£
-	private Date date;            // µî·ÏÀÏ
+	private int shopno;           // ë§¤ì¥ë²ˆí˜¸
+	private String name;          // ì´ë¦„
+	private String content;       // ë‚´ìš©
+	private String addr;          // ì£¼ì†Œ
+	private String workingtime;   // ì˜ì—…ì‹œê°„
+	private Date date;            // ë“±ë¡ì¼
 
 	public int getShopno() {
 		return shopno;
@@ -59,7 +59,7 @@ public class shopDTO {
 		this.date = date;
 	}
 
-	public shopDTO(int shopno, String name, String content, String addr, String workingtime, Date date) {
+	public ShopDTO(int shopno, String name, String content, String addr, String workingtime, Date date) {
 		super();
 		this.shopno = shopno;
 		this.name = name;
@@ -69,7 +69,7 @@ public class shopDTO {
 		this.date = date;
 	}
 
-	public shopDTO() {
+	public ShopDTO() {
 		super();
 	}
 

@@ -1,15 +1,15 @@
 package com.teatime.dto;
 
-public class reviewDTO {
+public class ReviewDTO {
 
-	private int reviewno;     // ¸®ºä ¹øÈ£
-	private String title;     // Á¦¸ñ
-	private String content;   // ³»¿ë
-	private String date;      // µî·ÏÀÏ
-	private String photo;     // »çÁø
-	private float gpa;        // ÆòÁ¡
-	private int shopno;       // ¸ÅÀå ¹øÈ£
-	private String id;        // ¾ÆÀÌµğ
+	private int reviewno;     // ë¦¬ë·°ë²ˆí˜¸
+	private String title;     // ì œëª©
+	private String content;   // ë‚´ìš©
+	private String date;      // ë“±ë¡ì¼
+	private String photo;     // ì‚¬ì§„
+	private float gpa;        // í‰ì 
+	private int shopno;       // ë§¤ì¥ë²ˆí˜¸
+	private String id;        // ì•„ì´ë””
 
 	public int getReviewno() {
 		return reviewno;
@@ -75,7 +75,7 @@ public class reviewDTO {
 		this.id = id;
 	}
 
-	public reviewDTO(int reviewno, String title, String content, String date, String photo, float gpa, int shopno,
+	public ReviewDTO(int reviewno, String title, String content, String date, String photo, float gpa, int shopno,
 			String id) {
 		super();
 		this.reviewno = reviewno;
@@ -88,7 +88,7 @@ public class reviewDTO {
 		this.id = id;
 	}
 
-	public reviewDTO() {
+	public ReviewDTO() {
 		super();
 	}
 
