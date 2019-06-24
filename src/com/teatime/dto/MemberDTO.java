@@ -1,14 +1,14 @@
 package com.teatime.dto;
 
-public class memberDTO {
+public class MemberDTO {
 
-	private String id;          // ¾ÆÀÌµğ
-	private String pwd;         // ºñ¹Ğ¹øÈ£
-	private String nickname;    // º°¸í
-	private String mail;        // ÀÌ¸ŞÀÏ
-	private int authority;      // ±ÇÇÑ
+	private String id;          // ì•„ì´ë””
+	private String pwd;         // íŒ¨ìŠ¤ì›Œë“œ
+	private String nickname;    // ë³„ëª…
+	private String mail;        // ì´ë©”ì¼
+	private int authority;      // ê¶Œí•œ
 
-	public memberDTO(String id, String pwd, String nickname, String mail, int authority) {
+	public MemberDTO(String id, String pwd, String nickname, String mail, int authority) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
@@ -17,7 +17,7 @@ public class memberDTO {
 		this.authority = authority;
 	}
 
-	public memberDTO() {
+	public MemberDTO() {
 
 	}
 
