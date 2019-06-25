@@ -7,6 +7,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+* {
+	padding: 20px;
+}
+
+table, th, td {
+	border: 1px solid dodgerblue;
+	border-collapse: collapse;
+}
+</style>
 </head>
 <body>
 
