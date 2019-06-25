@@ -26,8 +26,8 @@ public class CustomerServiceDAO {
 		ResultSet rs = null;
 		List<CustomerServiceDTO> list = null;
 
-		sql.append(" select employee_id, last_name, email, salary                      ");
-		sql.append(" from (select rownum as rnum, employee_id, last_name, email, salary ");
+		sql.append(" select qnano, title, content, state                      ");
+		sql.append(" from (select rownum as rnum, qnano, title, content, state   ");
 		sql.append("       from employees e                                            ");
 		sql.append("       where rownum<=?)                                              ");
 		sql.append(" where rnum>=?                                                     ");
@@ -43,7 +43,9 @@ public class CustomerServiceDAO {
 
 				CustomerServiceDTO dto = new CustomerServiceDTO();
 
-				
+				dto.setQnano(rs.getInt("qnano"));
+				dto.setTitle(rs.getString("title"));
+				dto.setContent(rs.getString("content"));
 				
 				list.add(dto);
 			}
