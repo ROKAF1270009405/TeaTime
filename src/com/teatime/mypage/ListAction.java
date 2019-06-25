@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.teatime.comm.Action;
 import com.teatime.comm.ActionForward;
-import com.teatime.dto.MemberDTO;
+import com.teatime.member.MemberDTO;
 
 public class ListAction implements Action {
 
@@ -22,7 +22,7 @@ public class ListAction implements Action {
 		request.setAttribute("list", list);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/mypage.jsp");
+		forward.setPath("/WEB-INF/mypage/mypage.jsp");
 		
 		return forward;
 		
