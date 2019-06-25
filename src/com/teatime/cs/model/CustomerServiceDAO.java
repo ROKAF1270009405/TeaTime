@@ -1,4 +1,4 @@
-package com.bitcamp.cs.model;
+package com.teatime.cs.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

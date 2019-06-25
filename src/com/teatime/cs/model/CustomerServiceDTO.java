@@ -1,4 +1,4 @@
-package com.bitcamp.cs.model;
+package com.teatime.cs.model;
 
 public class CustomerServiceDTO {
 

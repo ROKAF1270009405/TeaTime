@@ -6,9 +6,9 @@ import java.util.List;
 
 import javax.naming.NamingException;
 
-import com.bitcamp.cs.model.CustomerServiceDAO;
-import com.bitcamp.cs.model.CustomerServiceDTO;
 import com.teatime.comm.DBConnection;
+import com.teatime.cs.model.CustomerServiceDAO;
+import com.teatime.cs.model.CustomerServiceDTO;
 
 public class CustomerServiceService {
 
