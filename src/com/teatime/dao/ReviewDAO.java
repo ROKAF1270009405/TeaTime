@@ -24,38 +24,47 @@ public class ReviewDAO {
 			ResultSet rs = null;
 			StringBuilder sb = new StringBuilder();
 			List<ShopDTO> bestlist = new ArrayList<>();
+			sb.append(" select s.shopno, s.name, s.addr, s.photo, avg(gpa) as gpa, count(g.date) as good ");
+			sb.append(" from shop s join review r on s.shopno = r.shopno ");
+			sb.append(" join good g on g.shopno = s.shopno ");
 			
-			
-			//좋아요 갯수 기준 베스트
-			if("good".equals(kind)) {
-				sb.append(" select shopno, count(*) as count ");
-				sb.append(" from good 						 ");
-				kind = "count";
-			}
-			//평점 기준 베스트
-			if("gpa".equals(kind)) {
-				sb.append(" select shopno, avg(gpa) as gpa ");
-				sb.append(" from review 				   ");
-			}
 			//날짜 기준
 			if(startday!=null && !("".equals(startday))) {
 				sb.append(" where date between ? and ");
-				//endday가 정해지지 않으면, 오늘날까지.
 				if("none".equals(endday))
-					sb.append(" current_date()+1 ");
+					sb.append(" current_date()+1 "); //오늘날까지.
 				else 
-					sb.append(" ? ");
+					sb.append(" '? 23:59:59' "); //사용자 지정날까지.
 			}
 			
 			sb.append(" group by shopno order by ? desc ");
 			try(PreparedStatement pstmt = conn.prepareStatement(sb.toString());){
-				if() {
+				if(startday!=null && !("".equals(startday))) {
+					pstmt.setString(1, startday);
+					if(!("none".equals(endday))) {
+						pstmt.setString(2, endday);
+						pstmt.setString(3, kind);
+					} else {
+						pstmt.setString(2, kind);
+					}
+				} else {
+					pstmt.setString(1, kind);
 				}
 				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					ShopDTO dto = new ShopDTO();
+					dto.setShopno(rs.getInt("s.shopno"));
+					dto.setName(rs.getString("s.name"));
+					dto.setAddr(rs.getString("s.addr"));
+					dto.setAddr(rs.getString("s.photo"));
+					dto.setGpa(rs.getFloat("gpa"));
+					dto.setCount(rs.getInt("count"));
+					bestlist.add(dto);
+				}
 			} finally {
 				rsClose(rs);
 			}
-			return null;
+			return bestlist;
 		}
 		
 		

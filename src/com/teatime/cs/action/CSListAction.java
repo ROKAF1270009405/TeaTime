@@ -7,9 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bitcamp.cs.model.CustomerServiceDTO;
-import com.teatime.controller.Action;
-import com.teatime.controller.ActionForward;
+import com.teatime.comm.Action;
+import com.teatime.comm.ActionForward;
+import com.teatime.cs.model.CustomerServiceDTO;
 import com.teatime.service.CustomerServiceService;
 
 public class CSListAction implements Action {

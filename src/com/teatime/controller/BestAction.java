@@ -7,6 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.teatime.comm.Action;
+import com.teatime.comm.ActionForward;
 import com.teatime.dto.ShopDTO;
 import com.teatime.service.TeaService;
 

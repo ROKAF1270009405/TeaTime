@@ -1,4 +1,4 @@
-package com.teatime.controller;
+package com.teatime.cs.action;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,27 +15,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.teatime.comm.Action;
+import com.teatime.comm.ActionForward;
+
+/**
+ * Servlet implementation class CSController
+ */
 @WebServlet(urlPatterns = { "*.do" }, initParams = {
-		@WebInitParam(name = "inital", value = "/WEB-INF/prop.properties") })
-public class FrontController extends HttpServlet {
+		@WebInitParam(name = "init", value = "com/teatime/cs/properties/CustomerService.properties") })
+public class CSController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public FrontController() {
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public CSController() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	private Hashtable<String, Action> ht = new Hashtable<>();
 
 	public void init(ServletConfig config) throws ServletException {
-		String inital = config.getInitParameter("inital");
-		// String realpath = config.getServletContext().getRealPath(param);
+		// TODO Auto-generated method stub
+		String param = config.getInitParameter("init");
+		String realpath = config.getServletContext().getRealPath(param);
 		Properties prop = new Properties();
-		FileReader fr = null;
 		try {
-			String path = config.getServletContext().getRealPath(inital);
+			prop.load(new FileReader(realpath));
+			// System.out.println("test:"+prop.getProperty("/list.do"));
 
-			prop.load(new FileReader(path));
-			Enumeration enu = prop.keys();
+			Enumeration<Object> enu = prop.keys();
 			while (enu.hasMoreElements()) {
 				String key = (String) enu.nextElement();
 				String value = (String) prop.get(key);
@@ -45,36 +55,49 @@ public class FrontController extends HttpServlet {
 				ht.put(key, act);
 			}
 
-		} catch (IOException | ClassNotFoundException | IllegalAccessException | InstantiationException e) {
+		} catch (IOException e) {
+			System.out.println(e);
+		} catch (ClassNotFoundException e) {
+			System.out.println(e);
+		} catch (IllegalAccessException | InstantiationException e) {
 			System.out.println(e);
 		}
 
 	}
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		req(request, response);
+		doProcess(request, response);
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		req(request, response);
+		doProcess(request, response);
 	}
 
-	private void req(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String urlpath = request.getServletPath();
-		Action act = null;
-		act = ht.get(urlpath);
+	private void doProcess(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String path = request.getServletPath();
+		Action act = ht.get(path);
 		ActionForward forward = act.execute(request, response);
+
 		if (forward != null) {
-			if (forward.isRedirect()) {
+			if (forward.isRedirect())
 				response.sendRedirect(forward.getPath());
-			} else {
+			else {
 				RequestDispatcher disp = request.getRequestDispatcher(forward.getPath());
 				disp.forward(request, response);
 			}
 
 		}
-
 	}
+
 }
