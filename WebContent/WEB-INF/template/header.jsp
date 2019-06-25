@@ -12,22 +12,6 @@
 
 <title>TeaTime</title>
 
-<!-- Font Awesome Icons -->
-<link href="css/all.min.css" rel="stylesheet" type="text/css">
-
-<!-- Google Fonts -->
-<link
-	href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700"
-	rel="stylesheet">
-<link
-	href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic'
-	rel='stylesheet' type='text/css'>
-
-<!-- Plugin CSS -->
-<link href="css/magnific-popup.css" rel="stylesheet">
-
-<!-- Theme CSS - Includes Bootstrap -->
-<link href="css/creative.css" rel="stylesheet">
 
 </head>
 
@@ -59,20 +43,6 @@
 			</div>
 		</div>
 	</nav>
-
-	<!-- Masthead -->
-	<header class="masthead"> </header>
-
-	<!-- Bootstrap core JavaScript -->
-	<script src="jquery/jquery.min.js"></script>
-	<script src="jquery/bootstrap.bundle.min.js"></script>
-
-	<!-- Plugin JavaScript -->
-	<script src="jquery/jquery.easing.min.js"></script>
-	<script src="jquery/jquery.magnific-popup.min.js"></script>
-
-	<!-- Custom scripts for this template -->
-	<script src="creative.js"></script>
 
 </body>
 </html>

@@ -12,6 +12,8 @@ min-height: 0rem !important;
 }
 </style>
 <title>TeaTime</title>
+<!-- Font Awesome Icons -->
+<link href="<%=request.getContextPath() %>/css/all.min.css" rel="stylesheet" type="text/css">
 
 <!-- Google Fonts -->
 <link
@@ -20,6 +22,9 @@ min-height: 0rem !important;
 <link
 	href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic'
 	rel='stylesheet' type='text/css'>
+
+<!-- Plugin CSS -->
+<link href="<%=request.getContextPath() %>/css/magnific-popup.css" rel="stylesheet">
 
 <!-- Theme CSS - Includes Bootstrap -->
 <link href= "<%=request.getContextPath() %>/css/creative.css" rel="stylesheet">
@@ -37,5 +42,20 @@ min-height: 0rem !important;
 	</c:if>
 	<jsp:include page="footer.jsp"></jsp:include>
 	</header>
+	
+	
+	
+	<!-- Bootstrap core JavaScript -->
+	<script src="<%=request.getContextPath() %>/jquery/jquery.min.js"></script>
+	<script src="<%=request.getContextPath() %>/jquery/bootstrap.bundle.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="<%=request.getContextPath() %>/jquery/jquery.easing.min.js"></script>
+	<script src="<%=request.getContextPath() %>/jquery/jquery.magnific-popup.min.js"></script>
+
+	<!-- Custom scripts for this template -->
+	<script src= "<%=request.getContextPath() %>/jquery/creative.js"></script>
+	
+	
 </body>
 </html>
