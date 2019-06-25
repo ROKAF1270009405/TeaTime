@@ -1,10 +1,8 @@
-package com.teatime.dao;
+package com.bitcamp.cs.model;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
-
-import com.teatime.dto.CustomerServiceDTO;
 
 public class CustomerServiceDAO {
 
