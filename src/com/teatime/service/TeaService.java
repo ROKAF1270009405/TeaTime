@@ -8,6 +8,7 @@ import javax.naming.NamingException;
 
 import com.teatime.comm.DBConn;
 import com.teatime.dao.ReviewDAO;
+import com.teatime.dao.ShopDAO;
 import com.teatime.dto.ReviewDTO;
 import com.teatime.dto.ShopDTO;
 
@@ -27,7 +28,7 @@ public class TeaService {
 		List<ShopDTO> list = null;
 		try {
 			conn = db.getConnection();
-			ReviewDAO dao = ReviewDAO.getDAO();
+			ShopDAO dao = ShopDAO.getDAO();
 			list = dao.bestList(conn, kind, startday, endday);
 		} catch (SQLException | NamingException e) {
 			System.out.println(e);
