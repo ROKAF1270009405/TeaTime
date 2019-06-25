@@ -34,7 +34,6 @@ public class MypageDAO {
 		List<MemberDTO> list = new ArrayList<>();
 
 		try {
-
 			pstmt = conn.prepareStatement(sql.toString());
 			rs = pstmt.executeQuery();
 
