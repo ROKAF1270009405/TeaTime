@@ -15,7 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = { "*.do" }, initParams = {@WebInitParam(name = "inital", value = "/WEB-INF/prop/prop.properties") })
+@WebServlet(urlPatterns = { "*.do" }, initParams = {
+		@WebInitParam(name = "inital", value = "/WEB-INF/prop/prop.properties") })
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -29,10 +30,10 @@ public class FrontController extends HttpServlet {
 		String inital = config.getInitParameter("inital");
 		Properties prop = new Properties();
 		FileReader fr = null;
-		
+
 		try {
 			String path = config.getServletContext().getRealPath(inital);
-			
+
 			prop.load(new FileReader(path));
 			Enumeration enu = prop.keys();
 			while (enu.hasMoreElements()) {

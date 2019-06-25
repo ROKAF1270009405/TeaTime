@@ -22,7 +22,7 @@ public class ListAction implements Action {
 		request.setAttribute("list", list);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/list.jsp");
+		forward.setPath("/mypage.jsp");
 		
 		return forward;
 		

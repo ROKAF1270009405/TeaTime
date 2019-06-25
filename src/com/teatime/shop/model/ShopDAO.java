@@ -41,4 +41,61 @@ public class ShopDAO {
 		return result;
 	}
 	
+	//전체자료수를 얻어오는 메서드
+		public int getCount(Connection conn) throws SQLException {
+			StringBuilder sql=new StringBuilder();
+			sql.append(" select count(*) from shop ");
+			int datacount=0;
+			
+			try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+					ResultSet rs=pstmt.executeQuery();
+					) {
+							if(rs.next()) {
+								datacount = rs.getInt(1);
+							}
+			}
+			return datacount;
+		}//getCount
+	
+		
+		public List<ShopDTO> getData(Connection conn, int startrow, int endrow) throws SQLException{
+			// TODO Auto-generated method stub
+			
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			StringBuilder sql = new StringBuilder();
+			sql.append(" 	select shopno 				");
+			sql.append(" 			,name				");
+			sql.append(" 			,content			");
+			sql.append(" 			,photo				");
+			sql.append(" 			,addr				");
+			sql.append(" 			,workingtime		");
+			sql.append(" 			,date				");
+			sql.append(" 		from shop				");
+			
+			List<ShopDTO> arr=new ArrayList<>();
+			//이 list가 try 속에 들어 있어서 안됬었음.
+			try {
+				pstmt=conn.prepareStatement(sql.toString());
+				pstmt.setInt(1, endrow);
+				pstmt.setInt(2, startrow);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next())
+				{
+					ShopDTO dto = new ShopDTO();
+					dto.setShopno(rs.getInt("shopno")); //여기 바꾸는 도중이었음
+					dto.setLast_name(rs.getString("last_name"));
+					dto.setEmail(rs.getString("email"));
+					dto.setSalary(rs.getFloat("salary"));
+					arr.add(dto);
+				}
+			}finally {
+				if(rs!=null) try { rs.close();} catch (SQLException e) {}
+				if(pstmt!=null) try { pstmt.close();} catch (SQLException e) {}
+			}
+			
+			return arr; //null 이었음.
+		}
+		
 }
