@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.teatime.dto.ShopDTO;
-
 public class BestDAO {
 	private static BestDAO dao = new BestDAO();
 	public static BestDAO getDAO() {
@@ -24,7 +22,7 @@ public class BestDAO {
 		ResultSet rs = null;
 		StringBuilder sb = new StringBuilder();
 		List<BestDTO> bestlist = new ArrayList<>();
-		sb.append(" select s.shopno, s.name, s.addr, s.photo, avg(gpa) as gpa, count(g.date) as good ");
+		sb.append(" select s.shopno as shopno, s.name as name, s.addr as addr, s.photo as photo, avg(gpa) as gpa, count(g.date) as good ");
 		sb.append(" from shop s join review r on s.shopno = r.shopno ");
 		sb.append(" join good g on g.shopno = s.shopno ");
 		
@@ -58,7 +56,7 @@ public class BestDAO {
 				dto.setAddr(rs.getString("s.addr"));
 				dto.setAddr(rs.getString("s.photo"));
 				dto.setGpa(rs.getFloat("gpa"));
-				dto.setCount(rs.getInt("count"));
+				dto.setCount(rs.getInt("good"));
 				bestlist.add(dto);
 			}
 		} finally {

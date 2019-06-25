@@ -29,13 +29,17 @@ public class FrontController extends HttpServlet {
 		String inital = config.getInitParameter("inital");
 		Properties prop = new Properties();
 		FileReader fr = null;
+		
 		try {
 			String path = config.getServletContext().getRealPath(inital);
+			
 			prop.load(new FileReader(path));
 			Enumeration enu = prop.keys();
 			while (enu.hasMoreElements()) {
 				String key = (String) enu.nextElement();
 				String value = (String) prop.get(key);
+				System.out.println(key);
+				System.out.println(value);
 				Class c = Class.forName(value);
 				Action act = (Action) c.newInstance();
 				ht.put(key, act);

@@ -77,7 +77,14 @@ a {
 </head>
 <body>
 <c:set var="list" value="${requestScope.list }"></c:set>
-<div class="mo">	
+<div class="mo">
+<form method="post" action="best.do">
+	<select name="kind" id="kind">
+		<option value="good">좋아요</option>
+		<option value="gpa">평점</option>
+	</select>
+	<input type="submit" class="btn" value="전송">
+</form>	
 	<table>
 		<thead>
 			<tr><th>사진</th><th>매장명</th><th>매장평점</th><th>매장주소</th></tr>
@@ -85,10 +92,10 @@ a {
 		<tbody>
 		<c:forEach var="best" items="${list }">
 			<tr class="trs">
-				<td><div class="site"><img alt="이미지" src="${best.s.photo }"></div></td>
-				<td><c:out value="${best.s.name }"></c:out></td>
+				<td><div class="site"><img alt="이미지" src="${best.photo }"></div></td>
+				<td><c:out value="${best.name }"></c:out></td>
 				<td><c:out value="${best.gpa }"></c:out></td>
-				<td><c:out value="${best.s.addr }"></c:out></td>
+				<td><c:out value="${best.addr }"></c:out></td>
 			</tr>	
 		</c:forEach>
 		</tbody>
