@@ -1,4 +1,4 @@
-package com.teatime.best.controller;
+package com.teatime.comm;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,14 +15,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.teatime.comm.Action;
-import com.teatime.comm.ActionForward;
-
-@WebServlet(urlPatterns = { "*.do" }, initParams = {@WebInitParam(name = "inital", value = "/com/teatime/best/properties/best.properties") })
-public class BestController extends HttpServlet {
+@WebServlet(urlPatterns = { "*.do" }, initParams = {@WebInitParam(name = "inital", value = "/WEB-INF/prop/prop.properties") })
+public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public BestController() {
+	public FrontController() {
 		super();
 	}
 

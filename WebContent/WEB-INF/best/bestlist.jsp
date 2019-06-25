@@ -9,26 +9,75 @@
 <head>
 <meta charset="utf-8">
 <title>List</title>
+<style>
+.mo{
+	width:80%;
+    margin: 50px auto;
+}
+table {
+	width:100%;
+	border-collapse: collapse;
+	text-align: center;
+	line-height: 1.5;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+thead th {
+	/* width: 130px; */
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #fff;
+    background: #288cd2;
+    margin: 20px 10px;
+    text-align: center;
+}
+th:nth-child(1) {
+	width: 5%;
+}
+th:nth-child(2){
+	width: 20%;
+}
+th:nth-child(3){
+	width: 20%;
+}
+th:nth-child(4){
+	width: 20%;
+}
+td{
+    padding: 10px;
+    vertical-align: top;
+}
+tr:nth-child(2n) {
+    background-color: #9DCFFF;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+#page{
+	padding-top:10px;
+	width:100%;
+	text-align: center;
+	font-size: 20px;
+}
+.site{
+	width:100%;
+}
+.site img{
+	
+}
+</style>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
   $(document).ready(function(){
-	   $('#add').click(function(){
-		   location.href="add.do";
-	   });
-	   $('.modify').click(function(){
-		   let no = $(this).val();
-		   location.href="modify.do?no="+no;
-	   });
-	   $('.delete').click(function(){
-		   let no = $(this).val();
-		   location.href="delete.do?no="+no;
-	   });
+	  $('.trs:odd').css("background-color","#9DCFFF");
   });
 </script>
 </head>
 <body>
 <c:set var="list" value="${requestScope.list }"></c:set>
-	
+<div class="mo">	
 	<table>
 		<thead>
 			<tr><th>사진</th><th>매장명</th><th>매장평점</th><th>매장주소</th></tr>
@@ -36,7 +85,7 @@
 		<tbody>
 		<c:forEach var="best" items="${list }">
 			<tr class="trs">
-				<td><c:out value="${best.s.photo }"></c:out></td>
+				<td><div class="site"><img alt="이미지" src="${best.s.photo }"></div></td>
 				<td><c:out value="${best.s.name }"></c:out></td>
 				<td><c:out value="${best.gpa }"></c:out></td>
 				<td><c:out value="${best.s.addr }"></c:out></td>
@@ -44,9 +93,6 @@
 		</c:forEach>
 		</tbody>
 	</table>
-	<button id="add">추가</button>
-<script>
-	$('.trs:odd').css("background-color","#9DCFFF");
-</script>
+</div>
 </body>
 </html>
