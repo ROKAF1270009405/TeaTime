@@ -1,4 +1,4 @@
-package com.teatime.util;
+package com.teatime.comm;
 import java.sql.Connection;
 import java.sql.SQLException;
 
