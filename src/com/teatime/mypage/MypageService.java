@@ -7,7 +7,7 @@ import java.util.List;
 import javax.naming.NamingException;
 
 import com.teatime.comm.DBConn;
-import com.teatime.dto.MemberDTO;
+import com.teatime.member.MemberDTO;
 
 public class MypageService {
 

@@ -1,12 +1,12 @@
-package com.teatime.dto;
+package com.teatime.member;
 
 public class MemberDTO {
 
-	private String id;          // 아이디.
-	private String pwd;         // 패스워드
-	private String nickname;    // 별명
-	private String mail;        // 이메일
-	private int authority;      // 권한
+	private String id; // 아이디
+	private String pwd; // 비밀번호
+	private String nickname; // 별명
+	private String mail; // 이메일
+	private int authority; // 권한
 
 	public MemberDTO(String id, String pwd, String nickname, String mail, int authority) {
 		super();
@@ -61,4 +61,4 @@ public class MemberDTO {
 		this.authority = authority;
 	}
 
-} // end memberDTO class
+} // end MemberDTO class

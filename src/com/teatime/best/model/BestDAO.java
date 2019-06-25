@@ -31,23 +31,28 @@ public class BestDAO {
 		System.out.println("endday : "+endday);
 		//날짜 기준
 		if(startday!=null && !("".equals(startday))) {
-			sb.append(" where date between ? and ");
+			sb.append(" where r.date between ? and ");
 			if("none".equals(endday))
 				sb.append(" current_date()+1 "); //오늘날까지.
 			else 
 				sb.append(" '? 23:59:59' "); //사용자 지정날까지.
 		}
 		
-		sb.append(" group by shopno order by ? desc ");
+		if("good".equals(kind))
+			sb.append(" group by shopno order by good desc ");
+		else 
+			sb.append(" group by shopno order by gpa desc ");
 		System.out.println(sb.toString());
 		try(PreparedStatement pstmt = conn.prepareStatement(sb.toString());){
 			if(startday!=null && !("".equals(startday))) {
 				pstmt.setString(1, startday);
 				if(!("none".equals(endday))) {
+					System.out.println("end day 가 있다");
 					pstmt.setString(2, endday);
-					pstmt.setString(3, kind);
+					//pstmt.setString(3, kind);
 				} else {
-					pstmt.setString(2, kind);
+					System.out.println("startday만 있어");
+					//pstmt.setString(2, kind);
 				}
 			} else {
 				pstmt.setString(1, kind);
@@ -59,7 +64,9 @@ public class BestDAO {
 				dto.setShopno(rs.getInt("s.shopno"));
 				dto.setName(rs.getString("s.name"));
 				dto.setAddr(rs.getString("s.addr"));
-				dto.setAddr(rs.getString("s.photo"));
+				/*String photo = rs.getString("s.photo");
+				dto.setPhoto(photo.equals(null) ? photo : "empty" );*/
+				dto.setPhoto(rs.getString("s.photo"));
 				dto.setGpa(rs.getFloat("gpa"));
 				dto.setCount(rs.getInt("good"));
 				bestlist.add(dto);

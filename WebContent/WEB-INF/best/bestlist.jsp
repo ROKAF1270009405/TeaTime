@@ -1,3 +1,4 @@
+
 <%@page import="com.teatime.shop.model.ShopDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -76,7 +77,7 @@ a {
 </script>
 </head>
 <body>
-<c:set var="list" value="${requestScope.list }"></c:set>
+<c:set var="bestlist" value="${requestScope.bestlist }"></c:set>
 <div class="mo">
 <form method="post" action="best.do">
 	<select name="kind" id="kind">
@@ -90,8 +91,9 @@ a {
 			<tr><th>사진</th><th>매장명</th><th>매장평점</th><th>매장주소</th></tr>
 		</thead>
 		<tbody>
-		<c:forEach var="best" items="${list }">
+		<c:forEach var="best" items="${bestlist }">
 			<tr class="trs">
+				
 				<td><div class="site"><img alt="이미지" src="${best.photo }"></div></td>
 				<td><c:out value="${best.name }"></c:out></td>
 				<td><c:out value="${best.gpa }"></c:out></td>

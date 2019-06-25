@@ -12,10 +12,6 @@ public class ActionForward {
 		this.isRedirect = isRedirect;
 	}
 
-	public Boolean IsRedirect() {
-		return isRedirect;
-	}
-
 	public String getPath() {
 		return path;
 	}
