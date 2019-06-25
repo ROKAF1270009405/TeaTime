@@ -3,9 +3,7 @@ package com.teatime.best.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
-
 import javax.naming.NamingException;
-
 import com.teatime.best.model.BestDAO;
 import com.teatime.best.model.BestDTO;
 import com.teatime.comm.DBConn;
