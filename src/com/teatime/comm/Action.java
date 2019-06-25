@@ -1,4 +1,4 @@
-package com.teatime.controller;
+package com.teatime.comm;
 
 import java.io.IOException;
 
