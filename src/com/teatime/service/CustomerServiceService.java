@@ -32,9 +32,9 @@ public class CustomerServiceService {
 	    	conn = db.getConnection();
 	    	
 	    	CustomerServiceDAO dao = CustomerServiceDAO.getDAO();
-	    	
+	    	System.out.println("dddd");
 	    	list = dao.getListData(conn, startrow, pagepercount);
-	    	
+	    	System.out.println("사이즈:"+list.size());
 	    }catch(SQLException | NamingException | RuntimeException e) {
 	    	System.out.println(e);
 	    	try {

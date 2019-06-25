@@ -31,7 +31,7 @@ public class CSListAction implements Action {
 		int pagepercount = 10; // 1 페이지에 보여질 자료 수
 		int totalcount = service.getCount();
 		int totalpage = (totalcount / pagepercount) + ((totalcount % pagepercount == 0) ? 0 : 1);
-		int startrow = (currpage - 1) * pagepercount + 1;
+		int startrow = (currpage - 1) * pagepercount;
 		/*int endrow = startrow + pagepercount - 1;
 		if (endrow > totalcount)
 			endrow = totalcount;*/

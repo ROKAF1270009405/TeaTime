@@ -26,12 +26,6 @@ public class CustomerServiceDAO {
 		ResultSet rs = null;
 		List<CustomerServiceDTO> list = null;
 
-/*		sql.append(" select qnano, title, content, state                               ");
-		sql.append(" from (select rownum as rnum, qnano, title, content, state         ");
-		sql.append("       from employees e                                            ");
-		sql.append("       where rownum<=?)                                            ");
-		sql.append(" where rnum>=?                                                     ");*/
-		
 		sql.append(" select qnano, title, state ");
 		sql.append(" from customerservice ");
 		sql.append(" limit ?, ? ");
@@ -40,18 +34,20 @@ public class CustomerServiceDAO {
 
 			pstmt.setInt(1, startrow);
 			pstmt.setInt(2, pagepercount);
-
+			System.out.println(startrow);
+			System.out.println(pagepercount);
+			
 			rs = pstmt.executeQuery();
 			list = new ArrayList<>();
 
 			while (rs.next()) {
-
+				System.out.println("안녕");
 				CustomerServiceDTO dto = new CustomerServiceDTO();
-
 				dto.setQnano(rs.getInt("qnano"));
 				dto.setTitle(rs.getString("title"));
 				dto.setState(rs.getInt("state"));
 				
+				System.out.println("이름:"+dto.getTitle().toString());
 				list.add(dto);
 			}
 
