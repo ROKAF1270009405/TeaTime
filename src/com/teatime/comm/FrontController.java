@@ -1,4 +1,4 @@
-package com.teatime.best.controller;
+package com.teatime.comm;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,14 +15,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.teatime.comm.Action;
-import com.teatime.comm.ActionForward;
-
-@WebServlet(urlPatterns = { "*.do" }, initParams = {@WebInitParam(name = "inital", value = "/com/teatime/best/properties/best.properties") })
-public class BestController extends HttpServlet {
+@WebServlet(urlPatterns = { "*.do" }, initParams = {
+		@WebInitParam(name = "inital", value = "/WEB-INF/prop/prop.properties") })
+public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public BestController() {
+	public FrontController() {
 		super();
 	}
 
@@ -32,13 +30,17 @@ public class BestController extends HttpServlet {
 		String inital = config.getInitParameter("inital");
 		Properties prop = new Properties();
 		FileReader fr = null;
+
 		try {
 			String path = config.getServletContext().getRealPath(inital);
+
 			prop.load(new FileReader(path));
 			Enumeration enu = prop.keys();
 			while (enu.hasMoreElements()) {
 				String key = (String) enu.nextElement();
 				String value = (String) prop.get(key);
+				System.out.println(key);
+				System.out.println(value);
 				Class c = Class.forName(value);
 				Action act = (Action) c.newInstance();
 				ht.put(key, act);

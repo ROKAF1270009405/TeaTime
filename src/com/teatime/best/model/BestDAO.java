@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.teatime.dto.ShopDTO;
-
 public class BestDAO {
 	private static BestDAO dao = new BestDAO();
 	public static BestDAO getDAO() {
@@ -21,13 +19,16 @@ public class BestDAO {
 	}
 	
 	public List<BestDTO> bestList(Connection conn, String kind, String startday, String endday) throws SQLException {
+		System.out.println("베스트 BAO 진입");
 		ResultSet rs = null;
 		StringBuilder sb = new StringBuilder();
 		List<BestDTO> bestlist = new ArrayList<>();
-		sb.append(" select s.shopno, s.name, s.addr, s.photo, avg(gpa) as gpa, count(g.date) as good ");
+		sb.append(" select s.shopno as shopno, s.name as name, s.addr as addr, s.photo as photo, avg(gpa) as gpa, count(g.date) as good ");
 		sb.append(" from shop s join review r on s.shopno = r.shopno ");
 		sb.append(" join good g on g.shopno = s.shopno ");
-		
+		System.out.println("kind : "+kind);
+		System.out.println("startday : "+startday);
+		System.out.println("endday : "+endday);
 		//날짜 기준
 		if(startday!=null && !("".equals(startday))) {
 			sb.append(" where date between ? and ");
@@ -38,6 +39,7 @@ public class BestDAO {
 		}
 		
 		sb.append(" group by shopno order by ? desc ");
+		System.out.println(sb.toString());
 		try(PreparedStatement pstmt = conn.prepareStatement(sb.toString());){
 			if(startday!=null && !("".equals(startday))) {
 				pstmt.setString(1, startday);
@@ -53,12 +55,13 @@ public class BestDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				BestDTO dto = new BestDTO();
+				System.out.println(rs.getInt("s.shopno")+", "+rs.getString("s.name")+", "+rs.getString("s.addr")+", "+rs.getString("s.photo")+", "+rs.getFloat("gpa")+", "+rs.getInt("good"));
 				dto.setShopno(rs.getInt("s.shopno"));
 				dto.setName(rs.getString("s.name"));
 				dto.setAddr(rs.getString("s.addr"));
 				dto.setAddr(rs.getString("s.photo"));
 				dto.setGpa(rs.getFloat("gpa"));
-				dto.setCount(rs.getInt("count"));
+				dto.setCount(rs.getInt("good"));
 				bestlist.add(dto);
 			}
 		} finally {

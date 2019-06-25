@@ -51,7 +51,7 @@ public class CSListAction implements Action {
 		ActionForward forward = new ActionForward();
 
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/board/CustomerServiceList.jsp");
+		forward.setPath("/WEB-INF/customerservice/customerservicelist.jsp");
 
 		return forward;
 	}
