@@ -10,6 +10,8 @@ public class ShopDTO {
 	private String addr;          // 주소
 	private String workingtime;   // 영업시간
 	private Date date;            // 등록일
+	private float gpa;			  // 평점
+	private int count;			  // 좋아요 갯수
 
 	public int getShopno() {
 		return shopno;
@@ -58,8 +60,24 @@ public class ShopDTO {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	
+	public float getGpa() {
+		return gpa;
+	}
 
-	public ShopDTO(int shopno, String name, String content, String addr, String workingtime, Date date) {
+	public void setGpa(float gpa) {
+		this.gpa = gpa;
+	}
+	
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	public ShopDTO(int shopno, String name, String content, String addr, String workingtime, Date date, float gpa, int count) {
 		super();
 		this.shopno = shopno;
 		this.name = name;
@@ -67,6 +85,8 @@ public class ShopDTO {
 		this.addr = addr;
 		this.workingtime = workingtime;
 		this.date = date;
+		this.gpa = gpa;
+		this.count = count;
 	}
 
 	public ShopDTO() {
