@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.naming.NamingException;
 
-import com.teatime.comm.DBConnection;
+import com.teatime.comm.DBConn;
 import com.teatime.cs.model.CustomerServiceDAO;
 import com.teatime.cs.model.CustomerServiceDTO;
 
@@ -22,18 +22,18 @@ public class CustomerServiceService {
 		
 	}
 
-	public List<CustomerServiceDTO> getList(int startrow, int endrow) {	//자료 목록 가져옴
+	public List<CustomerServiceDTO> getList(int startrow, int pagepercount) {	//자료 목록 가져옴
 		
 		Connection conn=null;
 	    List<CustomerServiceDTO> list=null;
 	    
 	    try {
-	    	DBConnection db = DBConnection.getDB();
+	    	DBConn db = DBConn.getdb();
 	    	conn = db.getConnection();
 	    	
 	    	CustomerServiceDAO dao = CustomerServiceDAO.getDAO();
 	    	
-	    	list = dao.getListData(conn, startrow, endrow);
+	    	list = dao.getListData(conn, startrow, pagepercount);
 	    	
 	    }catch(SQLException | NamingException | RuntimeException e) {
 	    	System.out.println(e);
@@ -54,7 +54,7 @@ public class CustomerServiceService {
 
 	public int getCount() { // 자료 갯수를 가져옴
 		
-		DBConnection db = DBConnection.getDB();
+		DBConn db = DBConn.getdb();
 		Connection conn = null;
 		int datacount = 0;
 		

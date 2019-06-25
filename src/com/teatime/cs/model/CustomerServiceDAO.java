@@ -20,21 +20,26 @@ public class CustomerServiceDAO {
 
 	}
 
-	public List<CustomerServiceDTO> getListData(Connection conn, int startrow, int endrow) throws SQLException {
+	public List<CustomerServiceDTO> getListData(Connection conn, int startrow, int pagepercount) throws SQLException {
 		
 		StringBuilder sql = new StringBuilder();
 		ResultSet rs = null;
 		List<CustomerServiceDTO> list = null;
 
-		sql.append(" select qnano, title, content, state                               ");
+/*		sql.append(" select qnano, title, content, state                               ");
 		sql.append(" from (select rownum as rnum, qnano, title, content, state         ");
 		sql.append("       from employees e                                            ");
 		sql.append("       where rownum<=?)                                            ");
-		sql.append(" where rnum>=?                                                     ");
+		sql.append(" where rnum>=?                                                     ");*/
+		
+		sql.append(" select qnano, title, state ");
+		sql.append(" from customerservice ");
+		sql.append(" limit ?, ? ");
+		
 		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
 
-			pstmt.setInt(1, endrow);
-			pstmt.setInt(2, startrow);
+			pstmt.setInt(1, startrow);
+			pstmt.setInt(2, pagepercount);
 
 			rs = pstmt.executeQuery();
 			list = new ArrayList<>();
@@ -45,7 +50,6 @@ public class CustomerServiceDAO {
 
 				dto.setQnano(rs.getInt("qnano"));
 				dto.setTitle(rs.getString("title"));
-				dto.setContent(rs.getString("content"));
 				dto.setState(rs.getInt("state"));
 				
 				list.add(dto);
