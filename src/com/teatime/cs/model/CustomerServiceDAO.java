@@ -26,10 +26,10 @@ public class CustomerServiceDAO {
 		ResultSet rs = null;
 		List<CustomerServiceDTO> list = null;
 
-		sql.append(" select qnano, title, content, state                      ");
-		sql.append(" from (select rownum as rnum, qnano, title, content, state   ");
+		sql.append(" select qnano, title, content, state                               ");
+		sql.append(" from (select rownum as rnum, qnano, title, content, state         ");
 		sql.append("       from employees e                                            ");
-		sql.append("       where rownum<=?)                                              ");
+		sql.append("       where rownum<=?)                                            ");
 		sql.append(" where rnum>=?                                                     ");
 		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
 
@@ -46,6 +46,7 @@ public class CustomerServiceDAO {
 				dto.setQnano(rs.getInt("qnano"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
+				dto.setState(rs.getInt("state"));
 				
 				list.add(dto);
 			}
