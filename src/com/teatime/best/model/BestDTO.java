@@ -1,15 +1,29 @@
-package com.teatime.dto;
+package com.teatime.best.model;
 
 import java.util.Date;
 
-public class ShopDTO {
-
+public class BestDTO {
 	private int shopno;           // 매장번호.
 	private String name;          // 이름
 	private String content;       // 내용
 	private String addr;          // 주소
 	private String workingtime;   // 영업시간
 	private Date date;            // 등록일
+	private float gpa;			  // 평점
+	private int count;			  // 좋아요 갯수
+
+	public BestDTO(int shopno, String name, String content, String addr, String workingtime, Date date, float gpa, int count) {
+		this.shopno = shopno;
+		this.name = name;
+		this.content = content;
+		this.addr = addr;
+		this.workingtime = workingtime;
+		this.date = date;
+		this.gpa = gpa;
+		this.count = count;
+	}
+	
+	public BestDTO() {}
 
 	public int getShopno() {
 		return shopno;
@@ -59,18 +73,19 @@ public class ShopDTO {
 		this.date = date;
 	}
 	
-	public ShopDTO(int shopno, String name, String content, String addr, String workingtime, Date date) {
-		super();
-		this.shopno = shopno;
-		this.name = name;
-		this.content = content;
-		this.addr = addr;
-		this.workingtime = workingtime;
-		this.date = date;
+	public float getGpa() {
+		return gpa;
 	}
 
-	public ShopDTO() {
-		super();
+	public void setGpa(float gpa) {
+		this.gpa = gpa;
+	}
+	
+	public int getCount() {
+		return count;
 	}
 
+	public void setCount(int count) {
+		this.count = count;
+	}
 }

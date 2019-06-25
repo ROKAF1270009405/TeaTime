@@ -1,4 +1,4 @@
-package com.teatime.service;
+package com.teatime.best.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -6,29 +6,27 @@ import java.util.List;
 
 import javax.naming.NamingException;
 
+import com.teatime.best.model.BestDAO;
+import com.teatime.best.model.BestDTO;
 import com.teatime.comm.DBConn;
-import com.teatime.dao.ReviewDAO;
-import com.teatime.dao.ShopDAO;
-import com.teatime.dto.ReviewDTO;
-import com.teatime.dto.ShopDTO;
 
-public class TeaService {
-	private static TeaService instance = new TeaService();
+public class BestService {
+	private static BestService instance = new BestService();
 
-	public static TeaService getInstance() {
+	public static BestService getInstance() {
 		return instance;
 	}
 
-	private TeaService() {
+	private BestService() {
 	}
 
-	public List<ShopDTO> bestList(String kind, String startday, String endday) {
+	public List<BestDTO> bestList(String kind, String startday, String endday) {
 		DBConn db = DBConn.getdb();
 		Connection conn = null;
-		List<ShopDTO> list = null;
+		List<BestDTO> list = null;
 		try {
 			conn = db.getConnection();
-			ShopDAO dao = ShopDAO.getDAO();
+			BestDAO dao = BestDAO.getDAO();
 			list = dao.bestList(conn, kind, startday, endday);
 		} catch (SQLException | NamingException e) {
 			System.out.println(e);
