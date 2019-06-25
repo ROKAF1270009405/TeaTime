@@ -6,6 +6,7 @@ public class CustomerServiceDTO {
 	private String id;        // 아이디
 	private String title;     // 제목
 	private String content;   // 내용
+	private int state;
 	
 	public CustomerServiceDTO() {}
 	public CustomerServiceDTO(int qnano, String id, String title, String content) {
@@ -38,6 +39,12 @@ public class CustomerServiceDTO {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
 	}
 	
 	
