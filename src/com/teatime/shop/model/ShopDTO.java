@@ -1,4 +1,4 @@
-package com.teatime.dto;
+package com.teatime.shop.model;
 
 import java.util.Date;
 

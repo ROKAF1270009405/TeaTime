@@ -1,4 +1,4 @@
-package com.teatime.dao;
+package com.teatime.shop.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.teatime.dto.ShopDTO;
+import com.teatime.shop.model.ShopDTO;
 
 public class ShopDAO {
 
