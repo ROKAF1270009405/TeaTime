@@ -1,6 +1,7 @@
 package com.teatime.dao;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import com.teatime.dto.CustomerServiceDTO;
@@ -10,6 +11,8 @@ public class CustomerServiceDAO {
 	private static CustomerServiceDAO dao = new CustomerServiceDAO();
 
 	public static CustomerServiceDAO getDAO() {
+		
+		
 		return dao;
 	}
 
@@ -22,8 +25,10 @@ public class CustomerServiceDAO {
 		return null;
 	}
 
-	public int getCount(Connection conn) {
-		// TODO Auto-generated method stub
+	public int getCount(Connection conn) throws SQLException {
+		
+		
+		
 		return 0;
 	}
 	

@@ -1,4 +1,4 @@
-package com.teatime.action;
+package com.teatime.cs.action;
 
 import java.io.IOException;
 import java.util.List;
