@@ -39,8 +39,7 @@ public class FrontController extends HttpServlet {
 			while (enu.hasMoreElements()) {
 				String key = (String) enu.nextElement();
 				String value = (String) prop.get(key);
-				System.out.println(key);
-				System.out.println(value);
+				
 				Class c = Class.forName(value);
 				Action act = (Action) c.newInstance();
 				ht.put(key, act);
