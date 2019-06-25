@@ -26,7 +26,7 @@ public class MypageDAO {
 	public List<MemberDTO> getMemberList(Connection conn) throws SQLException {
 
 		StringBuilder sql = new StringBuilder();
-		sql.append(" select id, pwd, nickname, email       ");
+		sql.append(" select id, nickname, email       ");
 		sql.append(" from member                           ");
 
 		PreparedStatement pstmt = null;
@@ -41,7 +41,6 @@ public class MypageDAO {
 			while (rs.next()) {
 				MemberDTO dto = new MemberDTO();
 				dto.setId(rs.getString("id"));
-				dto.setPwd(rs.getString("pwd"));
 				dto.setNickname(rs.getString("nickname"));
 				dto.setMail(rs.getString("mail"));
 				list.add(dto);
