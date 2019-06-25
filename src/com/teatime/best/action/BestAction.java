@@ -1,4 +1,4 @@
-package com.teatime.best.controller;
+package com.teatime.best.action;
 
 import java.io.IOException;
 import java.util.List;
@@ -7,10 +7,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.teatime.best.model.BestDTO;
+import com.teatime.best.service.BestService;
 import com.teatime.comm.Action;
 import com.teatime.comm.ActionForward;
-import com.teatime.dto.ShopDTO;
-import com.teatime.service.TeaService;
 
 public class BestAction implements Action {
 
@@ -32,13 +32,13 @@ public class BestAction implements Action {
 			}
 		}
 		
-		TeaService service = TeaService.getInstance();
-		List<ShopDTO> bestlist = service.bestList(kind, startday, endday);
+		BestService service = BestService.getInstance();
+		List<BestDTO> bestlist = service.bestList(kind, startday, endday);
 		request.setAttribute("bestlist", bestlist);
 		
 		ActionForward act = new ActionForward();
 		act.setRedirect(false);
-		act.setPath("");
+		act.setPath("/WEB-INF/best/bestlist.jsp");
 		
 		return act;
 	}
