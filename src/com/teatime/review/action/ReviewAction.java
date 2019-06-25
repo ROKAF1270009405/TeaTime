@@ -25,7 +25,7 @@ public class ReviewAction implements Action {
 		System.out.println(list);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/review/review.jsp");
+		forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/review/review.jsp");
 		return forward;
 	}
 }
