@@ -47,8 +47,7 @@ public class BestAction implements Action {
 		ActionForward act = new ActionForward();
 		act.setRedirect(false);
 		System.out.println("화면으로 뿌려주러간다!!");
-		act.setPath("/WEB-INF/best/bestlist.jsp");
-		
+		act.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/best/bestlist.jsp");
 		return act;
 	}
 }
