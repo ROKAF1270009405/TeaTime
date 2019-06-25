@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<%-- 	<%
+	<%
 		request.setCharacterEncoding("utf-8");
 		List<MemberDTO> list = (List<MemberDTO>) request.getAttribute("list");
 	%>
@@ -40,7 +40,7 @@
 
 
 		</tbody>
-	</table> --%>
+	</table>
 
 </body>
 </html>
