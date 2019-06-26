@@ -83,7 +83,6 @@ public class CustomerServiceService {
 		try {
 			conn = db.getConnection();
 			conn.setAutoCommit(false);
-			System.out.println("ddddd");
 			CustomerServiceDAO dao = CustomerServiceDAO.getDAO();
 			dao.addData(conn, dto);
 			
