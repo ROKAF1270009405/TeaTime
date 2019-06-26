@@ -156,7 +156,7 @@ public class CustomerServiceDAO {
 		sql.append(" set title= ?, content= ?, hp= ? ");
 		
 		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
-			pstmt.setString(1, );
+//			pstmt.setString(1, );
 		}
 	}
 }
