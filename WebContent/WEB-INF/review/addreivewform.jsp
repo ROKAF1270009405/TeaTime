@@ -29,9 +29,7 @@ button:hover {
 }
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script>
-	
-</script>
+
 </head>
 <body>
 	<jsp:useBean id="today" class="java.util.Date" />
@@ -69,7 +67,7 @@ button:hover {
 			<li></li>
 		</ul>
 	</form>
-
+<%-- 
 	<script type="text/javascript">
 	function change(id){
 		var img1 = document.getElementById("happy");
@@ -105,6 +103,6 @@ button:hover {
 	function removeImg(value){
 		value.remove();
 	}
-	</script>
+	</script> --%>
 </body>
 </html>
