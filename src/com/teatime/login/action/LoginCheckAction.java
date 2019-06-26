@@ -38,11 +38,11 @@ public class LoginCheckAction implements Action {
 			dto = service.loginInfoService(id);
 			session.setAttribute("dto", dto);
 			act.setRedirect(true);
-			act.setPath("/best.do");
+			act.setPath("teatime.do");
 		}
 		else {
 			act.setRedirect(true);
-			act.setPath("/login.do");
+			act.setPath("login.do");
 		}
 		return act;
 	}
