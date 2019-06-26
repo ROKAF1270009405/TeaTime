@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.teatime.comm.Action;
 import com.teatime.comm.ActionForward;
 import com.teatime.cs.model.CustomerServiceDTO;
-import com.teatime.service.CustomerServiceService;
+import com.teatime.cs.service.CustomerServiceService;
 
 public class CSListAction implements Action {
 
