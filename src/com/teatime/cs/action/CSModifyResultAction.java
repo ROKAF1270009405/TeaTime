@@ -19,6 +19,10 @@ public class CSModifyResultAction implements Action {
 		
 		request.setCharacterEncoding("utf-8");
 		
+		int num = Integer.parseInt(request.getParameter("num"));
+		
+		System.out.println(num);
+		
 		String hp = request.getParameter("hp");
 		String title =request.getParameter("title");
 		String content =request.getParameter("content");
@@ -33,9 +37,9 @@ public class CSModifyResultAction implements Action {
 		service.modifyService(dto);
 		
 		ActionForward forward = new ActionForward();
-
-		forward.setRedirect(true);
-		forward.setPath("csdetail.do");
+		
+		forward.setRedirect(false);
+		forward.setPath("csdetail.do?num="+num);
 		
 		return forward;
 	}
