@@ -21,7 +21,7 @@ public class CustomerServiceDAO {
 	}
 
 	public List<CustomerServiceDTO> getListData(Connection conn, int startrow, int pagepercount) throws SQLException {
-		
+
 		StringBuilder sql = new StringBuilder();
 		ResultSet rs = null;
 		List<CustomerServiceDTO> list = null;
@@ -29,12 +29,12 @@ public class CustomerServiceDAO {
 		sql.append(" select qnano, title, state ");
 		sql.append(" from customerservice ");
 		sql.append(" limit ?, ? ");
-		
+
 		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
 
 			pstmt.setInt(1, startrow);
 			pstmt.setInt(2, pagepercount);
-			
+
 			rs = pstmt.executeQuery();
 			list = new ArrayList<>();
 
@@ -43,7 +43,7 @@ public class CustomerServiceDAO {
 				dto.setQnano(rs.getInt("qnano"));
 				dto.setTitle(rs.getString("title"));
 				dto.setState(rs.getInt("state"));
-				
+
 				list.add(dto);
 			}
 
@@ -74,21 +74,64 @@ public class CustomerServiceDAO {
 		return datacount;
 	}
 
-	public void addData(Connection conn, CustomerServiceDTO dto) throws SQLException{
+	public void addData(Connection conn, CustomerServiceDTO dto) throws SQLException {
 		StringBuilder sql = new StringBuilder();
 		sql.append(" insert into customerservice(title, content, id) ");
-		sql.append(" values(?, ?, ?)                            ");
-		
+		sql.append(" values(?, ?, 'cy')                            ");
+
 		System.out.println(sql.toString());
-		
+
 		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString())) {
-			
+
 			pstmt.setString(1, dto.getTitle());
 			pstmt.setString(2, dto.getContent());
-			pstmt.setString(3, dto.getId());
-			
+			// pstmt.setString(3, "cy");
+
 			pstmt.executeUpdate();
 		}
+	}
+
+	public void detailData(Connection conn, int boardnum) throws SQLException {
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StringBuilder sql = new StringBuilder();
+		CustomerServiceDTO data = new CustomerServiceDTO();
+
+		sql.append(" select qnano, title, content ");
+		sql.append(" from customerservice         ");
+		sql.append(" where qnano=?                ");
+		try {
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, boardnum);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				data.setQnano(rs.getInt("qnano"));
+				data.setTitle(rs.getString("title"));
+				data.setContent(rs.getString("content"));
+			}
+		} finally {
+			rsClose(rs);
+			pstmtClose(pstmt);
+		}
+
+	}
+
+	private void pstmtClose(PreparedStatement pstmt) {
+		if (pstmt != null)
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+			}
+	}
+
+	private void rsClose(ResultSet rs) {
+		if (rs != null)
+			try {
+				rs.close();
+			} catch (SQLException e) {
+			}
 	}
 
 }

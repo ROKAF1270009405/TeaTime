@@ -103,4 +103,36 @@ public class CustomerServiceService {
 				}
 		}
 	}
+
+	public CustomerServiceDTO detailService(int boardnum) {
+		
+		DBConn db = DBConn.getdb();
+		Connection conn = null;
+		CustomerServiceDTO data = new CustomerServiceDTO();
+		
+		try {
+			conn = db.getConnection();
+			conn.setAutoCommit(false);
+			CustomerServiceDAO dao = CustomerServiceDAO.getDAO();
+			dao.detailData(conn, boardnum);
+			
+			conn.commit();
+			
+		}catch (SQLException | NamingException e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				System.out.println(e1);
+			}
+		} finally {
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+		}
+		
+		return data;
+	}
 }
