@@ -20,6 +20,7 @@
 			<li><label for="content">내용</label>${data.content}</li>
 		</ul>
 		<a href="csdelete.do?num=${data.qnano}">삭제</a>
+		<a href="csmodify.do?num=${data.qnano}">수정</a>
 	</c:if>
 </body>
 </html>

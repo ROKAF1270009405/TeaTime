@@ -119,6 +119,20 @@ public class CustomerServiceDAO {
 		return data;
 	}
 
+	public void deleteDate(Connection conn, int num) throws SQLException {
+		 StringBuilder sql=new StringBuilder();
+		 
+		 sql.append(" delete from customerservice ");
+		 sql.append(" where qnano=?              ");
+		 
+		 try(PreparedStatement pstmt=conn.prepareStatement(sql.toString());
+				   )
+				{
+					pstmt.setInt(1, num);
+					pstmt.executeUpdate();
+				} 
+	}
+
 	private void pstmtClose(PreparedStatement pstmt) {
 		if (pstmt != null)
 			try {
@@ -134,5 +148,4 @@ public class CustomerServiceDAO {
 			} catch (SQLException e) {
 			}
 	}
-
 }
