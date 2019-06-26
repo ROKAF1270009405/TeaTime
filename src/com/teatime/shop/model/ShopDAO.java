@@ -25,13 +25,16 @@ public class ShopDAO {
 		ResultSet rs = null;
 		StringBuilder sql = new StringBuilder();
 		ArrayList<ShopDTO> arr = new ArrayList<>();
-		sql.append(" select name, addr, photo ");
+		sql.append(" select shopno, name, addr, photo ");
 		sql.append(" from shop ");
+		 //일단 지금은 번호 순서 -> 좋아요 and 각종 필터링 할떄 수정 함녀 될듯
+		
 		try {
 			pstmt = conn.prepareStatement(sql.toString());
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				ShopDTO data = new ShopDTO();
+				data.setShopno(rs.getInt("shopno"));
 				data.setName(rs.getString("name"));
 				data.setAddr(rs.getString("addr"));
 				data.setPhoto(rs.getString("photo"));
@@ -46,8 +49,46 @@ public class ShopDAO {
 		return arr;
 	}
 	
-	
-	
+	public List<ShopDTO> SearchData(int select, String text){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<ShopDTO> result = new ArrayList<>();
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append(" select shopno, name, content, photo, addr, workingtime, date ");
+		sql.append(" from shop ");
+		sql.append(" where name like ? ");
+		sql.append(" order by shopno ");
+		
+		try {
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, select);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ShopDTO dto = new ShopDTO();
+				dto.setShopno(rs.getInt("shopno"));
+				dto.setName(rs.getString("name"));
+				dto.setContent(rs.getString("content"));
+				dto.setPhoto(rs.getString("photo"));
+				dto.setAddr(rs.getString("addr"));
+				dto.setWorkingtime(rs.getString("workingtime"));
+				dto.setDate(rs.getDate("date"));
+				result.add(dto);
+			}
+		}catch(SQLException e) {
+			System.out.println(e);
+		}finally {
+
+			
+			if (rs != null)try {rs.close();} catch (SQLException e) {}
+			if (pstmt != null)try {pstmt.close();} catch (SQLException e) {}
+			if (conn != null)try {conn.close();} catch (SQLException e) {}
+		}
+		return result;
+	}
 	
 	
 	

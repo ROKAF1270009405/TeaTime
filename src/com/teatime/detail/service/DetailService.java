@@ -20,6 +20,7 @@ public class DetailService {
 		ShopDTO result = new ShopDTO();
 		DBConn db = DBConn.getdb();
 		Connection conn = null;
+		System.out.println("서비스 : "+shopno);
 		
 		try {
 			conn = db.getConnection();
