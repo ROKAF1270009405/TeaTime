@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import com.teatime.shop.model.ShopDTO;
 
 public class ShopDAO {
@@ -16,9 +17,42 @@ public class ShopDAO {
 		return dao;
 	}
 	
-	private ShopDAO() {}
+	public ShopDAO() {}
 	
-	public List<ShopDTO> boardlist(Connection conn) throws SQLException {
+	
+	public List<ShopDTO> getList(Connection conn){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StringBuilder sql = new StringBuilder();
+		ArrayList<ShopDTO> arr = new ArrayList<>();
+		sql.append(" select name, addr, photo ");
+		sql.append(" from shop ");
+		try {
+			pstmt = conn.prepareStatement(sql.toString());
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				ShopDTO data = new ShopDTO();
+				data.setName(rs.getString("name"));
+				data.setAddr(rs.getString("addr"));
+				data.setPhoto(rs.getString("photo"));
+				arr.add(data);
+			}
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}finally {
+			if(rs!=null) try{ rs.close();} catch(SQLException e){}
+			if(pstmt!=null) try{ pstmt.close();} catch(SQLException e){}
+		}
+		return arr;
+	}
+	
+	
+	
+	
+	
+	
+	
+	/*public List<ShopDTO> boardlist(Connection conn) throws SQLException {
 		List<ShopDTO> result = new ArrayList<>();
 		StringBuilder sql = new StringBuilder();
 		sql.append(" select shopno, name, content, addr, workingtime, date ");
@@ -99,6 +133,6 @@ public class ShopDAO {
 			}
 			
 			return arr; //null 이었음.
-		}
+		}*/
 		
 }

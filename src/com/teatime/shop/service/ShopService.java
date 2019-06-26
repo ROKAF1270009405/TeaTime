@@ -18,6 +18,37 @@ public class ShopService {
 		return instance;
 	}
 	private ShopService() {}
+	
+	public List<ShopDTO> ListService(){
+		Connection conn = null;
+		List<ShopDTO> list=null;
+		
+		try {
+			DBConn db = DBConn.getdb();
+			
+			conn=db.getConnection();
+			conn.setAutoCommit(false);
+			ShopDAO dao = new ShopDAO();
+			
+			list=dao.getList(conn);
+			
+			conn.commit();
+			
+		}catch(SQLException|NamingException e) {
+			System.out.println(e);
+			try {conn.rollback();}catch(SQLException e1) {}
+		}catch(RuntimeException e) {
+			try {conn.rollback();}catch(SQLException e1) {}
+		}finally {
+			if(conn!=null) try {conn.close();}catch(SQLException e) {}
+		}
+		return list;
+	}
+	
+	
+	
+	
+	/*
 	public int getCount() {//자료갯수를 얻어오는 메서드
 		DBConn db = DBConn.getdb();
 		Connection conn=null;
@@ -49,6 +80,6 @@ public class ShopService {
 		}
 		
 		return list;
-	}
+	}*/
 	
 }
