@@ -20,13 +20,17 @@ public class ShopAction implements Action {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		ShopService service = ShopService.getInstance();
-		List<ShopDTO> list = service.ListService();
-		request.setAttribute("list", list);
+		request.setCharacterEncoding("utf-8");
+		String search = request.getParameter("text");
 		
+		
+		ShopService service = ShopService.getInstance();
+		List<ShopDTO> list = service.ListService(search);
+		request.setAttribute("list", list);
+		System.out.println(list.size());
 		ActionForward forward=new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("WEB-INF/template/main.jsp?pate=/WEB-INF/shop/shoplist.jsp");
+		forward.setPath("WEB-INF/template/main.jsp?page=/WEB-INF/shop/shoplist.jsp");
 		
 		
 		return forward;

@@ -8,35 +8,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.teatime.comm.Action;
 import com.teatime.comm.ActionForward;
-import com.teatime.cs.model.CustomerServiceDTO;
 import com.teatime.cs.service.CustomerServiceService;
 
-public class CSAddResultAction implements Action {
+public class CSDeleteAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		request.setCharacterEncoding("utf-8");
-		
-		String hp =request.getParameter("hp");
-		String email = request.getParameter("email");
-		String title= request.getParameter("title");
-		String content= request.getParameter("content");
-		String id = request.getParameter("id");
-		
-		System.out.println(title+":::"+content);
-		System.out.println("전화"+hp);
-		
-		CustomerServiceDTO dto = new CustomerServiceDTO();
-		
-		dto.setId(id);
-		dto.setTitle(title);
-		dto.setContent(content);
-		dto.setHp(hp);
+		int num=Integer.parseInt(request.getParameter("num"));
 		
 		CustomerServiceService service = CustomerServiceService.getInstance();
-		service.addService(dto);
+		service.DeleteService(num);
 		
 		ActionForward forward = new ActionForward();
 

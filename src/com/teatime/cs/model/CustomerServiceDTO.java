@@ -6,14 +6,17 @@ public class CustomerServiceDTO {
 	private String id;        // 아이디
 	private String title;     // 제목
 	private String content;   // 내용
+	private String hp;
+	private String regidate;
 	private int state;
 	
 	public CustomerServiceDTO() {}
-	public CustomerServiceDTO(int qnano, String id, String title, String content) {
+	public CustomerServiceDTO(int qnano, String id, String title, String content, String hp) {
 		this.qnano = qnano;
 		this.id = id;
 		this.title = title;
 		this.content = content;
+		this.hp = hp;
 	}
 	
 	public int getQnano() {
@@ -45,6 +48,18 @@ public class CustomerServiceDTO {
 	}
 	public void setState(int state) {
 		this.state = state;
+	}
+	public String getHp() {
+		return hp;
+	}
+	public void setHp(String hp) {
+		this.hp = hp;
+	}
+	public String getRegidate() {
+		return regidate;
+	}
+	public void setRegidate(String regidate) {
+		this.regidate = regidate;
 	}
 	
 	

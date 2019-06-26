@@ -11,7 +11,7 @@ import com.teatime.comm.ActionForward;
 import com.teatime.cs.model.CustomerServiceDTO;
 import com.teatime.cs.service.CustomerServiceService;
 
-public class CSAddResultAction implements Action {
+public class CSModifyResultAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -19,29 +19,23 @@ public class CSAddResultAction implements Action {
 		
 		request.setCharacterEncoding("utf-8");
 		
-		String hp =request.getParameter("hp");
-		String email = request.getParameter("email");
-		String title= request.getParameter("title");
-		String content= request.getParameter("content");
-		String id = request.getParameter("id");
+		String hp = request.getParameter("hp");
+		String title =request.getParameter("title");
+		String content =request.getParameter("content");
 		
-		System.out.println(title+":::"+content);
-		System.out.println("전화"+hp);
+		CustomerServiceDTO dto= new CustomerServiceDTO();
 		
-		CustomerServiceDTO dto = new CustomerServiceDTO();
-		
-		dto.setId(id);
-		dto.setTitle(title);
-		dto.setContent(content);
 		dto.setHp(hp);
+		dto.setContent(content);
+		dto.setTitle(title);
 		
 		CustomerServiceService service = CustomerServiceService.getInstance();
-		service.addService(dto);
+		service.modifyService(dto);
 		
 		ActionForward forward = new ActionForward();
 
 		forward.setRedirect(true);
-		forward.setPath("customerservicelist.do");
+		forward.setPath("csdetail.do");
 		
 		return forward;
 	}

@@ -21,6 +21,7 @@ public class CSDetailAction implements Action {
 		
 		CustomerServiceService service = CustomerServiceService.getInstance();
 		CustomerServiceDTO data = service.detailService(boardnum);
+		
 		request.setAttribute("data", data);
 		
 		ActionForward forward = new ActionForward();

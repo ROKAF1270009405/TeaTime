@@ -8,8 +8,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<c:set var="data" value="${requestScope.data}"></c:set>
 
-
+	<c:if test="${data!=null}">
+		<ul>
+			<li><label for="id">아이디</label>${data.id}</li>
+			<li><label for="hp">연락처</label>${data.hp}</li>
+			<li><label for="email">이메일</label>${email}</li>
+			<li><label for="date">작성일</label>${data.regidate}</li>
+			<li><label for="title">제목</label>${data.title}</li>
+			<li><label for="content">내용</label>${data.content}</li>
+		</ul>
+		<a href="csdelete.do?num=${data.qnano}">삭제</a>
+		<a href="csmodify.do?num=${data.qnano}">수정</a>
+		<a href="customerservicelist.do">목록으로</a>
+	</c:if>
 </body>
 </html>

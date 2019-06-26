@@ -31,12 +31,14 @@ public class DetailAction implements Action {
 
 //		int shopno = Integer.parseInt(request.getParameter("shopno"));
 		
-		String no = request.getParameter("no");
+		String no = request.getParameter("shopno");
+		System.out.println(no);
 		int shopno = 1;
 		if(no!=null && !no.equals(""))
 			shopno=Integer.parseInt(no);
+		System.out.println("if 이후 : "+no);
 		
-		
+		System.out.println("shopno : "+shopno);
 		DetailService service = DetailService.getService();
 		ShopDTO dto = service.detailService(shopno);
 		request.setAttribute("dto", dto);

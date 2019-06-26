@@ -76,31 +76,30 @@ public class CustomerServiceDAO {
 
 	public void addData(Connection conn, CustomerServiceDTO dto) throws SQLException {
 		StringBuilder sql = new StringBuilder();
-		sql.append(" insert into customerservice(title, content, id) ");
-		sql.append(" values(?, ?, 'cy')                            ");
-
-		System.out.println(sql.toString());
+		sql.append(" insert into customerservice(title, content, id, hp) ");
+		sql.append(" values(?, ?, 'cy',?)                            ");
 
 		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString())) {
 
 			pstmt.setString(1, dto.getTitle());
 			pstmt.setString(2, dto.getContent());
-			// pstmt.setString(3, "cy");
+			pstmt.setString(3, dto.getHp());
 
 			pstmt.executeUpdate();
 		}
 	}
 
-	public void detailData(Connection conn, int boardnum) throws SQLException {
+	public CustomerServiceDTO detailData(Connection conn, int boardnum) throws SQLException {
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		StringBuilder sql = new StringBuilder();
 		CustomerServiceDTO data = new CustomerServiceDTO();
 
-		sql.append(" select qnano, title, content ");
+		sql.append(" select qnano, title, content, hp, regidate ");
 		sql.append(" from customerservice         ");
 		sql.append(" where qnano=?                ");
+
 		try {
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setInt(1, boardnum);
@@ -110,12 +109,26 @@ public class CustomerServiceDAO {
 				data.setQnano(rs.getInt("qnano"));
 				data.setTitle(rs.getString("title"));
 				data.setContent(rs.getString("content"));
+				data.setHp(rs.getString("hp"));
+				data.setRegidate(rs.getString("regidate"));
 			}
 		} finally {
 			rsClose(rs);
 			pstmtClose(pstmt);
 		}
+		return data;
+	}
 
+	public void deleteData(Connection conn, int num) throws SQLException {
+		StringBuilder sql = new StringBuilder();
+
+		sql.append(" delete from customerservice ");
+		sql.append(" where qnano=?              ");
+
+		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		}
 	}
 
 	private void pstmtClose(PreparedStatement pstmt) {
@@ -134,4 +147,19 @@ public class CustomerServiceDAO {
 			}
 	}
 
+	public void modifyData(Connection conn, CustomerServiceDTO dto) throws SQLException {
+		StringBuilder sql = new StringBuilder();
+
+		sql.append(" update customerservice ");
+		sql.append(" set title= ?, content= ?, hp= ? ");
+
+		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
+			
+			pstmt.setString(1, dto.getTitle());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setString(3, dto.getHp());
+			
+			pstmt.executeUpdate();
+		}
+	}
 }

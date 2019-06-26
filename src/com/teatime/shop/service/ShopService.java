@@ -19,7 +19,8 @@ public class ShopService {
 	}
 	private ShopService() {}
 	
-	public List<ShopDTO> ListService(){
+	public List<ShopDTO> ListService(String search){
+		System.out.println(search);
 		Connection conn = null;
 		List<ShopDTO> list=null;
 		
@@ -30,7 +31,7 @@ public class ShopService {
 			conn.setAutoCommit(false);
 			ShopDAO dao = new ShopDAO();
 			
-			list=dao.getList(conn);
+			list=dao.getList(conn,search);
 			
 			conn.commit();
 			
