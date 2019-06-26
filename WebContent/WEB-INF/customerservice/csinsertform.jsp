@@ -37,8 +37,6 @@ label {
 			</li>
 		</ul>
 		<input type="submit" value="완료">
-		<!--<input type="reset"
-				value="취소"> -->
 		<button type="button" onclick="location.href='customerservicelist.do'">취소</button>
 	</form>
 </body>
