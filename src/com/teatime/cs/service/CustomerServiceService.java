@@ -75,7 +75,7 @@ public class CustomerServiceService {
 		return datacount;
 	}
 
-	public void addService(CustomerServiceDTO dto) {
+	public void addService(CustomerServiceDTO dto) {	//자료 add
 
 		DBConn db = DBConn.getdb();
 		Connection conn = null;
@@ -114,8 +114,7 @@ public class CustomerServiceService {
 			conn = db.getConnection();
 			conn.setAutoCommit(false);
 			CustomerServiceDAO dao = CustomerServiceDAO.getDAO();
-			dao.detailData(conn, boardnum);
-			
+			data = dao.detailData(conn, boardnum);
 			conn.commit();
 			
 		}catch (SQLException | NamingException e) {
