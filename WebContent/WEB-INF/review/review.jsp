@@ -19,7 +19,7 @@ table {
 		<thead>
 			<tr>
 				<th>번호</th>
-				<th>제목</th>
+		
 				<th>내용</th>
 				<th>날짜</th>
 				<th>사진</th>
@@ -32,7 +32,6 @@ table {
 			<c:forEach var="board" items="${list }">
 				<tr>
 					<td>${board.reviewno}</td>
-					<td><a href="detail.do?num=${board.reviewno}">${board.title}</a></td>
 					<td>${board.content}</td>
 					<td>${board.date}</td>
 					<td>${board.photo}</td>
