@@ -35,13 +35,13 @@ body {
 <body>
 	<div class="container">
 		<section class="main">
-			<form class="form-5 clearfix">
+			<form class="form-5 clearfix" method="post" action="logincheck.do" name="frm">
 				<p>
-					<input type="text" id="id" name="id" placeholder="Username">
-					<input type="password" name="pwd" id="pwd" placeholder="Password">
+					<input type="text" id="id" name="id" placeholder="Username" autofocus required>
+					<input type="password" name="pwd" id="pwd" placeholder="Password" required>
 				</p>
 				<button type="submit" name="submit">
-					<i class="icon-arrow-right"></i> <span>로그인</span>
+					<i class="icon-arrow-right"></i> <span>↓</span>
 				</button>
 			</form>
 		</section>
@@ -50,7 +50,7 @@ body {
 	<!-- jQuery if needed -->
 	<script type="text/javascript"
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-	<script type="text/javascript" src="jquery/jquery.placeholder.min.js"></script>
+	<!-- <script type="text/javascript" src="jquery/jquery.placeholder.min.js"></script> -->
 	<!-- <script type="text/javascript">
 		$(function() {
 			$('input, textarea').placeholder();
