@@ -22,9 +22,9 @@ public class ReviewDAO {
 	public List<ReviewDTO> getList(Connection conn, int shopno) throws SQLException {
 		ArrayList<ReviewDTO> list = new ArrayList<>();
 		StringBuilder sql = new StringBuilder();
-		sql.append("select reviewno, title, content, date, photo, gpa, shopno, id 	");
-		sql.append("from review														");
-		sql.append("where shopno = ?												");
+		sql.append("select reviewno, title, r.content, r.date, r.photo, gpa, r.shopno, id, s.name	");
+		sql.append("from review r, shop s															");
+		sql.append("where r.shopno = ? and r.shopno = s.shopno										");
 //		 sql.append("limit ?,? ");
 
 		PreparedStatement pstmt = null;
@@ -44,6 +44,8 @@ public class ReviewDAO {
 				dto.setGpa(rs.getFloat("gpa"));
 				dto.setShopno(rs.getInt("shopno"));
 				dto.setId(rs.getString("id"));
+				dto.setName(rs.getString("name"));
+				
 				list.add(dto);
 			}
 		} finally {

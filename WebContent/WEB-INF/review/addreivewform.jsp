@@ -28,17 +28,20 @@ button:hover {
 	
 }
 </style>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 </head>
 <body>
 	<jsp:useBean id="today" class="java.util.Date" />
 	<fmt:formatDate var="now" value="${today }" pattern="yyyyMMdd" />
-	<form method="post" action="addreviewaction.do"
+	<form method="post" action="addreviewresult.do"
 		enctype="multipart/form-data">
 		<ul>
-			<li><label for="date">${now }</label></li>
+			<li><label for="date"><input name="date" value="${now }" disabled>${now }</label></li>
+		<%-- 	<li><label for="shopname"><input name="shopname" value="<%= request.getParameter("name") %>" disabled></label></li>
 			<li><label><input type="text" name="shopno"
-					value="${requestScope.shopname }" /></label></li>
-			<li><label for="date">${requestScope.id }</label></li>
+					value="${requestScope.shopno }" /></label></li>
+			<li><label for="id">${requestScope.id }</label></li>
 			<li><label for="content">내용 <textarea rows="10"
 						cols="30" placeholder="내용을 입력하세요." name="content"></textarea>
 			</label>
@@ -53,20 +56,18 @@ button:hover {
 					<img src="reviewimg/sad.png" id="sad" onclick=change('sad')>
 				</button>
 			</li>
-
-
 			<li id="upload"><label class="waves-effect waves-teal btn-flat"
 				for="uploadInputBox"> <input id="uploadInputBox"
 					style="display: none" type="file" name="filedata"
 					onchange="LoadImg(this);"><img id="load0" class="load0"
 					src="reviewimg/addimage.png">
-			</label></li>
+			</label></li> --%>
 			<li><input type="submit" value="완료"> <input type="reset"
 				value="취소"></li>
 			<li></li>
 		</ul>
 	</form>
-
+<%-- 
 	<script type="text/javascript">
 	function change(id){
 		var img1 = document.getElementById("happy");
@@ -92,7 +93,6 @@ button:hover {
 				}
 			reader.readAsDataURL(value.files[0]);
 			
-			
 			$('#upload').append('<label class="waves-effect waves-teal btn-flat" for="remove">');
 			count++;
 			var ncls= "load"+count;
@@ -103,6 +103,6 @@ button:hover {
 	function removeImg(value){
 		value.remove();
 	}
-	</script>
+	</script> --%>
 </body>
 </html>

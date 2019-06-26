@@ -12,6 +12,7 @@ import com.teatime.comm.Action;
 import com.teatime.comm.ActionForward;
 import com.teatime.review.model.ReviewDTO;
 import com.teatime.review.service.ReviewService;
+import com.teatime.shop.model.ShopDTO;
 
 public class AddReviewAction implements Action {
 
@@ -44,7 +45,11 @@ public class AddReviewAction implements Action {
 //		forward.setRedirect(true);
 //		forward.setPath("review.do");
 //		return forward;
-		
+		int shopno = Integer.parseInt(request.getParameter("shopno"));
+		request.setAttribute("shopno", shopno);
+		List<ReviewDTO> list = (List<ReviewDTO>) request.getAttribute("list");
+		request.setAttribute("list", list);
+		System.out.println(list);
 		ActionForward forward=new ActionForward();
 		forward.setRedirect(false);
 		System.out.println("addreview");

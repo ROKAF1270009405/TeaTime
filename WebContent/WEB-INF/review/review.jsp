@@ -14,12 +14,13 @@ table {
 </head>
 <body>
 	<c:set var="list" value="${requestScope.list}"></c:set>
+	<c:set var="shopno" value="${requestScope.shopno }"></c:set>
 	<div></div>
 	<table>
 		<thead>
 			<tr>
 				<th>번호</th>
-		
+				
 				<th>내용</th>
 				<th>날짜</th>
 				<th>사진</th>
@@ -31,6 +32,8 @@ table {
 		<tbody>
 			<c:forEach var="board" items="${list }">
 				<tr>
+					<td>${board.name }</td>
+					<c:set var="name" value="${board.name}"></c:set>
 					<td>${board.reviewno}</td>
 					<td>${board.content}</td>
 					<td>${board.date}</td>
@@ -42,6 +45,6 @@ table {
 			</c:forEach>
 		</tbody>
 	</table>
-	<a href="addreviewform.do">글쓰기</a>
+	<a href="addreviewform.do?shopno=${shopno }&name=${name}">글쓰기</a>
 </body>
 </html>
