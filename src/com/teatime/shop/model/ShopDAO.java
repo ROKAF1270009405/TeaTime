@@ -84,10 +84,13 @@ public class ShopDAO {
 				while(rs.next())
 				{
 					ShopDTO dto = new ShopDTO();
-					dto.setShopno(rs.getInt("shopno")); //여기 바꾸는 도중이었음
-					dto.setLast_name(rs.getString("last_name"));
-					dto.setEmail(rs.getString("email"));
-					dto.setSalary(rs.getFloat("salary"));
+					dto.setShopno(rs.getInt("shopno"));
+					dto.setName(rs.getString("name"));
+					dto.setContent(rs.getString("content"));
+					dto.setPhoto(rs.getString("photo"));
+					dto.setAddr(rs.getString("addr"));
+					dto.setWorkingtime(rs.getString("workingtime"));
+					dto.setDate(rs.getDate("date"));
 					arr.add(dto);
 				}
 			}finally {
