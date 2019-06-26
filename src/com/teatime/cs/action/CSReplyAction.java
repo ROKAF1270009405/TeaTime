@@ -15,6 +15,8 @@ public class CSReplyAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		System.out.println("sdfafwe");
+		
 		ActionForward forward = new ActionForward();
 
 		forward.setRedirect(false);
