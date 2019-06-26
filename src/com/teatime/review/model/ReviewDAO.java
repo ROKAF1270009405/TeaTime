@@ -19,18 +19,21 @@ public class ReviewDAO {
 	private ReviewDAO() {
 	}
 
-	public List<ReviewDTO> getList(Connection conn) throws SQLException {
+	public List<ReviewDTO> getList(Connection conn, int shopno) throws SQLException {
 		ArrayList<ReviewDTO> list = new ArrayList<>();
 		StringBuilder sql = new StringBuilder();
 		sql.append("select reviewno, title, content, date, photo, gpa, shopno, id 	");
 		sql.append("from review														");
-		// sql.append("limit ?,? ");
+		sql.append("where shopno = ?												");
+//		 sql.append("limit ?,? ");
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, shopno);
 			rs = pstmt.executeQuery();
+			
 			while (rs.next()) {
 				ReviewDTO dto = new ReviewDTO();
 				dto.setReviewno(rs.getInt("reviewno"));

@@ -22,14 +22,14 @@ public class ReviewService {
 	private ReviewService() {
 	}
 
-	public List<ReviewDTO> getList() {
+	public List<ReviewDTO> getList(int shopno) {
 		DBConn db = DBConn.getdb();
 		Connection conn = null;
 		List<ReviewDTO> list = new ArrayList<>();
 		try {
 			conn = db.getConnection();
 			ReviewDAO dao = ReviewDAO.getDAO();
-			list = dao.getList(conn);
+			list = dao.getList(conn, shopno);
 		} catch (NamingException | SQLException e) {
 			System.out.println(e);
 		} finally {
