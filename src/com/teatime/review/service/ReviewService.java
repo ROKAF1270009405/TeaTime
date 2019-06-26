@@ -31,10 +31,28 @@ public class ReviewService {
 			ReviewDAO dao = ReviewDAO.getDAO();
 			list = dao.getList(conn);
 		} catch (NamingException | SQLException e) {
-			e.printStackTrace();
+			System.out.println(e);
+		} finally {
+			if(conn!=null)
+				try{conn.close();}catch(SQLException e) {}
 		}
-
 		return list;
 	}
 
+	public int addReview(ReviewDTO dto) {
+		DBConn db = DBConn.getdb();
+		Connection conn = null;
+		int result = 0;
+			try {
+				conn = db.getConnection();
+				ReviewDAO dao = ReviewDAO.getDAO();
+				result = dao.addReview(conn, dto);
+			} catch (SQLException | NamingException e) {
+				e.printStackTrace();
+			} finally {
+				if(conn!=null)
+					try{conn.close();}catch(SQLException e) {}
+			}
+		return result;
+	}
 }

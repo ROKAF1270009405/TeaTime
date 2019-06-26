@@ -18,11 +18,9 @@ public class ReviewAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ReviewService service = ReviewService.getInstance();
-		System.out.println("hi");
 //		int totalcount = service.getCount();
 		List<ReviewDTO> list = service.getList();
 		request.setAttribute("list", list);
-		System.out.println(list);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/review/review.jsp");

@@ -1,6 +1,6 @@
 package com.teatime.review.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class ReviewDTO {
 	private int reviewno;

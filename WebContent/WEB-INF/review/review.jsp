@@ -6,17 +6,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<style>
+table {
+	margin: auto;
+}
+</style>
 </head>
 <body>
 	<c:set var="list" value="${requestScope.list}"></c:set>
+	<div></div>
 	<table>
 		<thead>
 			<tr>
 				<th>번호</th>
 				<th>제목</th>
-				<th>gr</th>
-				<th>lev</th>
-				<th>ord</th>
+				<th>내용</th>
+				<th>날짜</th>
+				<th>사진</th>
+				<th>점수</th>
+				<th>가게번호</th>
+				<th>아이디</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -24,11 +33,16 @@
 				<tr>
 					<td>${board.reviewno}</td>
 					<td><a href="detail.do?num=${board.reviewno}">${board.title}</a></td>
-					
+					<td>${board.content}</td>
+					<td>${board.date}</td>
+					<td>${board.photo}</td>
+					<td>${board.gpa}</td>
+					<td>${board.shopno}</td>
+					<td>${board.id}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	<a href="insert.do">글쓰기</a>
+	<a href="addreviewform.do">글쓰기</a>
 </body>
 </html>

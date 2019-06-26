@@ -1,5 +1,7 @@
 package com.teatime.review.model;
+
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -52,6 +54,31 @@ public class ReviewDAO {
 		// from( select * from employees where title = ? order by desc) where
 		// rownum<=?)where rnum>=?;
 		return list;
+	}
+
+	public int addReview(Connection conn, ReviewDTO dto) throws SQLException {
+		int result = 0;
+		StringBuilder sql = new StringBuilder();
+		sql.append("insert into review(content, date, photo, gpa, shopno, id)	");
+		sql.append("			values(	?, ?, ?, ?, ?, ?, ?						   )	");
+		// sql.append("limit ?,? ");
+		PreparedStatement pstmt = null;
+		try {
+		pstmt = conn.prepareStatement(sql.toString());
+		pstmt.setString(1, " ");
+		pstmt.setString(2, dto.getContent());
+		pstmt.setDate(1, (Date) dto.getDate());
+		pstmt.setString(1, dto.getPhoto());
+		pstmt.setFloat(1, dto.getGpa());
+		pstmt.setInt(1, dto.getShopno());
+		pstmt.setString(1, dto.getId());
+		result = pstmt.executeUpdate();
+		}finally {
+			if (pstmt != null)
+				pstmt.close();
+		}
+		
+		return result;
 	}
 
 }
