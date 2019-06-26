@@ -22,6 +22,7 @@ public class DetailDAO {
 		sql.append(" select shopno, name, content, photo, addr, workingtime, date ");
 		sql.append(" from shop ");
 		sql.append(" where shopno = ? ");
+		sql.append(" order by shopno desc ");
 		try {
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setInt(1, shopno);

@@ -162,4 +162,16 @@ public class CustomerServiceDAO {
 			pstmt.executeUpdate();
 		}
 	}
+	
+	public void updateState(Connection conn) throws SQLException {
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append(" update customerservice ");
+		sql.append(" set state=1 ");
+		
+		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
+			pstmt.executeUpdate();
+		}
+		
+	}
 }

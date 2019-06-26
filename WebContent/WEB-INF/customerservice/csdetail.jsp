@@ -19,6 +19,8 @@
 			<li><label for="title">제목</label>${data.title}</li>
 			<li><label for="content">내용</label>${data.content}</li>
 		</ul>
+		
+		<a href="csreply.do">답변하기</a>
 		<a href="csdelete.do?num=${data.qnano}">삭제</a>
 		<a href="csmodify.do?num=${data.qnano}">수정</a>
 		<a href="customerservicelist.do">목록으로</a>

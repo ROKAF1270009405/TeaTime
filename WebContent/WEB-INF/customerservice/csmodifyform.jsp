@@ -14,6 +14,7 @@
 	<h2>문의작성</h2>
 	<form method="post" action="csmodifyresult.do">
 		<ul>
+			<input type="hidden" value="${data.qnano}" name="num" id="num">
 			<li><label for="id">아이디</label></li>
 			<li><label for="hp">연락처</label><input type="text" name="hp"
 				id="hp" required="required" value="${data.hp}"></li>

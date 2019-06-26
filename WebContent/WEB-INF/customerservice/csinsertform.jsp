@@ -28,12 +28,12 @@ label {
 		<ul>
 			<li><label for="id">아이디</label></li>
 			<li><label for="hp">연락처</label><input type="text" name="hp"
-				id="hp" required="required" placeholder="연락처를 입력하세요."></li>
+				id="hp" required="required" placeholder="연락처를 입력해주세요."></li>
 			<li><label for="email">이메일</label>
 			<li><label for="title">제목</label><input type="text" name="title"
-				id="title" required="required" placeholder="제목을 입력하세요."></li>
+				id="title" required="required" placeholder="제목을 입력해주세요."></li>
 			<li><label for="content">내용</label> <textarea id="content"
-					name="content" rows="10" cols="30" placeholder="내용을 입력하세요."></textarea>
+					name="content" rows="10" cols="30" placeholder="내용을 입력해주세요."></textarea>
 			</li>
 		</ul>
 		<input type="submit" value="완료">
