@@ -17,16 +17,16 @@ public class BestAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		/*
 		String kind = request.getParameter("kind");				// 좋아요, 평점 기준
 		String startday = request.getParameter("startday");		//
 		String endday = request.getParameter("endday");
-		*/
+		
 		System.out.println("베스트 액션 진입..");
+		/*
 		String kind = "";
 		String startday = "2019-06-01";
 		String endday = "";
-		
+		*/
 		if(kind==null || "".equals(kind)) {
 			kind = "good";
 		}

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +23,7 @@ label {
 }
 </style>
 <body>
+	<h2>문의작성</h2>
 	<form method="post" action="csinsertresult.do">
 		<ul>
 			<li><label for="id">아이디</label></li>
@@ -30,15 +32,14 @@ label {
 			<li><label for="email">이메일</label>
 			<li><label for="title">제목</label><input type="text" name="title"
 				id="title" required="required" placeholder="제목을 입력하세요."></li>
-			<li><label for="content">내용</label>
-			<textarea id="content" name="content" rows="10" cols="30" placeholder="내용을 입력하세요."></textarea>
+			<li><label for="content">내용</label> <textarea id="content"
+					name="content" rows="10" cols="30" placeholder="내용을 입력하세요."></textarea>
 			</li>
-			<li> <input type="submit" value="완료"> <!--<input type="reset"
-				value="취소"> -->
-				<button type="button" onclick="location.href='customerservicelist.do'">취소</button>
-				</li>
 		</ul>
-
+		<input type="submit" value="완료">
+		<!--<input type="reset"
+				value="취소"> -->
+		<button type="button" onclick="location.href='customerservicelist.do'">취소</button>
 	</form>
 </body>
 </html>
