@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.teatime.comm.Action;
 import com.teatime.comm.ActionForward;
+import com.teatime.detail.service.DetailService;
+import com.teatime.shop.model.ShopDTO;
 
 public class DetailAction implements Action {
 
@@ -15,7 +17,34 @@ public class DetailAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+
+		// datail
+		// shop에 대한 설명
+		//
+		//
+		// 제목 - name
+		// 주소 - addr
+		// 내용 - content
+		// 영업시간 - workingtime
+		// 사진 - photo
+		// 게시일 - date
+
+//		int shopno = Integer.parseInt(request.getParameter("shopno"));
+		
+		String no = request.getParameter("no");
+		int shopno = 1;
+		if(no!=null && !no.equals(""))
+			shopno=Integer.parseInt(no);
+		
+		
+		DetailService service = DetailService.getService();
+		ShopDTO dto = service.detailService(shopno);
+		request.setAttribute("dto", dto);
+		ActionForward forward = new ActionForward();
+		forward.setRedirect(false);
+		forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/detail/detail.jsp");
+
+		return forward;
 	}
 
 }

@@ -16,25 +16,20 @@ div {
 	width: 25%;
 	height: 100%;
 	overflow: hidden;
-	background-color: blue;
 }
 </style>
 </head>
 <body>
-	<div id="wrap">
-		<div>
-			<img src="#" alt="이미지1">
-		</div>
-		<div>
-			<img src="#" alt="이미지2">
-		</div>
-		<div>
-			<img src="#" alt="이미지3">
-		</div>
-		<div>
-			<img src="#" alt="이미지4">
-		</div>
-	</div>
+	
+	<ul>
+		<c:set var ="detail" value="${requestScope.dto }"></c:set>
+		<li>${detail.name }</li>
+		<li>${detail.content }</li>
+		<li>${detail.photo }</li>
+		<li>${detail.addr }</li>
+		<li>${detail.workingtime }</li>
+		<li>${detail.date }</li>
+	</ul>
 	
 	<table>
 	<tr><td>aadasdadsSD</td></tr>
