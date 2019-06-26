@@ -95,11 +95,11 @@ public class CustomerServiceDAO {
 		ResultSet rs = null;
 		StringBuilder sql = new StringBuilder();
 		CustomerServiceDTO data = new CustomerServiceDTO();
-		
+
 		sql.append(" select qnano, title, content, hp, regidate ");
 		sql.append(" from customerservice         ");
 		sql.append(" where qnano=?                ");
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setInt(1, boardnum);
@@ -120,17 +120,15 @@ public class CustomerServiceDAO {
 	}
 
 	public void deleteData(Connection conn, int num) throws SQLException {
-		 StringBuilder sql=new StringBuilder();
-		 
-		 sql.append(" delete from customerservice ");
-		 sql.append(" where qnano=?              ");
-		 
-		 try(PreparedStatement pstmt=conn.prepareStatement(sql.toString());
-				   )
-				{
-					pstmt.setInt(1, num);
-					pstmt.executeUpdate();
-				} 
+		StringBuilder sql = new StringBuilder();
+
+		sql.append(" delete from customerservice ");
+		sql.append(" where qnano=?              ");
+
+		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		}
 	}
 
 	private void pstmtClose(PreparedStatement pstmt) {
@@ -149,14 +147,19 @@ public class CustomerServiceDAO {
 			}
 	}
 
-	public void modifyData(Connection conn, CustomerServiceDTO dto)  throws SQLException {
+	public void modifyData(Connection conn, CustomerServiceDTO dto) throws SQLException {
 		StringBuilder sql = new StringBuilder();
-		
+
 		sql.append(" update customerservice ");
 		sql.append(" set title= ?, content= ?, hp= ? ");
-		
-		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
-//			pstmt.setString(1, );
+
+		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
+			
+			pstmt.setString(1, dto.getTitle());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setString(3, dto.getHp());
+			
+			pstmt.executeUpdate();
 		}
 	}
 }

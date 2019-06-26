@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.teatime.comm.Action;
 import com.teatime.comm.ActionForward;
 import com.teatime.cs.model.CustomerServiceDTO;
+import com.teatime.cs.service.CustomerServiceService;
 
 public class CSModifyResultAction implements Action {
 
@@ -18,11 +19,9 @@ public class CSModifyResultAction implements Action {
 		
 		request.setCharacterEncoding("utf-8");
 		
-		int no = Integer.parseInt(request.getParameter("num"));
 		String hp = request.getParameter("hp");
 		String title =request.getParameter("title");
 		String content =request.getParameter("content");
-		System.out.println();
 		
 		CustomerServiceDTO dto= new CustomerServiceDTO();
 		
@@ -30,10 +29,13 @@ public class CSModifyResultAction implements Action {
 		dto.setContent(content);
 		dto.setTitle(title);
 		
+		CustomerServiceService service = CustomerServiceService.getInstance();
+		service.modifyService(dto);
+		
 		ActionForward forward = new ActionForward();
 
-		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/customerservice/csdetail.jsp");
+		forward.setRedirect(true);
+		forward.setPath("csdetail.do");
 		
 		return forward;
 	}

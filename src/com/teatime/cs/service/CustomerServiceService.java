@@ -166,13 +166,13 @@ public class CustomerServiceService {
 	public void modifyService(CustomerServiceDTO dto) {
 		DBConn db = DBConn.getdb();
 		Connection conn = null;
-		CustomerServiceDTO data = null;
 		
 		try {
 			conn = db.getConnection();
 			conn.setAutoCommit(false);
 			CustomerServiceDAO dao = CustomerServiceDAO.getDAO();
 			dao.modifyData(conn, dto);
+			
 			conn.commit();
 			
 		}catch (SQLException | NamingException e) {
