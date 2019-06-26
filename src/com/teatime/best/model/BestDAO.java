@@ -23,9 +23,8 @@ public class BestDAO {
 		ResultSet rs = null;
 		StringBuilder sb = new StringBuilder();
 		List<BestDTO> bestlist = new ArrayList<>();
-		sb.append(" select s.shopno as shopno, s.name as name, s.addr as addr, s.photo as photo, avg(gpa) as gpa, count(g.date) as good ");
+		sb.append(" select s.shopno, s.name, s.addr, s.photo, avg(gpa) as gpa, (select count(*) from good g where g.shopno = s.shopno) as good ");
 		sb.append(" from shop s join review r on s.shopno = r.shopno ");
-		sb.append(" join good g on g.shopno = s.shopno ");
 		System.out.println("kind : "+kind);
 		System.out.println("startday : "+startday);
 		System.out.println("endday : "+endday);
@@ -49,14 +48,8 @@ public class BestDAO {
 				if(!("none".equals(endday))) {
 					System.out.println("end day 가 있다");
 					pstmt.setString(2, endday);
-					//pstmt.setString(3, kind);
-				} else {
-					System.out.println("startday만 있어");
-					//pstmt.setString(2, kind);
-				}
-			} else {
-				pstmt.setString(1, kind);
-			}
+				} 
+			} 
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				BestDTO dto = new BestDTO();

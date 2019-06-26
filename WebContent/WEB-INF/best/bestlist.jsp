@@ -73,31 +73,65 @@ a {
 <script>
   $(document).ready(function(){
 	  $('.trs:odd').css("background-color","#9DCFFF");
+	  /* let kind = $('.btn').val();
+	  console.log(kind);
+	   */
+	  $('#kind').on('change',function () {
+		  console.log('change!!!');
+	    console.log( $(this).val());	 
+		/*   if(kindtitle==="좋아요 베스트"){
+			  kindtitle = "평점 베스트";
+			  $('.btn').val('gpa');
+		  } else if(kindtitle==="평점 베스트"){
+			  kindtitle = "좋아요 베스트";
+			  $('.btn').val('good');
+		  }
+		  kind = $('.btn').val();
+		  $(this).text(kindtitle); */
+		  $('form').submit();
+		 /*  $.ajax({
+			  url:"http://localhost:8080/MiniPro2/best.do",
+			  type:'GET',
+			  data:kind,
+			  success:function(data){
+				  console.log("ajax : "+kind);
+			  },
+			  error:function(){
+				  
+			  }
+		  }); */
+	  });
+	  
   });
 </script>
 </head>
 <body>
 <c:set var="bestlist" value="${requestScope.bestlist }"></c:set>
+
+
 <div class="mo">
-<form method="post" action="best.do">
+<form method="post" action="best.do" name="frm">
 	<select name="kind" id="kind">
+	<option value="">선택하시오</option>
 		<option value="good">좋아요</option>
 		<option value="gpa">평점</option>
 	</select>
-	<input type="submit" class="btn" value="전송">
-</form>	
+</form>
+<!-- <form method="post" action="best.do">
+	<button class="btn" value="good" id="kind" name="kind">좋아요 베스트</button>
+</form> -->
 	<table>
 		<thead>
-			<tr><th>사진</th><th>매장명</th><th>매장평점</th><th>매장주소</th></tr>
+			<tr><th>사진</th><th>매장명</th><th>매장평점</th><th>매장주소</th><th>좋아요수</th></tr>
 		</thead>
 		<tbody>
 		<c:forEach var="best" items="${bestlist }">
 			<tr class="trs">
-				
 				<td><div class="site"><img alt="이미지" src="${best.photo }"></div></td>
 				<td><c:out value="${best.name }"></c:out></td>
-				<td><c:out value="${best.gpa }"></c:out></td>
+				<td><fmt:formatNumber value="${best.gpa }" pattern=".0"/></td>
 				<td><c:out value="${best.addr }"></c:out></td>
+				<td><c:out value="${best.count }"></c:out></td>
 			</tr>	
 		</c:forEach>
 		</tbody>
