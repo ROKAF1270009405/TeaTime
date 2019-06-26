@@ -18,14 +18,19 @@ public class ReviewAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ReviewService service = ReviewService.getInstance();
+//		System.out.println("hi");
 //		int totalcount = service.getCount();
-		List<ReviewDTO> list = service.getList();
+		int shopno = Integer.parseInt(request.getParameter("shopno"));
+		List<ReviewDTO> list = service.getList(shopno);
 		request.setAttribute("list", list);
+		request.setAttribute("shopno", shopno);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/review/review.jsp");
+//		forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/review/review.jsp");
+//		forward.setPath("/WEB-INF/detail/detail.jsp?page=/WEB-INF/review/review.jsp");
+		forward.setPath("/WEB-INF/review/review.jsp");
 		return forward;
-	}
+	}  
 }
 
 
