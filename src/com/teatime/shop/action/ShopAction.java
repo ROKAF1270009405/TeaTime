@@ -26,7 +26,7 @@ public class ShopAction implements Action {
 		
 		ActionForward forward=new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("WEB-INF/template/main.jsp?pate=/WEB-INF/shop/shoplist.jsp");
+		forward.setPath("WEB-INF/template/main.jsp?page=/WEB-INF/shop/shoplist.jsp");
 		
 		
 		return forward;
