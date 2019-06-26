@@ -33,6 +33,7 @@ public class MypageService {
 			conn = db.getConnection();
 			MypageDAO dao = MypageDAO.getDAO();
 			list = dao.getMemberList(conn);
+
 		} catch (SQLException | NamingException e) {
 			System.out.println(e.getMessage());
 		} finally {
