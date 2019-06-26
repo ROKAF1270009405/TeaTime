@@ -6,14 +6,20 @@
 <head>
 <meta charset="UTF-8">
 <style>
-.masthead{
+/* .masthead{
 height : 10px !important;
 min-height: 0rem !important;
+} */
+@media ( max-width : 990px) {
+	.masthead {
+		padding-top: 72px;
+	}
 }
 </style>
 <title>TeaTime</title>
 <!-- Font Awesome Icons -->
-<link href="<%=request.getContextPath() %>/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/all.min.css"
+	rel="stylesheet" type="text/css">
 
 <!-- Google Fonts -->
 <link
@@ -24,38 +30,44 @@ min-height: 0rem !important;
 	rel='stylesheet' type='text/css'>
 
 <!-- Plugin CSS -->
-<link href="<%=request.getContextPath() %>/css/magnific-popup.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/css/magnific-popup.css"
+	rel="stylesheet">
 
 <!-- Theme CSS - Includes Bootstrap -->
-<link href= "<%=request.getContextPath() %>/css/creative.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/css/creative.css"
+	rel="stylesheet">
 
 </head>
 <body>
-<header class="masthead"> 
-	<jsp:include page="header.jsp"></jsp:include>
-	<c:set var="page" value="${param.page }"></c:set>.
-	<c:if test="${page!=null }">
-		<jsp:include page="${page }"></jsp:include>
-	</c:if>
-	<c:if test = "${page==null }">
-	<jsp:include page = "nodata.jsp"></jsp:include>
-	</c:if>
-	<jsp:include page="footer.jsp"></jsp:include>
+	<header class="masthead">
+		<jsp:include page="header.jsp"></jsp:include>
+		<c:set var="page" value="${param.page }"></c:set>
+		.
+		<c:if test="${page!=null }">
+			<jsp:include page="${page }"></jsp:include>
+		</c:if>
+		<c:if test="${page==null }">
+			<jsp:include page="nodata.jsp"></jsp:include>
+		</c:if>
+		<jsp:include page="footer.jsp"></jsp:include>
 	</header>
-	
-	
-	
+
+
+
 	<!-- Bootstrap core JavaScript -->
-	<script src="<%=request.getContextPath() %>/jquery/jquery.min.js"></script>
-	<script src="<%=request.getContextPath() %>/jquery/bootstrap.bundle.min.js"></script>
+	<script src="<%=request.getContextPath()%>/jquery/jquery.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/jquery/bootstrap.bundle.min.js"></script>
 
 	<!-- Plugin JavaScript -->
-	<script src="<%=request.getContextPath() %>/jquery/jquery.easing.min.js"></script>
-	<script src="<%=request.getContextPath() %>/jquery/jquery.magnific-popup.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/jquery/jquery.easing.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/jquery/jquery.magnific-popup.min.js"></script>
 
 	<!-- Custom scripts for this template -->
-	<script src= "<%=request.getContextPath() %>/jquery/creative.js"></script>
-	
-	
+	<script src="<%=request.getContextPath()%>/jquery/creative.js"></script>
+
+
 </body>
 </html>
