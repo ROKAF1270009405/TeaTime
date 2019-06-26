@@ -31,20 +31,22 @@ public class SignUpResultAction implements Action {
 		
 		LoginService service = LoginService.getInstance();
 		ActionForward act = new ActionForward();
-		//패스워드가 서로 다를 경우.
-		if(!(pwd.equals(checkpwd))) {
-			act.setRedirect(false);
-			act.setPath("signup.do");
-		} else {
+		if(pwd.equals(checkpwd)) {
 			int check = service.signUpService(dto);
 			if(check == 1) {
 				System.out.println("가입 성공.");
 				act.setRedirect(false);
 				act.setPath("teatime.do");
 			} else {
+				System.out.println("가입 실패.");
 				act.setRedirect(false);
 				act.setPath("signup.do");
 			}
+		//패스워드가 서로 다를 경우.
+		} else {
+			System.out.println("패스워드가 틀렸습니다.");
+			act.setRedirect(false);
+			act.setPath("signup.do");
 		}
 		
 		return act;
