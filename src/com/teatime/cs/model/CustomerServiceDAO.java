@@ -119,7 +119,7 @@ public class CustomerServiceDAO {
 		return data;
 	}
 
-	public void deleteDate(Connection conn, int num) throws SQLException {
+	public void deleteData(Connection conn, int num) throws SQLException {
 		 StringBuilder sql=new StringBuilder();
 		 
 		 sql.append(" delete from customerservice ");
@@ -147,5 +147,16 @@ public class CustomerServiceDAO {
 				rs.close();
 			} catch (SQLException e) {
 			}
+	}
+
+	public void modifyData(Connection conn, CustomerServiceDTO dto)  throws SQLException {
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append(" update customerservice ");
+		sql.append(" set title= ?, content= ?, hp= ? ");
+		
+		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
+			pstmt.setString(1, );
+		}
 	}
 }

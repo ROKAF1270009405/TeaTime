@@ -144,7 +144,35 @@ public class CustomerServiceService {
 			conn = db.getConnection();
 			conn.setAutoCommit(false);
 			CustomerServiceDAO dao = CustomerServiceDAO.getDAO();
-			dao.deleteDate(conn, num);
+			dao.deleteData(conn, num);
+			conn.commit();
+			
+		}catch (SQLException | NamingException e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				System.out.println(e1);
+			}
+		} finally {
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+		}
+	}
+
+	public void modifyService(CustomerServiceDTO dto) {
+		DBConn db = DBConn.getdb();
+		Connection conn = null;
+		CustomerServiceDTO data = null;
+		
+		try {
+			conn = db.getConnection();
+			conn.setAutoCommit(false);
+			CustomerServiceDAO dao = CustomerServiceDAO.getDAO();
+			dao.modifyData(conn, dto);
 			conn.commit();
 			
 		}catch (SQLException | NamingException e) {
