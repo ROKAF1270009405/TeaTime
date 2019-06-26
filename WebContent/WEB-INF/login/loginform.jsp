@@ -45,7 +45,7 @@ body {
 				</button>
 			</form>
 		</section>
-
+	  <p class="text--center"><a href="signup.do">회원가입</a> <span class="fontawesome-arrow-right"></span></p>
 	</div>
 	<!-- jQuery if needed -->
 	<script type="text/javascript"

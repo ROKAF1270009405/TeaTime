@@ -5,14 +5,13 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.teatime.comm.Action;
 import com.teatime.comm.ActionForward;
 import com.teatime.login.service.LoginService;
 import com.teatime.member.MemberDTO;
 
-public class LoginCheckAction implements Action {
+public class SignUpResultAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -20,29 +19,35 @@ public class LoginCheckAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
-		System.out.println("로그인체크액션 : "+id+", "+pwd);
+		String checkpwd = request.getParameter("confirmPassword");
+		String nickname = request.getParameter("nickname");
+		String email = request.getParameter("email");
+		
 		MemberDTO dto = new MemberDTO();
 		dto.setId(id);
 		dto.setPwd(pwd);
-		
-		/*String url = request.getHeader("referer");
-		System.out.println("url : "+url);*/
+		dto.setNickname(nickname);
+		dto.setMail(email);
 		
 		LoginService service = LoginService.getInstance();
-		int check = service.loginCheckService(dto);
 		ActionForward act = new ActionForward();
-
-		if(check == 1) {
-			HttpSession session = request.getSession();
-			System.out.println("로그인 성공");
-			dto = service.loginInfoService(id);
-			session.setAttribute("dto", dto);
-			act.setRedirect(true);
-			act.setPath("teatime.do");
+		//패스워드가 서로 다를 경우.
+		if(!(pwd.equals(checkpwd))) {
+			act.setRedirect(false);
+			act.setPath("signup.do");
 		} else {
-			act.setRedirect(true);
-			act.setPath("login.do");
+			int check = service.signUpService(dto);
+			if(check == 1) {
+				System.out.println("가입 성공.");
+				act.setRedirect(false);
+				act.setPath("teatime.do");
+			} else {
+				act.setRedirect(false);
+				act.setPath("signup.do");
+			}
 		}
+		
 		return act;
 	}
+
 }

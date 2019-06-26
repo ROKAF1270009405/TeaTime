@@ -61,4 +61,18 @@ public class LoginDAO {
 		return info;
 	}
 	
+	public int SignUp(Connection conn, MemberDTO dto) throws SQLException {
+		int result = 0;
+		StringBuilder sb = new StringBuilder();
+		sb.append(" insert into member(id, pwd, nickname, email) values(?, ?, ?, ?) ");
+		try(PreparedStatement pstmt = conn.prepareStatement(sb.toString());){
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getPwd());
+			pstmt.setString(3, dto.getNickname());
+			pstmt.setString(4, dto.getMail());
+			result = pstmt.executeUpdate();
+		}
+		return result;
+	}
+	
 }

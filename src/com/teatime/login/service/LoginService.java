@@ -52,5 +52,23 @@ public class LoginService {
 		return dto;
 	}
 
+	public int signUpService(MemberDTO dto) {
+		int result = 0; 
+		DBConn db = DBConn.getdb();
+		Connection conn = null;
+		try {
+			conn = db.getConnection();
+			conn.setAutoCommit(false);
+			LoginDAO dao = LoginDAO.getDAO();
+			result = dao.SignUp(conn, dto);
+			conn.commit();
+		} catch (SQLException | NamingException e) {
+			System.out.println(e);
+		} finally {	
+			if (conn != null) {	try {conn.close();} catch (SQLException e) {}}
+		}
+		return result;
+	}
+
 
 }

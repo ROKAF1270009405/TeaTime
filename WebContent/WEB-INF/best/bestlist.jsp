@@ -112,7 +112,7 @@ a {
 <div class="mo">
 <form method="post" action="best.do" name="frm">
 	<select name="kind" id="kind">
-	<option value="">선택하시오</option>
+	<option value="">정렬 기준</option>
 		<option value="good">좋아요</option>
 		<option value="gpa">평점</option>
 	</select>
