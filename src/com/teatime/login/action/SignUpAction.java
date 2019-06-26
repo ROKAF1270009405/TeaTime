@@ -16,7 +16,7 @@ public class SignUpAction implements Action {
 			throws ServletException, IOException {
 		ActionForward act = new ActionForward();
 		act.setRedirect(false);
-		act.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/login/signup.jsp");
+		act.setPath("/WEB-INF/login/signup.jsp");
 		return act;
 	}
 

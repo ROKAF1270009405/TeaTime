@@ -21,8 +21,6 @@ public class CSModifyResultAction implements Action {
 		
 		int num = Integer.parseInt(request.getParameter("num"));
 		
-		System.out.println(num);
-		
 		String hp = request.getParameter("hp");
 		String title =request.getParameter("title");
 		String content =request.getParameter("content");
