@@ -32,9 +32,7 @@ public class CustomerServiceService {
 	    	conn = db.getConnection();
 	    	
 	    	CustomerServiceDAO dao = CustomerServiceDAO.getDAO();
-	    	System.out.println("dddd");
 	    	list = dao.getListData(conn, startrow, pagepercount);
-	    	System.out.println("사이즈:"+list.size());
 	    }catch(SQLException | NamingException | RuntimeException e) {
 	    	System.out.println(e);
 	    	try {
@@ -75,5 +73,35 @@ public class CustomerServiceService {
 				}
 		}
 		return datacount;
+	}
+
+	public void addService(CustomerServiceDTO dto) {
+
+		DBConn db = DBConn.getdb();
+		Connection conn = null;
+		
+		try {
+			conn = db.getConnection();
+			conn.setAutoCommit(false);
+			System.out.println("ddddd");
+			CustomerServiceDAO dao = CustomerServiceDAO.getDAO();
+			dao.addData(conn, dto);
+			
+			conn.commit();
+			
+		}catch (SQLException | NamingException e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				System.out.println(e1);
+			}
+		} finally {
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+		}
 	}
 }
