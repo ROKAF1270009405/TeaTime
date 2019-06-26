@@ -19,8 +19,7 @@
 			<li><label for="title">제목</label>${data.title}</li>
 			<li><label for="content">내용</label>${data.content}</li>
 		</ul>
-		<button onclick="del()">삭제</button>
-		<button>수정</button>
+		<a href="csdelete.do?num=${data.qnano}">삭제</a>
 	</c:if>
 </body>
 </html>
