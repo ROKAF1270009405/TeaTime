@@ -76,13 +76,16 @@ public class CustomerServiceDAO {
 
 	public void addData(Connection conn, CustomerServiceDTO dto) throws SQLException{
 		StringBuilder sql = new StringBuilder();
-		sql.append(" insert into customerservice(title, content) ");
-		sql.append(" values(?, ?)");
+		sql.append(" insert into customerservice(title, content, id) ");
+		sql.append(" values(?, ?, ?)                            ");
+		
+		System.out.println(sql.toString());
 		
 		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString())) {
 			
 			pstmt.setString(1, dto.getTitle());
 			pstmt.setString(2, dto.getContent());
+			pstmt.setString(3, dto.getId());
 			
 			pstmt.executeUpdate();
 		}

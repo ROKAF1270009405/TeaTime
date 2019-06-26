@@ -20,11 +20,15 @@ public class CSAddResultAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		
 		int hp=Integer.parseInt(request.getParameter("hp"));
+		
 		String title= request.getParameter("title");
 		String content= request.getParameter("content");
+		String id = request.getParameter("id");
+		
 		System.out.println(title+":::"+content);
 		CustomerServiceDTO dto = new CustomerServiceDTO();
 		
+		dto.setId(id);
 		dto.setTitle(title);
 		dto.setContent(content);
 		
