@@ -20,7 +20,7 @@ public class ShopDAO {
 	public ShopDAO() {
 	}
 
-	public List<ShopDTO> getList(Connection conn, int select, String text) {
+	public List<ShopDTO> getList(Connection conn, int filter, String text) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		StringBuilder sql = new StringBuilder();
@@ -30,14 +30,14 @@ public class ShopDAO {
 		sql.append(" on s.shopno = m.shopno ");
 				
 		// 일단 지금은 번호 순서 -> 좋아요 and 각종 필터링 할떄 수정 함녀 될듯
-		if(!(select==0) && !"".equals(text)){
-			if(select == 1) {
+		if(!(filter==0) && !"".equals(text)){
+			if(filter == 1) {
 				sql.append(" where s.name like ? ");
-			}else if (select == 2) {
+			}else if (filter == 2) {
 				sql.append(" where addr like ? ");
-			}else if (select == 3) {
+			}else if (filter == 3) {
 				sql.append(" where m.name like ? ");
-			}else if (select == 4) {
+			}else if (filter == 4) {
 				sql.append(" where foodkind like ? ");
 			}
 		}
