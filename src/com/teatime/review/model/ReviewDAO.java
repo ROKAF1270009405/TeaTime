@@ -1,11 +1,13 @@
 package com.teatime.review.model;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ReviewDAO {
@@ -22,30 +24,28 @@ public class ReviewDAO {
 	public List<ReviewDTO> getList(Connection conn, int shopno) throws SQLException {
 		ArrayList<ReviewDTO> list = new ArrayList<>();
 		StringBuilder sql = new StringBuilder();
-		sql.append("select reviewno, title, r.content, r.date, r.photo, gpa, r.shopno, id, s.name	");
+		sql.append("select reviewno, r.content, r.date, r.photo, gpa, r.shopno, id, s.name			");
 		sql.append("from review r, shop s															");
 		sql.append("where r.shopno = ? and r.shopno = s.shopno										");
-//		 sql.append("limit ?,? ");
-
+		// sql.append("limit ?,? ");
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setInt(1, shopno);
 			rs = pstmt.executeQuery();
-			
+
 			while (rs.next()) {
 				ReviewDTO dto = new ReviewDTO();
 				dto.setReviewno(rs.getInt("reviewno"));
-				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
-				dto.setDate(rs.getDate("date"));
+				dto.setDate(rs.getDate("date") + "");
 				dto.setPhoto(rs.getString("photo"));
 				dto.setGpa(rs.getFloat("gpa"));
 				dto.setShopno(rs.getInt("shopno"));
 				dto.setId(rs.getString("id"));
 				dto.setName(rs.getString("name"));
-				
+
 				list.add(dto);
 			}
 		} finally {
@@ -61,28 +61,35 @@ public class ReviewDAO {
 		return list;
 	}
 
-	public int addReview(Connection conn, ReviewDTO dto) throws SQLException {
+	public int addReview(Connection conn, ReviewDTO dto) throws SQLException, ParseException {
 		int result = 0;
 		StringBuilder sql = new StringBuilder();
 		sql.append("insert into review(content, date, photo, gpa, shopno, id)	");
-		sql.append("			values(	?, ?, ?, ?, ?, ?, ?						   )	");
+		sql.append("			values(	?, ?, ?, ?, ?, ?						   )	");
 		// sql.append("limit ?,? ");
 		PreparedStatement pstmt = null;
 		try {
-		pstmt = conn.prepareStatement(sql.toString());
-		pstmt.setString(1, " ");
-		pstmt.setString(2, dto.getContent());
-		pstmt.setDate(1, (Date) dto.getDate());
-		pstmt.setString(1, dto.getPhoto());
-		pstmt.setFloat(1, dto.getGpa());
-		pstmt.setInt(1, dto.getShopno());
-		pstmt.setString(1, dto.getId());
-		result = pstmt.executeUpdate();
-		}finally {
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, dto.getContent());
+			// System.out.println(dto.getDate());
+//			java.sql.Date date = (java.sql.Date) new Date();
+			long d = System.currentTimeMillis();
+			Date date = new Date(d);
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+			String date1 = formatter.format(date);
+//			System.out.println("aaa" + java.sql.Date.valueOf(date1));
+			pstmt.setDate(2, new java.sql.Date(d));
+
+			pstmt.setString(3, dto.getPhoto());
+			pstmt.setFloat(4, dto.getGpa());
+			pstmt.setInt(5, dto.getShopno());
+			pstmt.setString(6, dto.getId());
+			result = pstmt.executeUpdate();
+		} finally {
 			if (pstmt != null)
 				pstmt.close();
 		}
-		
+
 		return result;
 	}
 

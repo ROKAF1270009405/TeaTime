@@ -20,7 +20,6 @@ table {
 		<thead>
 			<tr>
 				<th>번호</th>
-				
 				<th>내용</th>
 				<th>날짜</th>
 				<th>사진</th>
@@ -41,6 +40,7 @@ table {
 					<td>${board.gpa}</td>
 					<td>${board.shopno}</td>
 					<td>${board.id}</td>
+					<td><img src = "reviewuploadimg/${board.photo }">test2</td>
 				</tr>
 			</c:forEach>
 		</tbody>

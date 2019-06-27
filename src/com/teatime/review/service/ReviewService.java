@@ -2,6 +2,7 @@ package com.teatime.review.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class ReviewService {
 				conn = db.getConnection();
 				ReviewDAO dao = ReviewDAO.getDAO();
 				result = dao.addReview(conn, dto);
-			} catch (SQLException | NamingException e) {
+			} catch (SQLException | NamingException | ParseException e) {
 				e.printStackTrace();
 			} finally {
 				if(conn!=null)

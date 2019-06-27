@@ -6,7 +6,7 @@ public class ReviewDTO {
 	private int reviewno;
 	private String title;
 	private String content;
-	private Date date;
+	private String date;
 	private String photo;
 	private float gpa;
 	private int shopno;
@@ -36,10 +36,10 @@ public class ReviewDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public String getPhoto() {
@@ -66,7 +66,7 @@ public class ReviewDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public ReviewDTO(int reviewno, String title, String content, Date date, String photo, float gpa, int shopno,
+	public ReviewDTO(int reviewno, String title, String content, String date, String photo, float gpa, int shopno,
 			String id) {
 		super();
 		this.reviewno = reviewno;

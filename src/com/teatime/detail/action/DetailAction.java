@@ -45,6 +45,7 @@ public class DetailAction implements Action {
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/detail/detail.jsp");
+//		forward.setPath("review.do");
 
 		return forward;
 	}
