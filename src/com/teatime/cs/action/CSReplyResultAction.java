@@ -28,7 +28,7 @@ public class CSReplyResultAction implements Action {
 		
 		data=service.detailService(num);
 		data.setReply(replycontent);
-		data=service.replyUpdateService(data);
+//		data=service.replyUpdateService(data);
 		
 		request.setAttribute("data", data);
 		

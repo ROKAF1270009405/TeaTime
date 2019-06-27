@@ -15,7 +15,7 @@
 		let num = $('#num').attr('value');
 		console.log(num);
 		$.ajax({
-			url : "csreplyresult.do?",
+			url : "csreplydetail.do?",
 			dataType : "html",
 			data : "num=" + num,
 			success : function(data) {
