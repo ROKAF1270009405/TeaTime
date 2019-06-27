@@ -34,21 +34,17 @@ public class SignUpResultAction implements Action {
 		if(pwd.equals(checkpwd)) {
 			int check = service.signUpService(dto);
 			if(check == 1) {
-				System.out.println("가입 성공.");
 				act.setRedirect(false);
 				act.setPath("teatime.do");
 			} else {
-				System.out.println("가입 실패.");
 				act.setRedirect(true);
 				act.setPath("signup.do");
 			}
 		//패스워드가 서로 다를 경우.
 		} else {
-			System.out.println("패스워드가 서로 달라요.");
 			act.setRedirect(true);
 			act.setPath("signup.do");
 		}
-		
 		return act;
 	}
 

@@ -53,12 +53,19 @@ $(document).ready(function(){
 	$('#idbtn').on('click', function() {
 		let idcheck = id.val();
 		console.log(idcheck);
+		let check = ""; 
 		$.ajax({
 			url:"http://localhost:8080/MiniPro2/DuplicateCheck.co",
 			type:'GET',
 			data:"idcheck="+idcheck,
 			success:function(data){
-				alert(data);
+				if(data==0){
+					id.css('color', '#007bff');
+					alert("사용 가능한 아이디 입니다.");
+				} else {
+					id.css('color', 'red');
+					alert("중복된 아이디 입니다.");
+				}
 			}
 		});
 	});
@@ -140,7 +147,6 @@ $(document).ready(function(){
         </form>
         <div class="text-center">
           <a class="d-block small mt-3" href="login.do">로그인 페이지로..</a>
-          <!-- <a class="d-block small" href="forgot-password.html">Forgot Password?</a> -->
         </div>
       </div>
     </div>

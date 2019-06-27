@@ -20,7 +20,6 @@ public class LoginCheckAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
-		//System.out.println("로그인체크액션 : "+id+", "+pwd);
 		MemberDTO dto = new MemberDTO();
 		dto.setId(id);
 		dto.setPwd(pwd);
@@ -34,7 +33,6 @@ public class LoginCheckAction implements Action {
 
 		if(check == 1) {
 			HttpSession session = request.getSession();
-			//System.out.println("로그인 성공");
 			dto = service.loginInfoService(id);
 			session.setAttribute("dto", dto);
 			act.setRedirect(true);
