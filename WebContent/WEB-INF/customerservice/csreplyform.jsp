@@ -12,12 +12,12 @@
 
 	<h2>답변작성</h2>
 	<form method="post" action="csreplyresult.do">
-		<input type="hidden" value="${num}" name="num" id="num">
+		<input type="text" value="${num}" name="num" id="num">
 		<ul>
 			<li><label for="title">제목</label>
 				<p>문의에 대한 답변입니다.</p>
-			<li><label for="content">내용</label> <textarea id="content"
-					name="content" rows="10" cols="30" placeholder="내용을 입력해주세요."></textarea>
+			<li><label for="replycontent">내용</label> <textarea id="replycontent"
+					name="replycontent" rows="10" cols="30" placeholder="내용을 입력해주세요."></textarea>
 			</li>
 		</ul>
 		<input type="submit" value="완료">

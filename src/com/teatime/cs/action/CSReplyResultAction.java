@@ -18,16 +18,22 @@ public class CSReplyResultAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		request.setCharacterEncoding("utf-8");
+		
 		int num =Integer.parseInt(request.getParameter("num"));
+		
+		String replycontent = request.getParameter("replycontent");
 		
 		CustomerServiceService service = CustomerServiceService.getInstance();
 		CustomerServiceDTO data = service.detailService(num);
 
+		data=service.replyDetailService(data);
+		
 		request.setAttribute("data", data);
-				
+		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/customerservice/csreplydetail.do?num="+num);
+		forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/customerservice/csreplydetail.jsp?num="+num);
 		
 		return forward;
 	}

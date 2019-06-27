@@ -6,9 +6,12 @@ public class CustomerServiceDTO {
 	private String id;        // 아이디
 	private String title;     // 제목
 	private String content;   // 내용
-	private String hp;
-	private String regidate;
-	private int state;
+	private String hp;			//연락처
+	private String regidate;	//글 등록일
+	
+	private String reply;			//답변
+	private String replyregidate;	//답변 등록일
+	private int state;			//답변 유무
 	
 	public CustomerServiceDTO() {}
 	public CustomerServiceDTO(int qnano, String id, String title, String content, String hp) {
@@ -60,6 +63,18 @@ public class CustomerServiceDTO {
 	}
 	public void setRegidate(String regidate) {
 		this.regidate = regidate;
+	}
+	public String getReply() {
+		return reply;
+	}
+	public void setReply(String reply) {
+		this.reply = reply;
+	}
+	public String getReplyregidate() {
+		return replyregidate;
+	}
+	public void setReplyregidate(String replyregidate) {
+		this.replyregidate = replyregidate;
 	}
 	
 	

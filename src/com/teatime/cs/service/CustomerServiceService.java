@@ -190,4 +190,35 @@ public class CustomerServiceService {
 				}
 		}
 	}
+
+	public CustomerServiceDTO replyDetailService(CustomerServiceDTO data) {
+		DBConn db = DBConn.getdb();
+		Connection conn = null;
+		CustomerServiceDTO dto = null;
+		
+		try {
+			conn = db.getConnection();
+			conn.setAutoCommit(false);
+			CustomerServiceDAO dao = CustomerServiceDAO.getDAO();
+			dto = dao.replyDetail(conn, data);
+			
+			conn.commit();
+			
+		}catch (SQLException | NamingException e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				System.out.println(e1);
+			}
+		} finally {
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+		}
+		return dto;
+		
+	}
 }
