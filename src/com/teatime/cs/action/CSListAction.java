@@ -32,9 +32,6 @@ public class CSListAction implements Action {
 		int totalcount = service.getCount();
 		int totalpage = (totalcount / pagepercount) + ((totalcount % pagepercount == 0) ? 0 : 1);
 		int startrow = (currpage - 1) * pagepercount;
-		/*int endrow = startrow + pagepercount - 1;
-		if (endrow > totalcount)
-			endrow = totalcount;*/
 		int blocksize = 10; // 1블록 10개 페이지
 
 		int startblock = ((currpage - 1) / blocksize) * blocksize + 1;

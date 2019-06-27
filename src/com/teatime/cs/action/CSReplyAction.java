@@ -17,7 +17,6 @@ public class CSReplyAction implements Action {
 
 		int num = Integer.parseInt(request.getParameter("num"));
 		request.setAttribute("num", num);
-		System.out.println("ddddd"+num);
 
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);

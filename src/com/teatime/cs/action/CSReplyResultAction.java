@@ -23,10 +23,11 @@ public class CSReplyResultAction implements Action {
 		int num =Integer.parseInt(request.getParameter("num"));
 		
 		String replycontent = request.getParameter("replycontent");
-		
 		CustomerServiceService service = CustomerServiceService.getInstance();
-		CustomerServiceDTO data = service.detailService(num);
-
+		CustomerServiceDTO data; 
+		
+		data=service.detailService(num);
+		data.setReply(replycontent);
 		data=service.replyDetailService(data);
 		
 		request.setAttribute("data", data);

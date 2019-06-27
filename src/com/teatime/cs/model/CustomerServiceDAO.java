@@ -48,12 +48,7 @@ public class CustomerServiceDAO {
 			}
 
 		} finally {
-			if (rs != null)
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					System.out.println(e);
-				}
+			rsClose(rs);
 		}
 		return list;
 	}
@@ -95,8 +90,6 @@ public class CustomerServiceDAO {
 		ResultSet rs = null;
 		StringBuilder sql = new StringBuilder();
 		CustomerServiceDTO data = new CustomerServiceDTO();
-		
-		System.out.println("dao"+boardnum);
 		
 		sql.append(" select qnano, title, content, hp, regidate, csreply, replyregidate ");
 		sql.append(" from customerservice                          ");

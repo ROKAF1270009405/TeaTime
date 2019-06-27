@@ -22,11 +22,7 @@ public class CSDetailAction implements Action {
 		CustomerServiceService service = CustomerServiceService.getInstance();
 		CustomerServiceDTO data = service.detailService(boardnum);
 		
-		System.out.println("");
-		
 		request.setAttribute("data", data);
-		System.out.println("qqq"+data.getQnano());
-		
 		ActionForward forward = new ActionForward();
 
 		forward.setRedirect(false);
