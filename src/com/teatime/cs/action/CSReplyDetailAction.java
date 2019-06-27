@@ -8,11 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.teatime.comm.Action;
 import com.teatime.comm.ActionForward;
-import com.teatime.cs.model.CustomerServiceDAO;
-import com.teatime.cs.model.CustomerServiceDTO;
-import com.teatime.cs.service.CustomerServiceService;
 
-public class CSReplyResultAction implements Action {
+public class CSReplyDetailAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -20,11 +17,10 @@ public class CSReplyResultAction implements Action {
 		
 		int num =Integer.parseInt(request.getParameter("num"));
 		
-		CustomerServiceService service = CustomerServiceService.getInstance();
-		CustomerServiceDTO data = service.detailService(num);
-
-		request.setAttribute("data", data);
-				
+		
+		request.getAttribute("data");
+		
+		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/customerservice/csreplydetail.do?num="+num);
