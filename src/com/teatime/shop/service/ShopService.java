@@ -2,6 +2,7 @@ package com.teatime.shop.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.NamingException;
@@ -19,10 +20,10 @@ public class ShopService {
 	}
 	private ShopService() {}
 	
-	public List<ShopDTO> ListService(String search){
+	public List<ShopDTO> ListService(int select, String search){
 		System.out.println(search);
 		Connection conn = null;
-		List<ShopDTO> list=null;
+		List<ShopDTO> list=new ArrayList<>();
 		
 		try {
 			DBConn db = DBConn.getdb();
@@ -31,7 +32,7 @@ public class ShopService {
 			conn.setAutoCommit(false);
 			ShopDAO dao = new ShopDAO();
 			
-			list=dao.getList(conn,search);
+			list=dao.getList(conn,select,search);
 			
 			conn.commit();
 			

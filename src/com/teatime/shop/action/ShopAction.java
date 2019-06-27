@@ -20,14 +20,29 @@ public class ShopAction implements Action {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		
 		request.setCharacterEncoding("utf-8");
+		System.out.println(2);
 		String search = request.getParameter("text");
 		
+		if (search==null) {
+			search = "";
+		}
 		
+		
+		int select=0;
+		String txt=request.getParameter("select_text");
+		  if(txt!=null)
+		  {
+			  select=Integer.parseInt(txt);
+		  }
+
+		
+		System.out.println(select);
 		ShopService service = ShopService.getInstance();
-		List<ShopDTO> list = service.ListService(search);
+		List<ShopDTO> list = service.ListService(select, search);
 		request.setAttribute("list", list);
-		System.out.println(list.size());
+		System.out.println(list.size());//null
 		ActionForward forward=new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("WEB-INF/template/main.jsp?page=/WEB-INF/shop/shoplist.jsp");

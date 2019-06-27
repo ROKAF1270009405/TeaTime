@@ -20,17 +20,28 @@ public class ShopDAO {
 	public ShopDAO() {
 	}
 
-	public List<ShopDTO> getList(Connection conn, String text) {
+	public List<ShopDTO> getList(Connection conn, int select, String text) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		StringBuilder sql = new StringBuilder();
 		ArrayList<ShopDTO> arr = new ArrayList<>();
-		sql.append(" select shopno, name, addr, photo ");
-		sql.append(" from shop ");
+		sql.append(" select s.shopno, s.name, addr, photo ");
+		sql.append(" from shop s join menu m ");
+		sql.append(" on s.shopno = m.shopno ");
+				
 		// 일단 지금은 번호 순서 -> 좋아요 and 각종 필터링 할떄 수정 함녀 될듯
-		if (text != null && !text.equals("")) {
-			sql.append(" where name like ? ");
+		if(!(select==0) && !"".equals(text)){
+			if(select == 1) {
+				sql.append(" where s.name like ? ");
+			}else if (select == 2) {
+				sql.append(" where addr like ? ");
+			}else if (select == 3) {
+				sql.append(" where m.name like ? ");
+			}else if (select == 4) {
+				sql.append(" where foodkind like ? ");
+			}
 		}
+		
 		try {
 
 			pstmt = conn.prepareStatement(sql.toString());
