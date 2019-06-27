@@ -15,11 +15,11 @@
 </head>
 
 <body id="page-top">
- <%
-        if(session.getAttribute("dto") == null) // 로그인이 안되었을 때
-        { 
-        	%>
-        	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
+	<%
+		if (session.getAttribute("dto") == null) // 로그인이 안되었을 때
+		{
+	%>
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
 		id="mainNav">
 		<div class="container">
 			<a class="navbar-brand js-scroll-trigger" href="teatime.do">TeaTime</a>
@@ -29,7 +29,7 @@
 				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			
+
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto my-2 my-lg-0">
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
@@ -42,11 +42,10 @@
 			</div>
 		</div>
 	</nav>
-        <%
-        }
-        else // 로그인 했을 경우
-        {
-    %>
+	<%
+		} else // 로그인 했을 경우
+		{
+	%>
 
 
 
@@ -61,13 +60,15 @@
 				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			
-			
-			
+
+
+
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto my-2 my-lg-0">
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="logout.do" id="logout">logout </a></li>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger"
+						href="mypage.do">mypage</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="best.do">best</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
@@ -77,7 +78,7 @@
 		</div>
 	</nav>
 	<%
-}
-    %>
+		}
+	%>
 </body>
 </html>

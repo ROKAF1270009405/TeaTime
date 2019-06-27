@@ -21,16 +21,16 @@ public class CSListAction implements Action {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		MemberDTO dto = (MemberDTO) session.getAttribute("dto");
+		MemberDTO member = (MemberDTO) session.getAttribute("dto");
 
 		ActionForward forward = new ActionForward();
-		
-		if (dto == null) {	//로그인 안되어있을시
+
+		if (member == null) { // 로그인 안되어있을시
 			forward.setRedirect(true);
 			forward.setPath("login.do");
-			
+
 		} else {
-			String id = dto.getId();
+			String id = member.getId();
 			CustomerServiceService service = CustomerServiceService.getInstance();
 
 			String curr = request.getParameter("currpage");
@@ -51,7 +51,7 @@ public class CSListAction implements Action {
 			if (totalpage < endblock)
 				endblock = totalpage;
 
-			List<CustomerServiceDTO> list = service.getList(startrow, pagepercount,id);
+			List<CustomerServiceDTO> list = service.getList(startrow, pagepercount, id);
 			System.out.println(id);
 			request.setAttribute("list", list);
 			request.setAttribute("totalpage", totalpage);
@@ -59,7 +59,7 @@ public class CSListAction implements Action {
 			request.setAttribute("startblock", startblock);
 			request.setAttribute("endblock", endblock);
 			request.setAttribute("id", id);
-			
+
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/customerservice/customerservicelist.jsp");
 		}

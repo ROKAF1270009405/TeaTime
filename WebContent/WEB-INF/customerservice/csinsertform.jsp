@@ -23,13 +23,16 @@ label {
 }
 </style>
 <body>
+
+	<c:set var="id" value="${sessionScope.id}"></c:set>
+	<c:set var="email" value="${sessionScope.email}"></c:set>
 	<h2>문의작성</h2>
 	<form method="post" action="csinsertresult.do">
 		<ul>
-			<li><label for="id">아이디</label></li>
+			<li><label for="id">아이디</label>${id}</li>
 			<li><label for="hp">연락처</label><input type="text" name="hp"
 				id="hp" required="required" placeholder="연락처를 입력해주세요."></li>
-			<li><label for="email">이메일</label>
+			<li><label for="email">이메일</label>${email}</li>
 			<li><label for="title">제목</label><input type="text" name="title"
 				id="title" required="required" placeholder="제목을 입력해주세요."></li>
 			<li><label for="content">내용</label> <textarea id="content"

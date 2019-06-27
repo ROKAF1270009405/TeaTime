@@ -40,7 +40,7 @@ public class ReviewService {
 		return list;
 	}
 
-	public int addReview(ReviewDTO dto) {
+	public int addReview(ReviewDTO dto, List<String> img) {
 		DBConn db = DBConn.getdb();
 		Connection conn = null;
 		int result = 0;
@@ -48,6 +48,8 @@ public class ReviewService {
 				conn = db.getConnection();
 				ReviewDAO dao = ReviewDAO.getDAO();
 				result = dao.addReview(conn, dto);
+				
+//				imgresult = dao.addImage(conn, dto.getReviewno())
 			} catch (SQLException | NamingException | ParseException e) {
 				e.printStackTrace();
 			} finally {

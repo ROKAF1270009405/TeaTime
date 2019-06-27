@@ -1,6 +1,7 @@
 package com.teatime.review.action;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -40,9 +41,11 @@ public class AddReviewResultAction implements Action {
 			// 파일이름 가져오기
 			String fileName = "";
 			Enumeration<String> names = multi.getFileNames();
+			ArrayList<String> img = new ArrayList<>();
 			if (names.hasMoreElements()) {
 				String name = names.nextElement();
 				fileName = multi.getFilesystemName(name);
+				img.add(fileName);
 				System.out.println("system : " + fileName);
 			}
 
@@ -80,7 +83,7 @@ public class AddReviewResultAction implements Action {
 			 */
 			ReviewService service = ReviewService.getInstance();
 
-			int result = service.addReview(dto);
+			int result = service.addReview(dto, img);
 			System.out.println(result);
 			// if(result == 1){
 			forward.setRedirect(true);

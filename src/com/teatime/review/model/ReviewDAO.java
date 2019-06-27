@@ -65,7 +65,7 @@ public class ReviewDAO {
 		int result = 0;
 		StringBuilder sql = new StringBuilder();
 		sql.append("insert into review(content, date, gpa, shopno, id)	");
-		sql.append("			values(	?, ?, ?, ?, ?						   )	");
+		sql.append("			values(	?, ?, ?, ?, ?				)	");
 		// sql.append("limit ?,? ");
 		PreparedStatement pstmt = null;
 		try {
@@ -85,12 +85,41 @@ public class ReviewDAO {
 			pstmt.setInt(4, dto.getShopno());
 			pstmt.setString(5, dto.getId());
 			result = pstmt.executeUpdate();
+			
 		} finally {
 			if (pstmt != null)
 				pstmt.close();
 		}
 
 		return result;
+	}
+	public int getReviewNo(Connection conn, ReviewDTO dto) throws SQLException {
+		StringBuilder sql = new StringBuilder();
+		sql.append("select reviewno 														");
+		sql.append("from review																");
+		sql.append("where content = ? and date like (?%) gpa=? and shopno=? and id=?		");
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int id = 0;
+		try {
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, dto.getContent());
+			long d = System.currentTimeMillis();
+			Date date = new Date(d);
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+//			System.out.println("aaa" + java.sql.Date.valueOf(date1));
+			pstmt.setDate(2, new java.sql.Date(d));
+//			pstmt.setString(3, dto.getPhoto());
+			pstmt.setFloat(3, dto.getGpa());
+			pstmt.setInt(4, dto.getShopno());
+			pstmt.setString(5, dto.getId());
+			rs = pstmt.executeQuery();
+			
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+		}
+		return id;
 	}
 
 }
