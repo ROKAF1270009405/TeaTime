@@ -11,8 +11,7 @@
 <meta name="author" content="">
 
 <title>TeaTime</title>
-
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -34,7 +33,7 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto my-2 my-lg-0">
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="teatime.do">login </a></li>
+						href="login.do">login </a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="best.do">best</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
@@ -68,7 +67,7 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto my-2 my-lg-0">
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="teatime.do">logout </a></li>
+						href="logout.do" id="logout">logout </a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="best.do">best</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
