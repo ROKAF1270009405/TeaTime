@@ -1,5 +1,6 @@
 package com.teatime.review.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ReviewDTO {
@@ -7,7 +8,7 @@ public class ReviewDTO {
 	private String title;
 	private String content;
 	private String date;
-	private String photo;
+	private ArrayList<String> photo;
 	private float gpa;
 	private int shopno;
 	private String id;
@@ -42,10 +43,10 @@ public class ReviewDTO {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public String getPhoto() {
+	public ArrayList<String> getPhoto() {
 		return photo;
 	}
-	public void setPhoto(String photo) {
+	public void setPhoto(ArrayList<String> photo) {
 		this.photo = photo;
 	}
 	public float getGpa() {
@@ -66,7 +67,7 @@ public class ReviewDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public ReviewDTO(int reviewno, String title, String content, String date, String photo, float gpa, int shopno,
+	public ReviewDTO(int reviewno, String title, String content, String date, ArrayList<String> photo, float gpa, int shopno,
 			String id) {
 		super();
 		this.reviewno = reviewno;

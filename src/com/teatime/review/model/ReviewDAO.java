@@ -25,8 +25,8 @@ public class ReviewDAO {
 		ArrayList<ReviewDTO> list = new ArrayList<>();
 		StringBuilder sql = new StringBuilder();
 		sql.append("select reviewno, r.content, r.date,  gpa, r.shopno, id, s.name			");
-		sql.append("from review r, shop s															");
-		sql.append("where r.shopno = ? and r.shopno = s.shopno										");
+		sql.append("from review r, shop s													");
+		sql.append("where r.shopno = ? and r.shopno = s.shopno								");
 		// sql.append("limit ?,? ");
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -61,6 +61,18 @@ public class ReviewDAO {
 		return list;
 	}
 
+	public List<String> getPhotoList(Connection conn, int reviewno){
+		ArrayList<String> list = new ArrayList<>();
+		StringBuilder sql = new StringBuilder();
+		sql.append("select 						");
+		sql.append("from reviewphoto			");
+		
+		
+		
+		return list;
+	}
+	
+	
 	public int addReview(Connection conn, ReviewDTO dto) throws SQLException, ParseException {
 		int result = 0;
 		StringBuilder sql = new StringBuilder();
@@ -85,7 +97,6 @@ public class ReviewDAO {
 			pstmt.setInt(4, dto.getShopno());
 			pstmt.setString(5, dto.getId());
 			result = pstmt.executeUpdate();
-			
 		} finally {
 			if (pstmt != null)
 				pstmt.close();
@@ -93,11 +104,30 @@ public class ReviewDAO {
 
 		return result;
 	}
+	
+	public int addImage(Connection conn, int reviewno, String img) throws SQLException {
+		StringBuilder sql = new StringBuilder();
+		sql.append("insert into reviewphoto(photo, reviewno)		");
+		sql.append("			values(?, ?)						");
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, img);
+			pstmt.setInt(2, reviewno);
+			result = pstmt.executeUpdate();
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+		}
+		return result;
+	}
+	
 	public int getReviewNo(Connection conn, ReviewDTO dto) throws SQLException {
 		StringBuilder sql = new StringBuilder();
 		sql.append("select reviewno 														");
 		sql.append("from review																");
-		sql.append("where content = ? and date like (?%) gpa=? and shopno=? and id=?		");
+		sql.append("where content = ? and date like ? and gpa=? and shopno=? and id=?		");
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int id = 0;
@@ -108,18 +138,22 @@ public class ReviewDAO {
 			Date date = new Date(d);
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 //			System.out.println("aaa" + java.sql.Date.valueOf(date1));
-			pstmt.setDate(2, new java.sql.Date(d));
+			pstmt.setString(2, new java.sql.Date(d)+"%");
 //			pstmt.setString(3, dto.getPhoto());
 			pstmt.setFloat(3, dto.getGpa());
 			pstmt.setInt(4, dto.getShopno());
 			pstmt.setString(5, dto.getId());
+			System.out.println(sql.toString());
 			rs = pstmt.executeQuery();
-			
+			if(rs!=null) {
+				rs.next();
+				id = rs.getInt(1);
+				System.out.println("=============id : " + id);
+			}
 		} finally {
 			if (pstmt != null)
 				pstmt.close();
 		}
 		return id;
 	}
-
 }

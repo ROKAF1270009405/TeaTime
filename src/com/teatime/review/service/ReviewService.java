@@ -34,8 +34,11 @@ public class ReviewService {
 		} catch (NamingException | SQLException e) {
 			System.out.println(e);
 		} finally {
-			if(conn!=null)
-				try{conn.close();}catch(SQLException e) {}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException e) {
+				}
 		}
 		return list;
 	}
@@ -44,18 +47,29 @@ public class ReviewService {
 		DBConn db = DBConn.getdb();
 		Connection conn = null;
 		int result = 0;
-			try {
-				conn = db.getConnection();
-				ReviewDAO dao = ReviewDAO.getDAO();
-				result = dao.addReview(conn, dto);
-				
-//				imgresult = dao.addImage(conn, dto.getReviewno())
-			} catch (SQLException | NamingException | ParseException e) {
-				e.printStackTrace();
-			} finally {
-				if(conn!=null)
-					try{conn.close();}catch(SQLException e) {}
+		int imgresult = 0;
+		try {
+			conn = db.getConnection();
+			ReviewDAO dao = ReviewDAO.getDAO();
+			result = dao.addReview(conn, dto);
+			int reviewno = dao.getReviewNo(conn, dto);
+			for (String i : img) {
+				imgresult = dao.addImage(conn, reviewno, i);
+				System.out.println(i + " - add imge");
 			}
+			// imgresult = dao.addImage(conn, dto.getReviewno())
+			if (imgresult == 0) {
+				System.out.println("리뷰 이미지 없음");
+			}
+		} catch (SQLException | NamingException | ParseException e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException e) {
+				}
+		}
 		return result;
 	}
 }

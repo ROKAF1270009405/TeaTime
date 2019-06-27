@@ -42,7 +42,7 @@ public class AddReviewResultAction implements Action {
 			String fileName = "";
 			Enumeration<String> names = multi.getFileNames();
 			ArrayList<String> img = new ArrayList<>();
-			if (names.hasMoreElements()) {
+			while (names.hasMoreElements()) {
 				String name = names.nextElement();
 				fileName = multi.getFilesystemName(name);
 				img.add(fileName);
@@ -81,14 +81,16 @@ public class AddReviewResultAction implements Action {
 			 * System.out.println("============================="); //
 			 * System.out.println("photo" + multi.getParameter("photo"));
 			 */
+			int result = 0;
 			ReviewService service = ReviewService.getInstance();
-
-			int result = service.addReview(dto, img);
-			System.out.println(result);
-			// if(result == 1){
+				result = service.addReview(dto, img);
+				
+			System.out.println("addreviewresultaction");
+//			System.out.println(result);
+//			 if(result >= 1){
 			forward.setRedirect(true);
 			forward.setPath("teatime.do");
-			// } else {
+//			 } else {
 
 			// }
 
