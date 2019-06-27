@@ -20,7 +20,7 @@ public class ListAction implements Action {
 
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO) session.getAttribute("dto");
-		dto.getId();
+		// dto.getId();
 /*		dto = new MemberDTO();
 		dto.setId("aaa");
 		dto.setNickname("길동");
