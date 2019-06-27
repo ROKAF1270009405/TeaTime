@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,11 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<c:set var="num" value="${requestScope.num}"></c:set>
+
 	<h2>답변작성</h2>
 	<form method="post" action="csreplyresult.do">
+		<input type="hidden" value="${num}" name="num" id="num">
 		<ul>
 			<li><label for="title">제목</label>
-			<p>문의에 대한 답변입니다.</p>
+				<p>문의에 대한 답변입니다.</p>
 			<li><label for="content">내용</label> <textarea id="content"
 					name="content" rows="10" cols="30" placeholder="내용을 입력해주세요."></textarea>
 			</li>
