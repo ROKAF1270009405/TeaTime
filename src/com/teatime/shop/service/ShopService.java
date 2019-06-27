@@ -47,7 +47,29 @@ public class ShopService {
 		return list;
 	}
 	
-	
+	public int insert(ShopDTO dto) {
+		int result = 0;
+		DBConn db = DBConn.getdb();
+		Connection conn = null;
+		try {
+			conn = db.getConnection();
+			conn.setAutoCommit(false);
+			ShopDAO dao = ShopDAO.getDAO();
+			result = dao.boardadd(conn, dto);
+			
+			System.out.println("shopservice result : " +result);
+			
+			
+			conn.commit();
+		} catch(SQLException e) {
+			try { conn.rollback(); } catch(SQLException e2) {}
+		} catch (NamingException e) {
+			System.out.println(e);
+		} finally {
+			if(conn != null) try {conn.close();} catch(SQLException e) {}
+		}
+		return result;
+	}
 	
 	
 	/*
