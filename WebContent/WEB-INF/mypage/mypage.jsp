@@ -22,9 +22,11 @@ table, th, td {
 
 	<%
 		request.setCharacterEncoding("utf-8");
-		List<MemberDTO> list = (List<MemberDTO>) request.getAttribute("list");
+		MemberDTO dto = (MemberDTO) session.getAttribute("dto");
 	%>
 
+
+  
 	<table>
 		<thead>
 			<tr>
@@ -35,22 +37,16 @@ table, th, td {
 		</thead>
 		<tbody>
 
-			<%
-				for (int i = 0; i < list.size(); i++) {
-					MemberDTO dto = list.get(i);
-			%>
 			<tr>
 				<td><%=dto.getId()%></td>
 				<td><%=dto.getNickname()%></td>
 				<td><%=dto.getMail()%></td>
 			</tr>
-			<%
-				}
-			%>
 
 
 		</tbody>
 	</table>
-
+ 
+    
 </body>
 </html>
