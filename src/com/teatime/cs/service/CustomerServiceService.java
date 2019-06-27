@@ -22,7 +22,7 @@ public class CustomerServiceService {
 		
 	}
 
-	public List<CustomerServiceDTO> getList(int startrow, int pagepercount) {	//자료 목록 가져옴
+	public List<CustomerServiceDTO> getList(int startrow, int pagepercount, String id) {	//자료 목록 가져옴
 		
 		Connection conn=null;
 	    List<CustomerServiceDTO> list=null;
@@ -32,7 +32,7 @@ public class CustomerServiceService {
 	    	conn = db.getConnection();
 	    	
 	    	CustomerServiceDAO dao = CustomerServiceDAO.getDAO();
-	    	list = dao.getListData(conn, startrow, pagepercount);
+	    	list = dao.getListData(conn, startrow, pagepercount ,id);
 	    }catch(SQLException | NamingException | RuntimeException e) {
 	    	System.out.println(e);
 	    	try {
