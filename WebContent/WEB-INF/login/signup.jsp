@@ -49,18 +49,16 @@
 <script>
 $(document).ready(function(){
 	let id = $('#id');
-	let duplicate = id.val();
+	
 	$('#idbtn').on('click', function() {
-		
+		let idcheck = id.val();
+		console.log(idcheck);
 		$.ajax({
-			url:"duplicateCheck.do",
+			url:"http://localhost:8080/MiniPro2/DuplicateCheck.co",
 			type:'GET',
-			data:duplicate,
+			data:"idcheck="+idcheck,
 			success:function(data){
-				console.log("ajax : "+duplicate);
-			},
-			error:function(){
-				
+				alert(data);
 			}
 		});
 	});
@@ -97,14 +95,16 @@ $(document).ready(function(){
   <div class="container">
     <div class="card card-register mx-auto mt-5">
       <div class="card-header">회원가입</div>
-              <button id="idbtn">중복체크</button>
+           
       <div class="card-body">
         <form method="post" action="signupresult.do">
           <div class="form-group">
             <div class="form-label-group">
               <input type="text" id="id" name="id" class="form-control" placeholder="User ID" required="required">
               <label for="id">User ID</label>
+                
             </div>
+             <button id="idbtn">중복체크</button>
           </div>
           <div class="form-group">
             <div class="form-row">

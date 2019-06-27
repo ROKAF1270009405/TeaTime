@@ -74,5 +74,21 @@ public class LoginDAO {
 		}
 		return result;
 	}
+	public int idCheck(Connection conn, String id) throws SQLException {
+		int result = 0;
+		ResultSet rs = null;
+		StringBuilder sb = new StringBuilder();
+		sb.append(" select count(*) as count from member where id = ? ");
+		try(PreparedStatement pstmt = conn.prepareStatement(sb.toString());){
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt("count");
+			}
+		} finally {
+			rsClose(rs);
+		}
+		return result;
+	}
 	
 }

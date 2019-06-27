@@ -69,6 +69,23 @@ public class LoginService {
 		}
 		return result;
 	}
-
-
+	
+	public int idCheckService(String id) {
+		int result = 0; 
+		DBConn db = DBConn.getdb();
+		Connection conn = null;
+		try {
+			conn = db.getConnection();
+			conn.setAutoCommit(false);
+			LoginDAO dao = LoginDAO.getDAO();
+			result = dao.idCheck(conn, id);
+			conn.commit();
+		} catch (SQLException | NamingException e) {
+			System.out.println(e);
+		} finally {	
+			if (conn != null) {	try {conn.close();} catch (SQLException e) {}}
+		}
+		return result;
+	}
+	
 }
