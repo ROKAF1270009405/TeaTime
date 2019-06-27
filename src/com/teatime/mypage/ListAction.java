@@ -22,8 +22,8 @@ public class ListAction implements Action {
 		request.setAttribute("list", list);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-//		forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/customerservice/customerservicelist.jsp");
-		forward.setPath("/WEB-INF/mypage/mypage.jsp");
+		forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/mypage/mypage.jsp");
+//		forward.setPath("/WEB-INF/mypage/mypage.jsp");
 		
 		return forward;
 		
