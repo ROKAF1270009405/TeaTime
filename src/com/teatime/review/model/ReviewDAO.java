@@ -24,7 +24,7 @@ public class ReviewDAO {
 	public List<ReviewDTO> getList(Connection conn, int shopno) throws SQLException {
 		ArrayList<ReviewDTO> list = new ArrayList<>();
 		StringBuilder sql = new StringBuilder();
-		sql.append("select reviewno, r.content, r.date, r.photo, gpa, r.shopno, id, s.name			");
+		sql.append("select reviewno, r.content, r.date,  gpa, r.shopno, id, s.name			");
 		sql.append("from review r, shop s															");
 		sql.append("where r.shopno = ? and r.shopno = s.shopno										");
 		// sql.append("limit ?,? ");
@@ -40,7 +40,7 @@ public class ReviewDAO {
 				dto.setReviewno(rs.getInt("reviewno"));
 				dto.setContent(rs.getString("content"));
 				dto.setDate(rs.getDate("date") + "");
-				dto.setPhoto(rs.getString("photo"));
+//				dto.setPhoto(rs.getString("photo"));
 				dto.setGpa(rs.getFloat("gpa"));
 				dto.setShopno(rs.getInt("shopno"));
 				dto.setId(rs.getString("id"));
@@ -64,8 +64,8 @@ public class ReviewDAO {
 	public int addReview(Connection conn, ReviewDTO dto) throws SQLException, ParseException {
 		int result = 0;
 		StringBuilder sql = new StringBuilder();
-		sql.append("insert into review(content, date, photo, gpa, shopno, id)	");
-		sql.append("			values(	?, ?, ?, ?, ?, ?						   )	");
+		sql.append("insert into review(content, date, gpa, shopno, id)	");
+		sql.append("			values(	?, ?, ?, ?, ?						   )	");
 		// sql.append("limit ?,? ");
 		PreparedStatement pstmt = null;
 		try {
@@ -80,10 +80,10 @@ public class ReviewDAO {
 //			System.out.println("aaa" + java.sql.Date.valueOf(date1));
 			pstmt.setDate(2, new java.sql.Date(d));
 
-			pstmt.setString(3, dto.getPhoto());
-			pstmt.setFloat(4, dto.getGpa());
-			pstmt.setInt(5, dto.getShopno());
-			pstmt.setString(6, dto.getId());
+//			pstmt.setString(3, dto.getPhoto());
+			pstmt.setFloat(3, dto.getGpa());
+			pstmt.setInt(4, dto.getShopno());
+			pstmt.setString(5, dto.getId());
 			result = pstmt.executeUpdate();
 		} finally {
 			if (pstmt != null)
