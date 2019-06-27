@@ -16,12 +16,88 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+  <style>
+  @import
+	url(http://fonts.googleapis.com/css?family=Montserrat:400,700|Handlee);
+  *{font: 400 13.3333px Arial;}
+  input{
+      border-bottom: 1px solid rgba(255,255,255,0.7);
+      border-radius: 5px 0 0 0;
+    font: 400 13.3333px Arial; 
+    /* font-family: 'Montserrat', sans-serif; */
+  	background: rgba(255,255,255,0.2);
+  	box-shadow: inset 0 0 10px rgba(255,255,255,0.5);
+  	text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+  .form-control{
+    color:#007bff;
+  }
+  #id{
+  	/* position: absolute; */
+  	top:0;
+  	left:0;
+  }
+  #idbtn{
+  	height:30px;
+  	width:70px;
+  	float:right;
+  	/* position: relative; */
+  	margin: 0 30px;
+  }
+  </style>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	let id = $('#id');
+	let duplicate = id.val();
+	$('#idbtn').on('click', function() {
+		
+		$.ajax({
+			url:"duplicateCheck.do",
+			type:'GET',
+			data:duplicate,
+			success:function(data){
+				console.log("ajax : "+duplicate);
+			},
+			error:function(){
+				
+			}
+		});
+	});
+	
+	
+	let check = $('#check');
+	let pwd1 = $('#pwd');
+	let pwd2 = $('#confirmPassword');
+	
+	pwd1.keyup(function(){
+		check.text('');
+	}); //#user_pass.keyup
+	
+	pwd2.keyup(function(){
+		if(pwd1.val()!=pwd2.val()){
+			check.text('');
+			check.html("암호틀림");
+			check.css('color', 'red');
+			pwd1.css('color', 'red');
+			pwd2.css('color', 'red');
+		} else {
+			check.text('');
+			check.html("암호맞음");
+			check.css('color', '#007bff');
+			pwd1.css('color', '#007bff');
+			pwd2.css('color', '#007bff');
+		}
+	}); //#chpass.keyup
+});
+
+</script>
 </head>
 <body class="bg-dark">
   <div class="container">
     <div class="card card-register mx-auto mt-5">
       <div class="card-header">회원가입</div>
+              <button id="idbtn">중복체크</button>
       <div class="card-body">
         <form method="post" action="signupresult.do">
           <div class="form-group">
@@ -42,6 +118,8 @@
                 <div class="form-label-group">
                   <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Confirm password" required="required">
                   <label for="confirmPassword">Confirm password</label>
+                  <font id="check" size="2" color="red"></font> 
+
                 </div>
               </div>
             </div>
