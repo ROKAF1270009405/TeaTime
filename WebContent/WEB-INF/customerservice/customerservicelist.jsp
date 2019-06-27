@@ -28,12 +28,7 @@
 		<c:set var="endblock" value="${requestScope.endblock}"></c:set>
 		<c:set var="list" value="${requestScope.list}"></c:set>
 		<c:set var="totalpage" value="${requestScope.totalpage}"></c:set>
-		<c:set var="id" value="${requestScope.id}"></c:set>
-		<%-- <c:set var="member" value="${list.id}"></c:set> --%>
-		<c:out value="${id}"></c:out>
-		<%-- <c:out value="${member}"></c:out> --%>
-
-		<%-- <c:if test="${list.id==id}"></c:if> --%>
+		
 		<table class="table table-hover">
 			<thead>
 				<tr>

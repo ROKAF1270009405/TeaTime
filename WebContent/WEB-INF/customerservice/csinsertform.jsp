@@ -23,9 +23,6 @@ label {
 }
 </style>
 <body>
-
-	<c:set var="id" value="${sessionScope.id}"></c:set>
-	<c:set var="email" value="${sessionScope.email}"></c:set>
 	<h2>문의작성</h2>
 	<form method="post" action="csinsertresult.do">
 		<ul>
