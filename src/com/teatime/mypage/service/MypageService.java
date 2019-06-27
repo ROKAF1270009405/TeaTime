@@ -33,7 +33,7 @@ public class MypageService {
 			DBConn db = DBConn.getdb();
 			conn = db.getConnection();
 			MypageDAO dao = MypageDAO.getDAO();
-			list = dao.getReview(conn, dto);
+			// list = dao.getReview(conn, dto);
 		} catch (SQLException | NamingException e) {
 			System.out.println(e.getMessage());
 		} finally {
