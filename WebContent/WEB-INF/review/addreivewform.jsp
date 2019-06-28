@@ -320,6 +320,7 @@ list-style-type: none;
 				<input id="test0" type="file" name="board_file" onchange="change1(this)"> 
 							<img src="reviewimg/addimage.png">
 					</label>
+					
 				</label></li>
 
 				<li><input type="submit" value="완료"> 	</li>
@@ -355,21 +356,19 @@ list-style-type: none;
 
 
    
-   
    var count = 1;
    function change1(value){
         /* $(value).next().attr("src","reviewimg/a.jpg"); */
         if(value.files && value.files[0]){
-           $(".file1:first").clone().appendTo('#file');
+           $clone = $(".file1:first").clone().appendTo('#file');
            console.log('ok');
            let id = 'test' + count;
            console.log($(value).attr('id'));
            let b = $(value).attr('id');
            $(value).attr('id','test' + count);
            console.log($(value).attr('id'));
-           console.log($(value).parent().attr("for", 'test'+count));
-           
-           
+           $(value).parent().attr("for", 'test'+count);
+           $clone.find('input').attr('name','test' + count);
            
               var reader = new FileReader();
               let a = $(value).attr('id');

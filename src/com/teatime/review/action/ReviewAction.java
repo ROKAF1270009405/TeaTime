@@ -18,7 +18,6 @@ public class ReviewAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ReviewService service = ReviewService.getInstance();
-		System.out.println("hi");
 //		int totalcount = service.getCount();
 		int shopno = Integer.parseInt(request.getParameter("shopno"));
 //		int name = Integer.parseInt(request.getParameter("name"));

@@ -70,7 +70,6 @@ public class ReviewService {
 			}
 		} catch (SQLException | NamingException | ParseException e) {
 			e.printStackTrace();
-			System.out.println("여기?");
 		} finally {
 			if (conn != null)
 				try {
@@ -79,5 +78,13 @@ public class ReviewService {
 				}
 		}
 		return result;
+	}
+
+	public ReviewDTO getReview(int reviewno) {
+		ReviewDTO dto = new ReviewDTO();
+		
+		
+		
+		return null;
 	}
 }
