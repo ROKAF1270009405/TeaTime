@@ -32,18 +32,22 @@
 				
 				<li><label for="content"> <textarea rows="10"
 							cols="30" placeholder="리뷰를 입력해주세요." name="content"></textarea>
-				</label>   
+				</label>  
+				 
 				<li>
 					<button type="button" class="gpa">
 						<img src="reviewimg/happy.png" id="happy" name="" onclick=change('happy') alt="best">
 					</button>
+					
 					<button type="button" class="gpa">
 						<img src="reviewimg/surprised.png" id="surprised" name=""	onclick=change('surprised') alt="soso">
 					</button>
+					
 					<button type="button" class="gpa">
 						<img src="reviewimg/sad.png" id="sad" name="" onclick=change('sad') alt="worst">
 					</button> <input id="gpa" name="gpa" type="hidden">
 				</li>
+				
 
 				<li id="file"><label class="file1"> <label for="test0"	class="uploadlabel1"> 
 				<input id="test0" type="file" name="board_file" onchange="change1(this)"> 

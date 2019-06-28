@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 import com.teatime.comm.Action;
 import com.teatime.comm.ActionForward;
 import com.teatime.member.MemberDTO;
+import com.teatime.mypage.model.MypageDTO;
+import com.teatime.mypage.service.MypageService;
 import com.teatime.review.model.ReviewDTO;
 import com.teatime.review.service.ReviewService;
 import com.teatime.shop.model.ShopDTO;
@@ -29,7 +31,13 @@ public class ModifyReviewAction implements Action {
 			request.setAttribute("shopno", shopno);
 			int reviewno = Integer.parseInt(request.getParameter("reviewno"));
 			System.out.println(reviewno);
-			request.getParameter("reviewno");
+			
+			// reviewno 에 맞는 ReviewDTO 객체 가져오기
+			// dto 객체 setattribute 로 넘겨주기
+			MypageService service = MypageService.getInstance();
+			// MypageDTO dto = service.modifyService(reviewno);
+			// request.setAttribute("dto", dto);
+			
 			List<ReviewDTO> list = (List<ReviewDTO>) request.getAttribute("list");
 			request.setAttribute("list", list);
 			forward.setRedirect(false);
