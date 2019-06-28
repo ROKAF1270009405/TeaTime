@@ -270,23 +270,7 @@ function remove_item(obj){
   	  <input type="text" id="name" name="name" class="form-control" placeholder="매장 이름을 적어주세요.">
   	  <label for="name">매장 이름</label>
 	</div>
-	
-	<label for="content">매장 소개</label>
-	<textarea id="content" name="content" placeholder="매장 소개 해주세요."></textarea>
-	
-	<div class="form-label-group">
-    	<input type="text" id="addr" name="addr" placeholder="매장 주소를 입력해주세요.">
-    	<label for="addr">매장 주소</label>
-	</div>
-	
-	<label for="workingtime">영업 시작 시간 </label>
-    <input type="time" id="starttime" name="starttime" >
-    
-    <label for="workingtime"> 종료 시간</label>
-    <input type="time" id="endtime" name="endtime" >
-    
-    <hr>
-    <h3>메뉴</h3>
+	<h5>음식 종류</h5>
     <div class="checks etrans">
   		<input type="checkbox" id="korean" name="korean" value="한식"> 
   		<label for="korean" class="cbox">한식</label> 
@@ -301,6 +285,22 @@ function remove_item(obj){
   		<label for="yangsig" class="cbox">양식</label>
   	
 	</div>
+	<label for="content">매장 소개</label>
+	<textarea id="content" name="content" placeholder="매장 소개 해주세요."></textarea>
+	
+	<div class="form-label-group">
+    	<input type="text" id="addr" name="addr" placeholder="매장 주소를 입력해주세요.">
+    	<label for="addr">매장 주소</label>
+	</div>
+	
+	<label for="starttime">영업 시작 시간 </label>
+    <input type="time" id="starttime" name="starttime" >
+    
+    <label for="endtime"> 종료 시간</label>
+    <input type="time" id="endtime" name="endtime" >
+    
+    <hr>
+    <h3>메뉴</h3>
     <div id="pre_set"  style="display:none">
     <div class="form-label-group" id="mn">
 		<input type="text" name="menuname" value="" style="width:200px">

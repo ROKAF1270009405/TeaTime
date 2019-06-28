@@ -15,12 +15,9 @@ public class ShopAddAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		
-		
 		ActionForward forward=new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("WEB-INF/template/main.jsp?page=/WEB-INF/shop/shopadd.jsp");
-		
 		
 		return forward;
 	}
