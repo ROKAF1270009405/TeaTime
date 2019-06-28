@@ -48,7 +48,7 @@ section ul li {
 				<li>${board.gpa}</li>
 				<c:set var="name" value="${board.name }"></c:set>
 				<c:if test="${id eq board.id}">
-					<input type="button" value="삭제">
+					<a href="deletemyreview.do?num=${board.reviewno}"><input type="button" value="삭제"></a>
 					<input type="button" value="수정" onclick="location.href='modifyreviewform.do?shopno=${shopno }&name=${name}'">
 				</c:if>
 			</ul>

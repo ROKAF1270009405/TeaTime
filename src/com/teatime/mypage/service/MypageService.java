@@ -23,19 +23,17 @@ public class MypageService {
 	public static MypageService getInstance() {
 		return service;
 	}
-	
+
 	// 리뷰 가져오기
 	public List<MypageDTO> reviewService(MemberDTO dto) {
-		
+
 		Connection conn = null;
 		List<MypageDTO> list = null;
 		try {
-			System.out.println(dto.getId() + "서비스");
 			DBConn db = DBConn.getdb();
 			conn = db.getConnection();
 			MypageDAO dao = MypageDAO.getDAO();
 			list = dao.getReview(conn, dto);
-			System.out.println("여긴 MypageService지  " + list);
 		} catch (SQLException | NamingException e) {
 			System.out.println(e.getMessage());
 		} finally {
@@ -49,13 +47,13 @@ public class MypageService {
 		}
 		return list;
 	} // end reviewService method
-	
+
 	// 수정하기
 	public int modifyService(MemberDTO dto) {
-		
+
 		Connection conn = null;
 		int result = 0;
-		
+
 		try {
 			DBConn db = DBConn.getdb();
 			conn = db.getConnection();
@@ -80,32 +78,51 @@ public class MypageService {
 		}
 		return result;
 	} // end modifyService method
-	
 
-/*	// memberListService
-	public List<MemberDTO> memberListService(MemberDTO dto) {
+	// 삭제하기
+	public int deleteService(int num) {
 
 		Connection conn = null;
-		List<MemberDTO> list = null;
+		int result = 0;
 
 		try {
+			System.out.println("여기 Service인데 들어올 수 있나요?");
 			DBConn db = DBConn.getdb();
 			conn = db.getConnection();
+			conn.setAutoCommit(false);
 			MypageDAO dao = MypageDAO.getDAO();
-			list = dao.getMemberList(conn, dto);
-
+			result = dao.deletereview(conn, num);
+			conn.commit();
 		} catch (SQLException | NamingException e) {
-			System.out.println(e.getMessage());
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			}
 		} finally {
 			if (conn != null) {
 				try {
-					conn.close();
+					conn.rollback();
 				} catch (SQLException e) {
 					System.out.println(e.getMessage());
 				}
 			}
 		}
-		return list;
-	} // end memberListService method
-*/
+		return result;
+	} // end deleteService method
+
+	/*
+	 * // memberListService public List<MemberDTO> memberListService(MemberDTO dto)
+	 * {
+	 * 
+	 * Connection conn = null; List<MemberDTO> list = null;
+	 * 
+	 * try { DBConn db = DBConn.getdb(); conn = db.getConnection(); MypageDAO dao =
+	 * MypageDAO.getDAO(); list = dao.getMemberList(conn, dto);
+	 * 
+	 * } catch (SQLException | NamingException e) {
+	 * System.out.println(e.getMessage()); } finally { if (conn != null) { try {
+	 * conn.close(); } catch (SQLException e) { System.out.println(e.getMessage());
+	 * } } } return list; } // end memberListService method
+	 */
 } // end MypageService class
