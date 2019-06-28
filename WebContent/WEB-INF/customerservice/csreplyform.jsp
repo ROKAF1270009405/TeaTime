@@ -12,7 +12,7 @@
 
 	<h2>답변작성</h2>
 	<form method="post" action="csreplyresult.do">
-		<input type="hidden" value="${num}" name="num" id="num">
+		<input type="text" value="${num}" name="num" id="num">
 		<ul>
 			<li><label for="title">제목</label>
 				<p>문의에 대한 답변입니다.</p>
