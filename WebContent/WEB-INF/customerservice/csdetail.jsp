@@ -28,31 +28,52 @@
 		});
 	});
 </script>
+<style>
+ul li {
+	padding-left: 0px;
+	list-style: none;
+}
+
+ul {
+	padding-left: 0px;
+}
+
+label {
+	width: 100px;
+}
+</style>
 <body>
 	<c:set var="data" value="${requestScope.data}"></c:set>
-	<%-- <c:set var="data" value="${sessionScope.dto}"></c:set> --%>
 
 	<c:if test="${data!=null}">
-		<ul>
-			<input id="num" type="hidden" value="${data.qnano}">
-			<li><label for="id">아이디</label>${sessionScope.dto.id}</li>
-			<li><label for="hp">연락처</label>${data.hp}</li>
-			<li><label for="email">이메일</label>${sessionScope.dto.mail}</li>
-			<li><label for="date">작성일</label>${data.regidate}</li>
-			<li><label for="title">제목</label>${data.title}</li>
-			<li><label for="content">내용</label>${data.content}</li>
-		</ul>
-		<c:if test="${sessionScope.dto.authority==1}">
-			<a href="csreply.do?num=${data.qnano}">답변하기</a>
-		</c:if>
-		<c:if test="${sessionScope.dto.authority==0}">
-			<a href="csdelete.do?num=${data.qnano}">삭제</a>
-			<a href="csmodify.do?num=${data.qnano}">수정</a>
-		</c:if>
-		<a href="customerservicelist.do">목록으로</a>
+		<div class="container">
+			<div class="row ">
+				<div class="col-lg-8">
+					<ul>
+						<li><h1>문의사항</h1></li>
+						<hr class="divider2">
+						<input id="num" type="hidden" value="${data.qnano}">
+						<li><label for="id">아이디</label>${sessionScope.dto.id}</li>
+						<li><label for="hp">연락처</label>${data.hp}</li>
+						<li><label for="email">이메일</label>${sessionScope.dto.mail}</li>
+						<li><label for="date">작성일</label>${data.regidate}</li>
+						<li><label for="title">제목</label>${data.title}</li>
+						<li><label for="content">내용</label>${data.content}</li>
+					</ul>
+					<c:if test="${sessionScope.dto.authority==1}">
+						<a class="btn btn-primary" href="csreply.do?num=${data.qnano}">답변하기</a>
+					</c:if>
+					<c:if test="${sessionScope.dto.authority==0}">
+						<a class="btn btn-secondary" href="csdelete.do?num=${data.qnano}">삭제</a>
+						<a class="btn btn-secondary" href="csmodify.do?num=${data.qnano}">수정</a>
+					</c:if>
+					<a class="btn btn-secondary" href="customerservicelist.do">목록으로</a>
+				</div>
+			</div>
+		</div>
 	</c:if>
 	<c:if test="${data.reply!=null}">
-	<div id="replyboard"></div>
+		<div id="replyboard"></div>
 	</c:if>
 </body>
 </html>
