@@ -35,7 +35,7 @@ public class CSAddResultAction implements Action {
 			String email = request.getParameter("email");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
-			String id = request.getParameter("id");
+			String id = member.getId();
 
 			System.out.println(title + ":::" + content);
 

@@ -16,11 +16,6 @@
 			<li><label>작성일</label>${data.replyregidate}</li>
 			<li><label>내용</label>${data.reply}</li>
 		</ul>
-		
-		<%-- <a href="csreply.do?num=${data.qnano}">답변하기</a>
-		<a href="csdelete.do?num=${data.qnano}">삭제</a>
-		<a href="csmodify.do?num=${data.qnano}">수정</a>
-		<a href="customerservicelist.do">목록으로</a> --%>
 	</c:if>
 
 </body>

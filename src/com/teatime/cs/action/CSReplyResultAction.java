@@ -28,13 +28,13 @@ public class CSReplyResultAction implements Action {
 		
 		data=service.detailService(num);
 		data.setReply(replycontent);
-		data=service.replyDetailService(data);
+//		data=service.replyUpdateService(data);
 		
 		request.setAttribute("data", data);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/customerservice/csreplydetail.jsp?num="+num);
+		forward.setPath("/WEB-INF/customerservice/csreplydetail.jsp?num="+num);
 		
 		return forward;
 	}
