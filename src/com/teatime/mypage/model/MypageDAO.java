@@ -26,10 +26,10 @@ public class MypageDAO {
 	public List<MypageDTO> getReview(Connection conn, MemberDTO dto) throws SQLException {
 
 		StringBuilder sql = new StringBuilder();
-		sql.append(" select name, gpa, shop.photo, review.content       ");
-		sql.append(" from shop join review                              ");
-		sql.append(" on shop.shopno = review.shopno                     ");
-		sql.append(" where review.id = ?                                ");
+		sql.append(" select name, gpa, shop.photo, review.content, reviewno       ");
+		sql.append(" from shop join review                                        ");
+		sql.append(" on shop.shopno = review.shopno                               ");
+		sql.append(" where review.id = ?                                          ");
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -47,6 +47,7 @@ public class MypageDAO {
 				mydto.setGpa(rs.getFloat("gpa"));
 				mydto.setPhoto(rs.getString("shop.photo"));
 				mydto.setContent(rs.getString("review.content"));
+				mydto.setReviewno(rs.getInt("reviewno"));
 				list.add(mydto);
 			} // end while
 
@@ -86,7 +87,7 @@ public class MypageDAO {
 			MypageDTO mydto = new MypageDTO();
 			pstmt.setString(1, mydto.getContent());
 			pstmt.setFloat(2, mydto.getGpa());
-			pstmt.setString(3, dto.getId());
+			pstmt.setString(3, mydto.getId());
 			result = pstmt.executeUpdate();
 
 		} finally {
@@ -101,5 +102,33 @@ public class MypageDAO {
 
 		return result;
 	} // end modifyreview method
+	
+	// 리뷰 삭제하기
+	public int deletereview(Connection conn, int num) throws SQLException {
+		
+		StringBuilder sql = new StringBuilder();
+		sql.append(" delete from review        ");
+		sql.append(" where reviewno = ?        ");
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		System.out.println("여기 DAO인데 들어올 수 있나요?");
+		try {
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, num);
+			System.out.println("여긴 DAO고 출력 될 값은 dto.getReviewno야 : " + num);
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		}
+		return result;
+	} // end deletereview method
 
 } // end mypageDAO class
