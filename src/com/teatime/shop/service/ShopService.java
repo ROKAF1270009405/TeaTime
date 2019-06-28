@@ -72,7 +72,7 @@ public class ShopService {
 	}
 	
 	
-	/*
+	
 	public int getCount() {//자료갯수를 얻어오는 메서드
 		DBConn db = DBConn.getdb();
 		Connection conn=null;
@@ -88,22 +88,6 @@ public class ShopService {
 			return datacount;
 	}
 	
-	public List<ShopDTO> getList(int startrow, int endrow){
-		DBConn db= DBConn.getdb();
-		Connection conn =null;
-		List<ShopDTO> list=null;
-		try {
-			conn=db.getConnection();
-			ShopDAO dao = ShopDAO.getDAO();
-			list = dao.getData(conn, startrow, endrow);
-			
-		}catch(SQLException|NamingException e) {
-			System.out.println(e);
-		}finally {
-			if(conn!=null)try {conn.close();}catch(SQLException e){}
-		}
-		
-		return list;
-	}*/
+	
 	
 }

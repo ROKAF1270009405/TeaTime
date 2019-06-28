@@ -39,11 +39,12 @@ public class ShopDAO {
 				sql.append(" where m.name like ? ");
 			}else if (filter == 4) {
 				sql.append(" where foodkind like ? ");
-			}
+			}   
 		}
+		sql.append(" group by s.name ");
 		sql.append(" order by shopno desc ");
 		try {
-
+			
 			pstmt = conn.prepareStatement(sql.toString());
 			
 			if (text != null && !text.equals("")) {
@@ -108,6 +109,23 @@ public class ShopDAO {
 		}
 		return result;
 	}
+	
+	
+	//전체자료수를 얻어오는 메서드
+		public int getCount(Connection conn) throws SQLException {
+			StringBuilder sql=new StringBuilder();
+			sql.append(" select count(*) from employees ");
+			int datacount=0;
+			
+			try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+					ResultSet rs=pstmt.executeQuery();
+					) {
+							if(rs.next()) {
+								datacount = rs.getInt(1);
+							}
+			}
+			return datacount;
+		}//getCount
 	
 	
 	/*

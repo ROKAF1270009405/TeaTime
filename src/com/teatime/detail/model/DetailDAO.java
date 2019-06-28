@@ -23,12 +23,11 @@ public class DetailDAO {
 		sql.append(" from shop ");
 		sql.append(" where shopno = ? ");
 		sql.append(" order by shopno desc ");
-		try {
+		try {  
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setInt(1, shopno);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				System.out.println("DAO : "+rs.getString("name"));
 				result.setShopno(rs.getInt("shopno"));
 				result.setName(rs.getString("name"));
 				result.setContent(rs.getString("content"));

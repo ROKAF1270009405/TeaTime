@@ -24,7 +24,7 @@ public class ShopAddResultAction implements Action{
 		String addr = request.getParameter("addr");
 		String workingtime = request.getParameter("workingtime");
 		ShopDTO dto = new ShopDTO();
-
+  
 		dto.setName(name);
 		dto.setContent(content);
 		dto.setPhoto(photo);
