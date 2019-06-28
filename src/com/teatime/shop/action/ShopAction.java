@@ -6,10 +6,11 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import com.teatime.comm.Action;
 import com.teatime.comm.ActionForward;
+import com.teatime.member.MemberDTO;
 import com.teatime.shop.model.ShopDTO;
 import com.teatime.shop.service.ShopService;
 
@@ -23,12 +24,8 @@ public class ShopAction implements Action {
 
 		request.setCharacterEncoding("utf-8");
 		
-		
-
-
-		  
-		
-		
+		HttpSession session = request.getSession();
+	      MemberDTO member = (MemberDTO) session.getAttribute("dto");
 		
 		System.out.println(2);
 		String search = request.getParameter("text");
