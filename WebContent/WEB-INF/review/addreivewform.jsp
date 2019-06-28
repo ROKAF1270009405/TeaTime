@@ -292,16 +292,18 @@ list-style-type: none;
 	<div id="shop">
 		<form method="post" action="addreviewresult.do"
 			enctype="multipart/form-data">
+			<h2>${param.name }</h2>
 			<ul>
 				<li class="form-label-group"><label for="date"><input name="date"
-						value="${now }" disabled class="form-control">${now }</label></li>
+						value="${now }" disabled class="form-control"></label></li>
 				
 				<li class="form-label-group"><label>
-				<input type="hidden" name="shopno" value="${requestScope.shopno }" /></label></li>
+				<input type="hidden" name="shopno" value="${param.shopno }" /></label></li>
+				<li class="form-label-group"><label>
 				
 				<li><label for="content"> <textarea rows="10"
 							cols="30" placeholder="리뷰를 입력해주세요." name="content"></textarea>
-				</label>
+				</label>   
 				<li>
 					<button type="button" class="gpa">
 						<img src="reviewimg/happy.png" id="happy" name="" onclick=change('happy') alt="best">

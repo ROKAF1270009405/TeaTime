@@ -50,6 +50,6 @@ section ul li{
 		</section>
 	</c:forEach>
 
-	<a href="addreviewform.do?shopno=${shopno }">글쓰기</a>
+	<a href="addreviewform.do?shopno=${shopno }&name=${name}">글쓰기</a>
 </body>
 </html>
