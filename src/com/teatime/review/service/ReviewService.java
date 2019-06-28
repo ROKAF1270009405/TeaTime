@@ -79,4 +79,12 @@ public class ReviewService {
 		}
 		return result;
 	}
+
+	public ReviewDTO getReview(int reviewno) {
+		ReviewDTO dto = new ReviewDTO();
+		
+		
+		
+		return null;
+	}
 }

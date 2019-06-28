@@ -27,6 +27,9 @@ public class ModifyReviewAction implements Action {
 		if (mdto != null) {
 			int shopno = Integer.parseInt(request.getParameter("shopno"));
 			request.setAttribute("shopno", shopno);
+			int reviewno = Integer.parseInt(request.getParameter("reviewno"));
+			System.out.println(reviewno);
+			request.getParameter("reviewno");
 			List<ReviewDTO> list = (List<ReviewDTO>) request.getAttribute("list");
 			request.setAttribute("list", list);
 			forward.setRedirect(false);

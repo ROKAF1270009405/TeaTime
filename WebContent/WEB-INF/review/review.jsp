@@ -1,3 +1,4 @@
+<%@page import="com.teatime.review.model.ReviewDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE>
@@ -37,6 +38,7 @@ section ul li {
 	<c:forEach var="board" items="${list }">
 		<section class="review">
 			<ul>
+				<c:set var="dto" value="${board }"></c:set>
 				<li class="id">${board.id }</li>
 				<li class="date">${board.reviewno}</li>
 				<li class="content">${board.content}</li>
@@ -48,8 +50,10 @@ section ul li {
 				<li>${board.gpa}</li>
 				<c:set var="name" value="${board.name }"></c:set>
 				<c:if test="${id eq board.id}">
-					<a href="deletemyreview.do?num=${board.reviewno}"><input type="button" value="삭제"></a>
-					<input type="button" value="수정" onclick="location.href='modifyreviewform.do?shopno=${shopno }&name=${name}'">
+					<a href="deletemyreview.do?num=${board.reviewno}"><input
+						type="button" value="삭제"></a>
+					<button value="${board.reviewno }"
+						onclick="location.href='modifyreviewform.do?shopno=${shopno }&name=${name}&reviewno=${board.reviewno }'">수정 </button>
 				</c:if>
 			</ul>
 		</section>
