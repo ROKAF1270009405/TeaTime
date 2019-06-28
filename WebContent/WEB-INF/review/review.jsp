@@ -50,7 +50,7 @@ section ul li {
 				<li>${board.gpa}</li>
 				<c:if test="${id eq board.id}">
 
-					<input type="button" value="삭제">
+					<a href="deletemyreview.do?num=${board.reviewno}"><input type="button" value="삭제"></a>
 				</c:if>
 			</ul>
 
