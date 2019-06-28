@@ -41,39 +41,64 @@ ul {
 label {
 	width: 100px;
 }
+
+.rightbtn {
+	float: right;
+}
+
+.btnbottom {
+	clear: both;
+}
+
+.contentheight {
+	height: 200px;
+}
+
+.form {
+	width: 1000px;
+	min-height: 500px;
+	background-color: rgba(0, 0, 0, 0.075);
+	padding: 50px 50px;
+}
+
+#replyboard{
+	margin-top: 20px;
+}
 </style>
+
+<link rel="stylesheet" type="text/css" href="css/form.css">
 <body>
 	<c:set var="data" value="${requestScope.data}"></c:set>
 
 	<c:if test="${data!=null}">
-		<div class="container">
-			<div class="row ">
-				<div class="col-lg-8">
-					<ul>
-						<li><h1>문의사항</h1></li>
-						<hr class="divider2">
-						<input id="num" type="hidden" value="${data.qnano}">
-						<li><label for="id">아이디</label>${sessionScope.dto.id}</li>
-						<li><label for="hp">연락처</label>${data.hp}</li>
-						<li><label for="email">이메일</label>${sessionScope.dto.mail}</li>
-						<li><label for="date">작성일</label>${data.regidate}</li>
-						<li><label for="title">제목</label>${data.title}</li>
-						<li><label for="content">내용</label>${data.content}</li>
-					</ul>
-					<c:if test="${sessionScope.dto.authority==1}">
-						<a class="btn btn-primary" href="csreply.do?num=${data.qnano}">답변하기</a>
-					</c:if>
-					<c:if test="${sessionScope.dto.authority==0}">
-						<a class="btn btn-secondary" href="csdelete.do?num=${data.qnano}">삭제</a>
-						<a class="btn btn-secondary" href="csmodify.do?num=${data.qnano}">수정</a>
-					</c:if>
-					<a class="btn btn-secondary" href="customerservicelist.do">목록으로</a>
-				</div>
-			</div>
-		</div>
+		<div id="shop">
+			<ul>
+				<h1>문의사항</h1>
+				<hr>
+				<input id="num" type="hidden" value="${data.qnano}">
+				<li><label for="id">아이디</label>${sessionScope.dto.id}</li>
+				<li><label for="hp">연락처</label>${data.hp}</li>
+				<li><label for="email">이메일</label>${sessionScope.dto.mail}</li>
+				<li><label for="date">작성일</label>${data.regidate}</li>
+				<li><label for="title">제목</label>${data.title}</li>
+				<li><label class="contentheight" for="content">내용</label>${data.content}</li>
+			</ul>
+			<c:if test="${sessionScope.dto.authority==1}">
+				<a class="btn btn-primary" href="csreply.do?num=${data.qnano}">답변하기</a>
+			</c:if>
+			<c:if test="${sessionScope.dto.authority==0}">
+				<a class="btn btn-secondary" href="csdelete.do?num=${data.qnano}">삭제</a>
+				<a class="btn btn-secondary" href="csmodify.do?num=${data.qnano}">수정</a>
+			</c:if>
+			<a class="btn btn-secondary rightbtn" href="customerservicelist.do">목록으로</a>
 	</c:if>
 	<c:if test="${data.reply!=null}">
-		<div id="replyboard"></div>
+		<div id="replyboard">
+			<h1>문의답변</h1>
+			<hr>
+			<div id="replyboard"></div>
+		</div>
 	</c:if>
+	</div>
 </body>
 </html>

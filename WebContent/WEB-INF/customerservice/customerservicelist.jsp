@@ -15,6 +15,24 @@
 	background-size: cover;
 	background-position: center;
 }
+
+.tableboard {
+	margin-left: 100px;
+	magint-right: 100px;
+}
+
+.stateth {
+	width: 200px;
+}
+
+.numth {
+	width: 100px;
+}
+
+thead tr th, #qnano, #state{
+	text-align: center;
+}
+
 </style>
 <body>
 	<section class="div1 page-section bg-primary">
@@ -31,54 +49,54 @@
 			</div>
 		</div>
 	</section>
-	<div>
-		<c:set var="currpage" value="${requestScope.currpage}"></c:set>
-		<c:set var="startblock" value="${requestScope.startblock}"></c:set>
-		<c:set var="endblock" value="${requestScope.endblock}"></c:set>
-		<c:set var="list" value="${requestScope.list}"></c:set>
-		<c:set var="totalpage" value="${requestScope.totalpage}"></c:set>
 
+	<c:set var="currpage" value="${requestScope.currpage}"></c:set>
+	<c:set var="startblock" value="${requestScope.startblock}"></c:set>
+	<c:set var="endblock" value="${requestScope.endblock}"></c:set>
+	<c:set var="list" value="${requestScope.list}"></c:set>
+	<c:set var="totalpage" value="${requestScope.totalpage}"></c:set>
+	<div class="tableboard">
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th scope="col">번호</th>
+					<th class="numth" scope="col">번호</th>
 					<th scope="col">제목</th>
-					<th scope="col">상태</th>
+					<th class="stateth" scope="col">상태</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="board" items="${list}">
-
 					<c:if test="${board.state==1}">
 						<tr class="table-light">
 					</c:if>
 					<c:if test="${board.state==0}">
 						<tr class="table-info">
 					</c:if>
-					<td>${board.qnano}</td>
+					<td id="qnano">${board.qnano}</td>
 					<td><a href="csdetail.do?num=${board.qnano}">${board.title}</a></td>
-					<td><c:if test="${board.state==1}">답변완료</c:if> <c:if
+					<td id="state"><c:if test="${board.state==1}">답변완료</c:if> <c:if
 							test="${board.state==0}">답변 대기중</c:if></td>
-
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<c:if test="${startblock>1 }">
-			<a href="customerservicelist.do?currpage=${startblock-1 }">이전</a>
-		</c:if>
-		<c:forEach var="i" begin="${startblock}" end="${endblock}">
-			<c:if test="${i==currpage }">
-				<c:out value="${i}"></c:out>
+		<div id="page" class="row h-100 align-items-center justify-content-center text-center">
+			<c:if test="${startblock>1 }">
+				<a href="customerservicelist.do?currpage=${startblock-1 }">이전</a>
 			</c:if>
-			<c:if test="${i!=currpage}">
-				<a href="customerservicelist.do?currpage=${i}"><c:out
-						value="${i}"></c:out></a>
+			<c:forEach var="i" begin="${startblock}" end="${endblock}">
+				<c:if test="${i==currpage }">
+					<c:out value="${i}"> </c:out>
+				</c:if>
+				<c:if test="${i!=currpage}">
+					<a href="customerservicelist.do?currpage=${i}"><c:out
+							value="${i}"></c:out></a>
+				</c:if>
+			</c:forEach>
+			<c:if test="${endblock<totalpage}">
+				<a href="customerservicelist.do?currpage=${endblock+1}">다음</a>
 			</c:if>
-		</c:forEach>
-		<c:if test="${endblock<totalpage}">
-			<a href="customerservicelist.do?currpage=${endblock+1}">다음</a>
-		</c:if>
+		</div>
 	</div>
 </body>
 </html>
