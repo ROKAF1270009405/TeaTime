@@ -32,9 +32,6 @@ public class ModifyReviewAction implements Action {
 			request.getParameter("reviewno");
 			List<ReviewDTO> list = (List<ReviewDTO>) request.getAttribute("list");
 			request.setAttribute("list", list);
-			ReviewService service = ReviewService.getInstance();
-			ReviewDTO dto = service.getReview(reviewno);
-			request.setAttribute("review", arg1);
 			forward.setRedirect(false);
 			System.out.println("addreview");
 			// /templete.jsp?page=board/insertform.jsp
