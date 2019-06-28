@@ -43,7 +43,6 @@ public class AddReviewResultAction implements Action {
 				String name = names.nextElement();
 				fileName = multi.getFilesystemName(name);
 				img.add(fileName);
-				System.out.println(">>>>>>>>>>>system : " + fileName);
 			}
 
 			ReviewDTO dto = new ReviewDTO();
