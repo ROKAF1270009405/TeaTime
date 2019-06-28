@@ -38,9 +38,9 @@ public class BestDAO {
 		}
 		
 		if("good".equals(kind))
-			sb.append(" group by shopno order by good desc ");
+			sb.append(" group by shopno order by good desc, gpa desc ");
 		else 
-			sb.append(" group by shopno order by gpa desc ");
+			sb.append(" group by shopno order by gpa desc, good desc ");
 		//System.out.println(sb.toString());
 		try(PreparedStatement pstmt = conn.prepareStatement(sb.toString());){
 			if(startday!=null && !("".equals(startday))) {

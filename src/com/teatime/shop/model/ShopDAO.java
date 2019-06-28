@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.teatime.menu.model.MenuDTO;
 import com.teatime.shop.model.ShopDTO;
 
 public class ShopDAO {
@@ -18,6 +19,50 @@ public class ShopDAO {
 	}
 
 	public ShopDAO() {
+	}
+	
+	public int shopAdd(Connection conn, ShopDTO dto) throws SQLException {
+		int result = 0;
+		StringBuilder sb = new StringBuilder();
+		sb.append(" insert into shop(name, content, addr, workingtime, foodkind, id) ");
+		sb.append(" values(?, ?, ?, ?, ?, ?) ");
+		
+		try(PreparedStatement pstmt = conn.prepareStatement(sb.toString());){
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setString(3, dto.getAddr());
+			pstmt.setString(4, dto.getWorkingtime());
+			pstmt.setString(5, dto.getFoodkind());
+			pstmt.setString(6, dto.getId());
+			result = pstmt.executeUpdate();
+		}
+		return result;
+	}
+	
+	public int menuAdd(Connection conn, List<MenuDTO> menu) throws SQLException {
+		int result = 0;
+		StringBuilder sb = new StringBuilder();
+		sb.append(" INSERT INTO menu (shopno, name, price) VALUES ");
+		for(int i=0; i<menu.size(); i++) {
+			if(i < menu.size()-1) {
+				sb.append(" ((select max(shopno) from shop), ?, ?), ");
+			} else if(i == menu.size()-1) {
+				sb.append(" ((select max(shopno) from shop), ?, ?) ");
+			}
+		}
+		int su = 1;
+		try(PreparedStatement pstmt = conn.prepareStatement(sb.toString());){
+			System.out.println(sb.toString());
+			for(int i=0; i<menu.size(); i++) {
+				MenuDTO dto = new MenuDTO();
+				dto = menu.get(i);
+				pstmt.setString(su, dto.getName());
+				pstmt.setString(su+1, dto.getPrice());
+				su += 2;
+			}
+			result = pstmt.executeUpdate();
+		}
+		return result;
 	}
 
 	public List<ShopDTO> getList(Connection conn, int filter, String text) {
@@ -126,7 +171,7 @@ public class ShopDAO {
 			}
 			return datacount;
 		}//getCount
-	
+
 	
 	/*
 	 * public List<ShopDTO> SearchData(String text) { Connection conn = null;
