@@ -72,7 +72,7 @@ public class MypageDAO {
 	} // end getReview method
 
 	// 리뷰 수정하기
-	public int modifyreview(Connection conn, MemberDTO dto) throws SQLException {
+	public int modifyreview(Connection conn, String modifyreviewno) throws SQLException {
 
 		StringBuilder sql = new StringBuilder();
 		sql.append(" update review               ");
@@ -84,12 +84,14 @@ public class MypageDAO {
 
 		try {
 			pstmt = conn.prepareStatement(sql.toString());
-			MypageDTO mydto = new MypageDTO();
-			pstmt.setString(1, mydto.getContent());
-			pstmt.setFloat(2, mydto.getGpa());
-			pstmt.setString(3, mydto.getId());
+			MypageDTO dto = new MypageDTO();
+			pstmt.setString(1, dto.getContent());
+			pstmt.setFloat(2, dto.getGpa());
+			pstmt.setString(3, modifyreviewno);
 			result = pstmt.executeUpdate();
-
+			System.out.println("여긴 DAO인데 난 dto.getContent 값을 보고싶어 : " + dto.getContent());
+			System.out.println("여긴 DAO인데 난 dto.getGpa 값을 보고싶어 : " + dto.getGpa());
+			System.out.println("여긴 DAO인데 난 dto.getId 값을 보고싶어 : " + dto.getId());
 		} finally {
 			if (pstmt != null) {
 				try {

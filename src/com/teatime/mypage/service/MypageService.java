@@ -49,7 +49,7 @@ public class MypageService {
 	} // end reviewService method
 
 	// 수정하기
-	public int modifyService(MemberDTO dto) {
+	public int modifyService(int reviewno) {
 
 		Connection conn = null;
 		int result = 0;
@@ -59,7 +59,8 @@ public class MypageService {
 			conn = db.getConnection();
 			conn.setAutoCommit(false);
 			MypageDAO dao = MypageDAO.getDAO();
-			result = dao.modifyreview(conn, dto);
+			// result = dao.modifyreview(conn, reviewno);
+			System.out.println("여긴 service인데 난 result 값을 보고싶어 : " + result);
 			conn.commit();
 		} catch (SQLException | NamingException e) {
 			try {
