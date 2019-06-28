@@ -17,8 +17,9 @@
 }
 
 .tableboard {
-	margin-left: 100px;
+	margin-left: 10%;
 	magint-right: 100px;
+	padding-right: 10%;
 }
 
 .stateth {
@@ -31,6 +32,14 @@
 
 thead tr th, #qnano, #state{
 	text-align: center;
+}
+
+#state1{
+	color: #f4623a;
+}
+
+#title{
+	color:black;
 }
 
 </style>
@@ -67,14 +76,14 @@ thead tr th, #qnano, #state{
 			<tbody>
 				<c:forEach var="board" items="${list}">
 					<c:if test="${board.state==1}">
-						<tr class="table-light">
+						<tr class="table-secondary">
 					</c:if>
 					<c:if test="${board.state==0}">
-						<tr class="table-info">
+						<tr class="table-light">
 					</c:if>
 					<td id="qnano">${board.qnano}</td>
-					<td><a href="csdetail.do?num=${board.qnano}">${board.title}</a></td>
-					<td id="state"><c:if test="${board.state==1}">답변완료</c:if> <c:if
+					<td><a id="title" href="csdetail.do?num=${board.qnano}">${board.title}</a></td>
+					<td id="state"><c:if test="${board.state==1}"><span id="state1">답변완료</span></c:if> <c:if
 							test="${board.state==0}">답변 대기중</c:if></td>
 					</tr>
 				</c:forEach>

@@ -29,7 +29,10 @@ public class CustomerServiceDAO {
 
 		sql.append(" select qnano, title, state, id ");
 		sql.append(" from customerservice ");
-		sql.append(" where id = ?");
+		if (id!="admin") {
+			sql.append(" where id = ?");
+		}
+		sql.append(" order by qnano desc ");
 		sql.append(" limit ?, ? ");
 
 		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
@@ -74,7 +77,7 @@ public class CustomerServiceDAO {
 			if (rs.next()) {
 				datacount = rs.getInt(1);
 			}
-		}finally {
+		} finally {
 			rsClose(rs);
 		}
 		return datacount;

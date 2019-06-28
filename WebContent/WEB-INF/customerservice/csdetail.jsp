@@ -85,9 +85,10 @@ label {
 			</ul>
 			<c:if test="${sessionScope.dto.authority==1}">
 				<a class="btn btn-primary" href="csreply.do?num=${data.qnano}">답변하기</a>
+				<a class="btn btn-secondary" href="csdelete.do?num=${data.qnano}">삭제</a>
 			</c:if>
 			<c:if test="${sessionScope.dto.authority==0}">
-				<a class="btn btn-secondary" href="csdelete.do?num=${data.qnano}">삭제</a>
+			<a class="btn btn-primary" href="csdelete.do?num=${data.qnano}">삭제</a>
 				<a class="btn btn-secondary" href="csmodify.do?num=${data.qnano}">수정</a>
 			</c:if>
 			<a class="btn btn-secondary rightbtn" href="customerservicelist.do">목록으로</a>
