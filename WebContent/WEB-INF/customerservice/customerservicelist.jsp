@@ -6,22 +6,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 </head>
 <style>
 .div1 {
-	width: 100%;
 	background-image: url('img/cslist.png');
 	background-repeat: no-repeat;
-	background-size: contain;
+	background-size: cover;
+	background-position: center;
 }
 </style>
 <body>
-	<div class="div1">
-		<h1>고객센터</h1>
-		<p>궁금하신 점을 문의하면 자세히 답변해드리겠습니다.</p>
-		<a href="csinsertform.do">글쓰기</a>
-		${id}
-	</div>
+	<section class="div1 page-section bg-primary">
+		<div class="container h-100">
+			<div
+				class="row h-100 align-items-center justify-content-center text-center">
+				<div class="col-lg-10 align-self-end">
+					<h1 class="text-uppercase text-white font-weight-bold">고객센터</h1>
+					<hr class="divider my-4">
+					<p class="text-white-75 font-weight-light mb-5">궁금하신 점을 문의하면
+						자세히 답변해드리겠습니다.</p>
+					<a class="btn btn-primary btn-xl" href="csinsertform.do">글쓰기</a>
+				</div>
+			</div>
+		</div>
+	</section>
 	<div>
 		<c:set var="currpage" value="${requestScope.currpage}"></c:set>
 		<c:set var="startblock" value="${requestScope.startblock}"></c:set>
@@ -39,12 +48,18 @@
 			</thead>
 			<tbody>
 				<c:forEach var="board" items="${list}">
-					<tr class="table-info">
-						<td>${board.qnano}</td>
-						<td><a href="csdetail.do?num=${board.qnano}">${board.title}</a></td>
-						<td><c:if test="${board.state==1}">답변완료</c:if>
-						<c:if test="${board.state==0}">답변 대기중</c:if>
-						</td>
+
+					<c:if test="${board.state==1}">
+						<tr class="table-light">
+					</c:if>
+					<c:if test="${board.state==0}">
+						<tr class="table-info">
+					</c:if>
+					<td>${board.qnano}</td>
+					<td><a href="csdetail.do?num=${board.qnano}">${board.title}</a></td>
+					<td><c:if test="${board.state==1}">답변완료</c:if> <c:if
+							test="${board.state==0}">답변 대기중</c:if></td>
+
 					</tr>
 				</c:forEach>
 			</tbody>
