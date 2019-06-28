@@ -7,26 +7,40 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/form.css">
 <style>
 img {
 	width: 100px;
 }
 
-section {
-	dislay: block;
-	height: 150px;
-}
 
-section ul {
+
+shop ul {
 	list-style-type: none;
 	float: left;
 	display: block;
+	width: 1000px;
 }
 
-section ul li {
+div {
+	width: 100%;
+}
+
+#shop ul li {
 	display: inline-block;
 }
+#shop {
+margin:10px;
+border:10px;
+}
+.date{
+float:right;
+}
+.content{
+clear:both;
+}
 </style>
+
 </head>
 <body>
 	<c:set var="list" value="${requestScope.list}"></c:set>
@@ -36,29 +50,35 @@ section ul li {
 	<c:set var="id" value="${sessiondto.id }"></c:set>
 
 	<c:forEach var="board" items="${list }">
-		<section class="review">
-			<ul>
+			<div id="shop">
 				<c:set var="dto" value="${board }"></c:set>
-				<li class="id">${board.id }</li>
-				<li class="date">${board.reviewno}</li>
-				<li class="content">${board.content}</li>
+				<ul>
+					<li class="id">${board.id }</li>
+					<li class="reivewno">${board.reviewno}</li>
+					<li>${board.gpa}</li>
+					<li class="date">${board.date }</li>
+				</ul>
+				<div class="content">
+				<p>${board.content }</p>
+				</div>
 				<ul>
 					<c:forEach var="img" items="${board.photo }">
 						<li class="reviewli"><img src="reviewuploadimg/${img }"></li>
 					</c:forEach>
 				</ul>
-				<li>${board.gpa}</li>
+
 				<c:set var="name" value="${board.name }"></c:set>
 				<c:if test="${id eq board.id}">
-					<a href="deletemyreview.do?num=${board.reviewno}"><input
-						type="button" value="삭제"></a>
-					<button value="${board.reviewno }"
-						onclick="location.href='modifyreviewform.do?shopno=${shopno }&name=${name}&reviewno=${board.reviewno }'">수정 </button>
+					<a href="deletemyreview.do?num=${board.reviewno}" class="btnnext"><input
+						type="button" value="삭제" class="delbtn">
+						</button></a>
+					<input type="button" value="수정" class="delbtn"
+						onclick="location.href='modifyreviewform.do?shopno=${shopno }&name=${name}&reviewno=${board.reviewno }'">
+					</button>
 				</c:if>
-			</ul>
-		</section>
+			</div>
 	</c:forEach>
 
-	<a href="addreviewform.do?shopno=${shopno }&name=${name}">글쓰기</a>
+	<a href="addreviewform.do?shopno=${shopno }&name=${name}"><button value="글쓰기" class="delbtn">글쓰기</button></a>
 </body>
 </html>
