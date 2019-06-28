@@ -41,7 +41,7 @@ public class ShopDAO {
 				sql.append(" where foodkind like ? ");
 			}
 		}
-		
+		sql.append(" order by shopno desc ");
 		try {
 
 			pstmt = conn.prepareStatement(sql.toString());
@@ -75,6 +75,41 @@ public class ShopDAO {
 		}
 		return arr;
 	}
+	
+	public int boardadd(Connection conn, ShopDTO dto)throws SQLException {
+		
+		int result = 0 ;
+		PreparedStatement pstmt = null;
+		StringBuilder sql = new StringBuilder();
+		sql.append(" insert into shop(name, content, photo, addr, workingtime ) ");
+		sql.append(" values(?,?,?,?,?) ");
+		try {
+			pstmt = conn.prepareStatement(sql.toString());
+			
+			pstmt.setString(1, dto.getName());
+			System.out.println("getname:"+dto.getName());
+			
+			pstmt.setString(2, dto.getContent());
+			System.out.println("getcontent:"+dto.getContent());
+			
+			pstmt.setString(3, dto.getPhoto());
+			System.out.println("getphoto:"+dto.getPhoto());
+			
+			pstmt.setString(4, dto.getAddr());
+			System.out.println("getaddr:"+dto.getAddr());
+			
+			pstmt.setString(5, dto.getWorkingtime());
+			System.out.println("getwt:"+dto.getWorkingtime());
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			throw e;
+		}
+		return result;
+	}
+	
+	
 	/*
 	 * public List<ShopDTO> SearchData(String text) { Connection conn = null;
 	 * PreparedStatement pstmt = null; ResultSet rs = null; List<ShopDTO> result =

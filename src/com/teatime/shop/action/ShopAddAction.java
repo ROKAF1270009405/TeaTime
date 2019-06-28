@@ -1,4 +1,4 @@
-package com.teatime.login.action;
+package com.teatime.shop.action;
 
 import java.io.IOException;
 
@@ -9,16 +9,20 @@ import javax.servlet.http.HttpServletResponse;
 import com.teatime.comm.Action;
 import com.teatime.comm.ActionForward;
 
-public class LoginAction implements Action {
+public class ShopAddAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ActionForward act = new ActionForward();
-		act.setRedirect(false);
-		act.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/login/loginform.jsp");
 		
-		return act;
+		
+		
+		ActionForward forward=new ActionForward();
+		forward.setRedirect(false);
+		forward.setPath("WEB-INF/template/main.jsp?page=/WEB-INF/shop/shopadd.jsp");
+		
+		
+		return forward;
 	}
 
 }

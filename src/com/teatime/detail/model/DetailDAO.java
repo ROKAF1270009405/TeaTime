@@ -42,4 +42,8 @@ public class DetailDAO {
 		}
 		return result;
 	}
+	
+	
+	
+	
 }

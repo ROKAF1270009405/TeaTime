@@ -11,24 +11,28 @@ import com.teatime.comm.ActionForward;
 import com.teatime.cs.model.CustomerServiceDTO;
 import com.teatime.cs.service.CustomerServiceService;
 
-public class CSDetailAction implements Action {
+public class CSReplyDetailAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		int boardnum=Integer.parseInt(request.getParameter("num"));
-		
-		CustomerServiceService service = CustomerServiceService.getInstance();
-		CustomerServiceDTO data = service.detailService(boardnum);
-		
-		request.setAttribute("data", data);
-		
-		ActionForward forward = new ActionForward();
+		request.setCharacterEncoding("utf-8");
 
+		int num = Integer.parseInt(request.getParameter("num"));
+		String replycontent = request.getParameter("replycontent");
+		CustomerServiceService service = CustomerServiceService.getInstance();
+		CustomerServiceDTO data;
+
+		data = service.detailService(num);
+		data.setReply(replycontent);
+
+		request.setAttribute("data", data);
+
+		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/customerservice/csdetail.jsp");
-		
+		forward.setPath("/WEB-INF/customerservice/csreplydetail.jsp?num=" + num);
+
 		return forward;
 	}
 

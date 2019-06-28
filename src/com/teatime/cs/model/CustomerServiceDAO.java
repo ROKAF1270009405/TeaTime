@@ -74,14 +74,14 @@ public class CustomerServiceDAO {
 	public void addData(Connection conn, CustomerServiceDTO dto) throws SQLException {
 		StringBuilder sql = new StringBuilder();
 		sql.append(" insert into customerservice(title, content, id, hp) ");
-		sql.append(" values(?, ?, 'cy',?)                            ");
-
+		sql.append(" values(?, ?, ?, ?)                            ");
 		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString())) {
 
 			pstmt.setString(1, dto.getTitle());
 			pstmt.setString(2, dto.getContent());
-			pstmt.setString(3, dto.getHp());
-
+			pstmt.setString(3, dto.getId());
+			pstmt.setString(4, dto.getHp());
+			
 			pstmt.executeUpdate();
 		}
 	}
@@ -96,7 +96,7 @@ public class CustomerServiceDAO {
 		sql.append(" select qnano, title, content, hp, regidate, csreply, replyregidate ");
 		sql.append(" from customerservice                          ");
 		sql.append(" where qnano=?                                  ");
-
+		
 		try {
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setInt(1, boardnum);
@@ -163,7 +163,7 @@ public class CustomerServiceDAO {
 	}
 
 
-	public CustomerServiceDTO replyDetail(Connection conn, CustomerServiceDTO data)  throws SQLException {
+	public CustomerServiceDTO replyUpdate(Connection conn, CustomerServiceDTO data)  throws SQLException {
 		StringBuilder sql = new StringBuilder();
 		
 		sql.append(" update customerservice ");

@@ -115,6 +115,7 @@ public class CustomerServiceService {
 			conn.setAutoCommit(false);
 			CustomerServiceDAO dao = CustomerServiceDAO.getDAO();
 			data = dao.detailData(conn, boardnum);
+			
 			conn.commit();
 			
 		}catch (SQLException | NamingException e) {
@@ -191,7 +192,7 @@ public class CustomerServiceService {
 		}
 	}
 
-	public CustomerServiceDTO replyDetailService(CustomerServiceDTO data) {
+	public CustomerServiceDTO replyUpdateService(CustomerServiceDTO data) {
 		DBConn db = DBConn.getdb();
 		Connection conn = null;
 		CustomerServiceDTO dto = null;
@@ -200,7 +201,7 @@ public class CustomerServiceService {
 			conn = db.getConnection();
 			conn.setAutoCommit(false);
 			CustomerServiceDAO dao = CustomerServiceDAO.getDAO();
-			dto = dao.replyDetail(conn, data);
+			dto = dao.replyUpdate(conn, data);
 			
 			conn.commit();
 			

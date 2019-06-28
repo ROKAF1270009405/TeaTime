@@ -11,10 +11,9 @@
 .div1 {
 	width: 100%;
 	background-image: url('img/cslist.png');
-	background-repeat:no-repeat;
+	background-repeat: no-repeat;
 	background-size: contain;
 }
-
 </style>
 <body>
 	<div class="div1">
@@ -28,12 +27,7 @@
 		<c:set var="endblock" value="${requestScope.endblock}"></c:set>
 		<c:set var="list" value="${requestScope.list}"></c:set>
 		<c:set var="totalpage" value="${requestScope.totalpage}"></c:set>
-		<c:set var="id" value="${requestScope.id}"></c:set>
-		<%-- <c:set var="member" value="${list.id}"></c:set> --%>
-		<c:out value="${id}"></c:out>
-		<%-- <c:out value="${member}"></c:out> --%>
 
-		<%-- <c:if test="${list.id==id}"></c:if> --%>
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -47,7 +41,9 @@
 					<tr class="table-info">
 						<td>${board.qnano}</td>
 						<td><a href="csdetail.do?num=${board.qnano}">${board.title}</a></td>
-						<td>${board.state}</td>
+						<td><c:if test="${board.state==1}">답변완료</c:if>
+						<c:if test="${board.state==0}">답변 대기중</c:if>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -60,7 +56,8 @@
 				<c:out value="${i}"></c:out>
 			</c:if>
 			<c:if test="${i!=currpage}">
-				<a href="customerservicelist.do?currpage=${i}"><c:out value="${i}"></c:out></a>
+				<a href="customerservicelist.do?currpage=${i}"><c:out
+						value="${i}"></c:out></a>
 			</c:if>
 		</c:forEach>
 		<c:if test="${endblock<totalpage}">

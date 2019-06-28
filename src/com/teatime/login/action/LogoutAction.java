@@ -17,7 +17,6 @@ public class LogoutAction implements Action {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		System.out.println("로그아웃 됨");
 
 		ActionForward act = new ActionForward();
 		act.setRedirect(true);

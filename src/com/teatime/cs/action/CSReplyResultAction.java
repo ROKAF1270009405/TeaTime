@@ -24,18 +24,20 @@ public class CSReplyResultAction implements Action {
 		
 		String replycontent = request.getParameter("replycontent");
 		CustomerServiceService service = CustomerServiceService.getInstance();
-		CustomerServiceDTO data; 
+		CustomerServiceDTO data=service.detailService(num);
 		
-		data=service.detailService(num);
 		data.setReply(replycontent);
-		data=service.replyDetailService(data);
+		data=service.replyUpdateService(data);
+		
+		System.out.println("dadadada"+data.getReply());
+		System.out.println("eqwewqeeq"+data.getReplyregidate());
 		
 		request.setAttribute("data", data);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/customerservice/csreplydetail.jsp?num="+num);
-		
+		forward.setPath("csdetail.do?num="+num);
+	
 		return forward;
 	}
 
