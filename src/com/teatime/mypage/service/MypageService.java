@@ -25,15 +25,17 @@ public class MypageService {
 	}
 	
 	// 리뷰 가져오기
-	public List<MypageDTO> reviewService() {
+	public List<MypageDTO> reviewService(MemberDTO dto) {
 		
 		Connection conn = null;
 		List<MypageDTO> list = null;
 		try {
+			System.out.println(dto.getId() + "서비스");
 			DBConn db = DBConn.getdb();
 			conn = db.getConnection();
 			MypageDAO dao = MypageDAO.getDAO();
-			// list = dao.getReview(conn, dto);
+			list = dao.getReview(conn, dto);
+			System.out.println("여긴 MypageService지  " + list);
 		} catch (SQLException | NamingException e) {
 			System.out.println(e.getMessage());
 		} finally {
@@ -47,6 +49,38 @@ public class MypageService {
 		}
 		return list;
 	} // end reviewService method
+	
+	// 수정하기
+	public int modifyService(MemberDTO dto) {
+		
+		Connection conn = null;
+		int result = 0;
+		
+		try {
+			DBConn db = DBConn.getdb();
+			conn = db.getConnection();
+			conn.setAutoCommit(false);
+			MypageDAO dao = MypageDAO.getDAO();
+			result = dao.modifyreview(conn, dto);
+			conn.commit();
+		} catch (SQLException | NamingException e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			}
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		}
+		return result;
+	} // end modifyService method
+	
 
 /*	// memberListService
 	public List<MemberDTO> memberListService(MemberDTO dto) {

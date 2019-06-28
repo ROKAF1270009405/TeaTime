@@ -1,3 +1,4 @@
+<%@page import="com.teatime.mypage.model.MypageDTO"%>
 <%@page import="com.teatime.member.MemberDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -12,10 +13,10 @@
 	padding: 20px;
 }
 
-table, th, td {
+/* table, th, td {
 	border: 1px solid dodgerblue;
 	border-collapse: collapse;
-}
+} */
 </style>
 </head>
 <body>
@@ -45,8 +46,7 @@ table, th, td {
 
 
 		</tbody>
-	</table>
- 
+	</table> 
     
 </body>
 </html>

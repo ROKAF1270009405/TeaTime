@@ -11,8 +11,10 @@ import javax.servlet.http.HttpSession;
 import com.teatime.comm.Action;
 import com.teatime.comm.ActionForward;
 import com.teatime.member.MemberDTO;
+import com.teatime.mypage.model.MypageDTO;
+import com.teatime.mypage.service.MypageService;
 
-public class ListAction implements Action {
+public class ReviewListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -20,29 +22,20 @@ public class ListAction implements Action {
 
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO) session.getAttribute("dto");
-		// dto.getId();
-/*		dto = new MemberDTO();
-		dto.setId("aaa");
-		dto.setNickname("길동");
-		dto.setMail("cy@teatime.com");
-		session.setAttribute("dto", dto);*/
-
+		
 		ActionForward forward = new ActionForward();
 		if (dto == null) {
 			forward.setRedirect(true);
 			forward.setPath("login.do");
 		} else {
-/*			MypageService service = MypageService.getInstance();
-			List<MemberDTO> list = service.memberListService(dto);
-			request.setAttribute("list", list);*/
-
+			MypageService service = MypageService.getInstance();
+			List<MypageDTO> list = service.reviewService(dto);
+			request.setAttribute("list", list);
 			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/mypage/mypage.jsp");
-			// forward.setPath("/WEB-INF/mypage/mypage.jsp");
+			forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/mypage/myreviewpage.jsp");
 		}
-
+		System.out.println("이동");
 		return forward;
-
 	} // end execute method
 
-} // end ListAction class
+} // end ReviewListAction class

@@ -42,7 +42,6 @@ min-height: 0rem !important;
 	<header class="masthead">
 		<jsp:include page="header.jsp"></jsp:include>
 		<c:set var="page" value="${param.page }"></c:set>
-		.
 		<c:if test="${page!=null }">
 			<jsp:include page="${page }"></jsp:include>
 		</c:if>

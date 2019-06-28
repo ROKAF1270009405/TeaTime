@@ -14,7 +14,7 @@
 			%>
 			<script>
 				alert("내용 추가가 완료되었습니다.");
-				location.href="teatime.do";
+				location.href="menuadd.do";
 			</script>
 			<%
 		} else {

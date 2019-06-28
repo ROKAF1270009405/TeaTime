@@ -3,17 +3,19 @@ package com.teatime.mypage.model;
 public class MypageDTO {
 
 	private String name;
-	private float gap;
+	private float gpa;
 	private String photo;
 	private int shopno;
 	private String id;
+	private String content;
 
-	public MypageDTO(String name, float gap, String photo, int shopno, String id) {
+	public MypageDTO(String name, float gpa, String photo, int shopno, String id, String content) {
 		this.name = name;
-		this.gap = gap;
+		this.gpa = gpa;
 		this.photo = photo;
 		this.shopno = shopno;
 		this.id = id;
+		this.content = content;
 	}
 
 	public MypageDTO() {
@@ -28,12 +30,12 @@ public class MypageDTO {
 		this.name = name;
 	}
 
-	public float getGap() {
-		return gap;
+	public float getGpa() {
+		return gpa;
 	}
 
-	public void setGap(float gap) {
-		this.gap = gap;
+	public void setGpa(float gpa) {
+		this.gpa = gpa;
 	}
 
 	public String getPhoto() {
@@ -58,6 +60,14 @@ public class MypageDTO {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 } // end MypageDTO class
