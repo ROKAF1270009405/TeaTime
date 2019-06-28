@@ -15,10 +15,11 @@
 		let num = $('#num').attr('value');
 		console.log(num);
 		$.ajax({
-			url : "csreplydetail.do?",
+			url : "csreplydetail.do",
 			dataType : "html",
 			data : "num=" + num,
 			success : function(data) {
+				console.log(data);
 				$("#replyboard").append(data);
 			},
 			error : function(data) {
@@ -33,6 +34,8 @@
 	<c:if test="${data!=null}">
 		<ul>
 			<input id="num" type="hidden" value="${data.qnano}">
+			<input id="replydate" type="hidden" value="${data.replyregidate}">
+			<input id="reply" type="hidden" value="${data.reply}">
 			<li><label for="id">아이디</label>${id}</li>
 			<li><label for="hp">연락처</label>${data.hp}</li>
 			<li><label for="email">이메일</label>${email}</li>

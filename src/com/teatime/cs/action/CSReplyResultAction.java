@@ -24,13 +24,12 @@ public class CSReplyResultAction implements Action {
 		
 		String replycontent = request.getParameter("replycontent");
 		CustomerServiceService service = CustomerServiceService.getInstance();
-		CustomerServiceDTO data=service.detailService(num);
-		
+
+		CustomerServiceDTO data = new CustomerServiceDTO();
 		data.setReply(replycontent);
-		data=service.replyUpdateService(data);
+		data.setQnano(num);
 		
-		System.out.println("dadadada"+data.getReply());
-		System.out.println("eqwewqeeq"+data.getReplyregidate());
+		service.replyUpdateService(data);
 		
 		request.setAttribute("data", data);
 		
