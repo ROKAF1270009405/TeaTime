@@ -45,8 +45,6 @@ public class ReviewDAO {
 				dto.setShopno(rs.getInt("shopno"));
 				dto.setId(rs.getString("id"));
 				dto.setName(rs.getString("name"));
-				System.out.println(">>>>>>>>>>>>>>>>>>"+rs.getString("name"));
-
 				list.add(dto);
 			}
 		} finally {
@@ -77,11 +75,12 @@ public class ReviewDAO {
 			while(rs.next()) {
 				list.add(rs.getString("photo"));
 			}
-			System.out.println("list: "+list.size());
 		} finally {
 			if(pstmt!=null) {
 				pstmt.close();
 			}
+			if (rs != null)
+				rs.close();
 		}
 		return list;
 	}
@@ -108,13 +107,11 @@ public class ReviewDAO {
 			pstmt.setFloat(3, dto.getGpa());
 			pstmt.setInt(4, dto.getShopno());
 			pstmt.setString(5, dto.getId());
-			System.out.println("dto.getid : " + dto.getContent());
 			result = pstmt.executeUpdate();
 		} finally {
 			if (pstmt != null)
 				pstmt.close();
 		}
-
 		return result;
 	}
 	
@@ -163,6 +160,8 @@ public class ReviewDAO {
 		} finally {
 			if (pstmt != null)
 				pstmt.close();
+			if (rs != null)
+				rs.close();
 		}
 		return id;
 	}

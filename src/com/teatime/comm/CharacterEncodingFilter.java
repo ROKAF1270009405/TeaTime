@@ -62,8 +62,6 @@ public class CharacterEncodingFilter implements Filter {
  
         request.setCharacterEncoding("utf-8");
         
-        System.out.println("characterEncoding : " + request.getCharacterEncoding());
-        
         if (request.getCharacterEncoding() == null) {
             if (encoding != null) 
                 request.setCharacterEncoding(encoding);

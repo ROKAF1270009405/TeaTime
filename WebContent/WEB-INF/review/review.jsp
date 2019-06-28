@@ -40,21 +40,18 @@ section ul li {
 				<li class="id">${board.id }</li>
 				<li class="date">${board.reviewno}</li>
 				<li class="content">${board.content}</li>
-
-
 				<ul>
 					<c:forEach var="img" items="${board.photo }">
 						<li class="reviewli"><img src="reviewuploadimg/${img }"></li>
 					</c:forEach>
 				</ul>
 				<li>${board.gpa}</li>
+				<c:set var="name" value="${board.name }"></c:set>
 				<c:if test="${id eq board.id}">
-
 					<input type="button" value="삭제">
+					<input type="button" value="수정" onclick="location.href='modifyreviewform.do?shopno=${shopno }&name=${name}'">
 				</c:if>
 			</ul>
-
-			<c:set var="name" value="${board.name }"></c:set>
 		</section>
 	</c:forEach>
 
