@@ -56,51 +56,24 @@ input[type='file'] {
 			</label>
 			<li>
 				<button type="button" class="gpa">
-					<img src="reviewimg/happy.png" id="happy" name="" onclick=change(
-						'happy') alt="hi">
+					<img src="reviewimg/happy.png" id="happy" name="" onclick=change('happy') alt="best">
 				</button>
 				<button type="button" class="gpa">
-					<img src="reviewimg/surprised.png" id="surprised" name=""
-						onclick=change( 'surprised') alt="hi">
+					<img src="reviewimg/surprised.png" id="surprised" name="" onclick=change('surprised') alt="soso">
 				</button>
 				<button type="button" class="gpa">
-					<img src="reviewimg/sad.png" id="sad" name="" onclick=change(
-						'sad') alt="hi">
+					<img src="reviewimg/sad.png" id="sad" name="" onclick=change('sad') alt="worst">
 				</button> <input id="gpa" name="gpa" value="">
 			</li>
 
-
-			<li id="upload"><label class="waves-effect waves-teal btn-flat"
-				for="uploadInputBox"> <input id="uploadInputBox"
-					accept="reviewimg/addimage.png" type="file" name="filedata"
-					onchange="LoadImg(this);">
-			</label></li>
-
-
-			<li id="test"><label for="test1" class="uploadlabel1"> <input
-					id="test1" type="file" name="board_file"
-					onchange="LoadImgtest(img1);" /> <img src="reviewimg/addimage.png" id="img1">
-			</label> <label for="test2" class="uploadlabel1"> <input id="test2"
-					type="file" name="board_file" onchange="LoadImgtest(img2);" /> <img
-					src="reviewimg/addimage.png" id="img2">
-			</label> <label for="test3" class="uploadlabel1"> <input id="test3"
-					type="file" name="board_file" onchange="LoadImgtest(img3);" /> <img
-					src="reviewimg/addimage.png" id="img3">
-			</label> <label for="test4" class="uploadlabel1"> <input id="test4"
-					type="file" name="board_file" onchange="LoadImgtest(img4);" /> <img
-					src="reviewimg/addimage.png" id="img4">
-			</label> <label for="test5" class="uploadlabel1"> <input id="test5"
-					type="file" name="board_file" onchange="LoadImgtest(img5);" /> <img
-					src="reviewimg/addimage.png" id="img5">
-
-
-
-
-			</label> <!-- 		<label for ="test2">
-			<input  id = "test2"  type="file" style="display: none" name="board_file"  onchange="LoadImgtest(this);" />
-			<img src="reviewimg/addimage.png">
-			</label>
-		 --></li>
+			<li id="file">
+					<label class="file1">
+						<label for="test0" class="uploadlabel1"> <input id="test0"
+							type="file" name="board_file" onchange="change1(this)"> <img
+							src="reviewimg/addimage.png">
+						</label>
+					</label>
+				</li>
 
 			<li><input type="submit" value="완료"> <input type="reset"
 				value="취소"></li>
@@ -130,70 +103,70 @@ input[type='file'] {
       var img = document.getElementById(id);
       var u1 = "<%=request.getContextPath()%>/reviewimg/";
       var uu = u1.concat(id,"ck.png");
+      console.log(uu);
       img.src = uu;
       img.name="gpa";
       gpa.value=id;
    }
    var count = 1;
-   function LoadImg(value){
-      if(value.files && value.files[0]){
-         console.log(value);
-         var reader = new FileReader();
-         reader.onload=function(e){
-            var cls='.load'+count;
-            $(cls).attr('src', e.target.result);      
-            }
-         reader.readAsDataURL(value.files[0]); 
-/*          <li id="upload"><label class="waves-effect waves-teal btn-flat"
-				for="uploadInputBox"> <input id="uploadInputBox"
-					style="display: none" type="file" name="filedata"
-					onchange="LoadImg(this);"><img id="load0" class="load0"
-					src="reviewimg/addimage.png">
-			</label></li>
- */
-         $('#upload').append('<label class="waves-effect waves-teal btn-flat" for="remove" class= "uploadlabel">');
-         count++;
-         var ncls= "load"+count;
-         $('.btn-flat:last').append('<input id="uploadInputBox"	style="display: none" type="file" name="filedata" onchange="LoadImg(this);"/>')
-         .append('<img class=' + ncls + ' id="loadcomplete" src="reviewimg/addimage.png" onclick = removeImg(this)>');
-      }
-   }
-   
-   function LoadImgtest(value){
-	 		/* $(".uploadlabel1").clone().appendTo('#test');
-	 		count++;
-	 		let id = 'test'+count;
-	 		let cla = ".uploadlabel"+count;
-	 		console.log(cla);
-	 		$(".uploadlabel1:last").attr('class', "") ;
-	 		$(".uploadlabel"+count).attr('class', "uploadlabel"+count);
-	 		$(".uploadlabel"+count + " ") */
-	 		
-	 		
-	        /* $('#test').append('<label for = "' + id + ' " class = "testlabel">');
-	        
-	 		$('.testlabel:last').append('<input  id = "' + id +'"  type="file"  name="board_file" " >')
-	 					.append('<img src="reviewimg/addimage.png">');
-	 		 */
-	   if(value.files && value.files[0]){
-	         var reader = new FileReader();
-	         reader.onload=function(e){
-	        	 console.log("====================");
-	            var cls='.load'+count;
-	            console.log(value.src);
-	            console.log($(value).attr('src'));
-	            $(value).attr('src', e.target.result);      
-	            }
-	         reader.readAsDataURL(value.files[0]);
-	   }
-   }
+  
    
    
    function removeImg(value){
       value.remove();
    }
 
-
+   
+   
+   var count = 1;
+   function change1(value){
+        /* $(value).next().attr("src","reviewimg/a.jpg"); */
+        if(value.files && value.files[0]){
+           $(".file1:first").clone().appendTo('#file');
+           console.log('ok');
+           let id = 'test' + count;
+           console.log($(value).attr('id'));
+           let b = $(value).attr('id');
+           $(value).attr('id','test' + count);
+           console.log($(value).attr('id'));
+           console.log($(value).parent().attr("for", 'test'+count));
+           
+           
+           
+              var reader = new FileReader();
+              let a = $(value).attr('id');
+              console.log(a+ "ggggg");
+              let v = count-1;
+              console.log(count-1);
+              let vv = 'test'+v;
+              console.log(b+"aaaaa");
+              reader.onload=function(e){
+                 console.log("====================");
+                 $('#'+b).parent().off();
+                 console.log($('#'+b).parent());
+                 $('#'+b).off();
+                 console.log($('#'+b));
+                 $('#'+b).next().off();
+                 console.log($('#'+b).next());
+                 $("#"+b).next().attr('src', e.target.result);
+                 e.preventDefault();
+                 console.log(e);
+                 $("#"+b).on('click', function(val){
+                   //console.log($(val).clear());
+                   console.log($(this).next().remove());
+                   $(this).remove();
+                   console.log("==1=1=1=1=1=1=1=11122222111");
+                   return false;
+                 });
+                 $(id).next().attr('src', e.target.result); 
+                 }
+              /* value.files[0].select().clear(); */
+              reader.readAsDataURL(value.files[0]);
+              $(value).val("");
+              count++;
+        }
+   }
+   
    </script>
 </body>
 </html>

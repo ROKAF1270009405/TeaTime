@@ -67,7 +67,7 @@ public class AddReviewResultAction implements Action {
 			String id = mdto.getId();
 			dto.setContent(content);
 			// dto.setDate(date);
-			dto.setPhoto(photo);
+			dto.setPhoto(img);
 			dto.setGpa(gpa);
 			dto.setShopno(shopno);
 			dto.setId(id);
