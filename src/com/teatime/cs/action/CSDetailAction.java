@@ -23,6 +23,7 @@ public class CSDetailAction implements Action {
 		CustomerServiceDTO data = service.detailService(boardnum);
 		
 		request.setAttribute("data", data);
+		
 		ActionForward forward = new ActionForward();
 
 		forward.setRedirect(false);

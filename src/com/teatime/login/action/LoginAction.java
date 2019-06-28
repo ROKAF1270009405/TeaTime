@@ -14,7 +14,6 @@ public class LoginAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("로그인 액션 진입.");
 		ActionForward act = new ActionForward();
 		act.setRedirect(false);
 		act.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/login/loginform.jsp");
