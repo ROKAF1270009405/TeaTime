@@ -61,11 +61,27 @@ public class ReviewDAO {
 		return list;
 	}
 
-	public List<String> getPhotoList(Connection conn, int reviewno){
+	public List<String> getPhotoList(Connection conn, int reviewno) throws SQLException{
 		ArrayList<String> list = new ArrayList<>();
 		StringBuilder sql = new StringBuilder();
-		sql.append("select 						");
+		sql.append("select photo				");
 		sql.append("from reviewphoto			");
+		sql.append("where reviewno = ? 			");
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, reviewno);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(rs.getString("photo"));
+			}
+			System.out.println("list: "+list.size());
+		} finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+		}
 		
 		
 		

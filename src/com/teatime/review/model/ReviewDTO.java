@@ -2,13 +2,14 @@ package com.teatime.review.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class ReviewDTO {
 	private int reviewno;
 	private String title;
 	private String content;
 	private String date;
-	private ArrayList<String> photo;
+	private List<String> photo;
 	private float gpa;
 	private int shopno;
 	private String id;
@@ -43,10 +44,10 @@ public class ReviewDTO {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public ArrayList<String> getPhoto() {
+	public List<String> getPhoto() {
 		return photo;
 	}
-	public void setPhoto(ArrayList<String> photo) {
+	public void setPhoto(List<String> photo) {
 		this.photo = photo;
 	}
 	public float getGpa() {

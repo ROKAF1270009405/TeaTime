@@ -31,6 +31,13 @@ public class ReviewService {
 			conn = db.getConnection();
 			ReviewDAO dao = ReviewDAO.getDAO();
 			list = dao.getList(conn, shopno);
+			for(int i = 0; i < list.size(); i++) {
+				ReviewDTO dto = list.get(i);
+				int reviewno = dao.getReviewNo(conn, list.get(i));
+				dto.setPhoto(dao.getPhotoList(conn, reviewno));
+				list.set(i, dto);
+			}
+			
 		} catch (NamingException | SQLException e) {
 			System.out.println(e);
 		} finally {

@@ -36,11 +36,14 @@ table {
 					<td>${board.reviewno}</td>
 					<td>${board.content}</td>
 					<td>${board.date}</td>
-					<td>${board.photo}</td>
+					<c:forEach var = "img" items="${board.photo }">
+					<td>${img}</td>
+					<td><img src = "reviewuploadimg/${img }">test2</td>
+					</c:forEach>
 					<td>${board.gpa}</td>
 					<td>${board.shopno}</td>
 					<td>${board.id}</td>
-					<td><img src = "reviewuploadimg/${board.photo }">test2</td>
+					
 				</tr>
 			</c:forEach>
 		</tbody>

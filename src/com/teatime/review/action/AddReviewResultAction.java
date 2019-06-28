@@ -46,7 +46,7 @@ public class AddReviewResultAction implements Action {
 				String name = names.nextElement();
 				fileName = multi.getFilesystemName(name);
 				img.add(fileName);
-				System.out.println("system : " + fileName);
+				System.out.println(">>>>>>>>>>>system : " + fileName);
 			}
 
 			ReviewDTO dto = new ReviewDTO();
@@ -71,7 +71,6 @@ public class AddReviewResultAction implements Action {
 			dto.setGpa(gpa);
 			dto.setShopno(shopno);
 			dto.setId(id);
-			System.out.println("gpa : " + multi.getParameter("gpa"));
 			System.out.println("=============================");
 			/*
 			 * System.out.println("content " + dto.getContent());
