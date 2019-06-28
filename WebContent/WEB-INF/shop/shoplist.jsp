@@ -11,9 +11,6 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <style>
-
-
-
 .teatime {
 	background-image: url('http://localhost:8080/MiniPro2/img/cup.jpg');
 	background-repeat: no-repeat;
@@ -53,17 +50,20 @@ ul li {
 	margin: 0 auto 0 auto;
 	padding: 0px;
 }
-.main-p-right{
+
+.main-p-right {
 	margin: 10px;
 	display: inline-block;
 	float: right;
 }
-.main-p-left{
+
+.main-p-left {
 	margin: 10px;
 	display: inline-block;
 	float: left;
 }
-.clear-hr{
+
+.clear-hr {
 	clear: both;
 }
 </style>
@@ -95,7 +95,7 @@ ul li {
 						<input type="submit" value="검색"
 							class="btn btn-primary btn-xl js-scroll-trigger"><br>
 
-						<label for="select_text" 
+						<label for="select_text"
 							class="btn btn-primary btn-xl js-scroll-trigger"> <input
 							type="radio" name="select_text" value="1" checked="checked">매장이름
 							&nbsp; <input type="radio" name="select_text" value="2">주소
@@ -115,42 +115,40 @@ ul li {
 		</div>
 	</header>
 
-		
+
 	<p class="main-p-left">
 		<b>TeaTime</b>
 	</p>
-	
+
 	<p class="main-p-right">
 		<a href="shopadd.do"><b>글쓰기</b></a>
 	</p>
-	
+
 	<hr class="clear-hr">
-	
+
 	<div id=main_img_wrap>
 		<c:forEach var="shop" items="${requestScope.list }">
-		
-		<div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box">
-            <img class="img-fluid" src="${shop.photo }" alt="이미지">
-            <div class="portfolio-box-caption">
-              <div class="project-category text-white-50">
-               <a href="detail.do?shopno=${shop.shopno }">${shop.name}</a>
-              </div>
-              <div class="project-name">
-                ${shop.addr}
-              </div>
-            </div>
-          </a>
-        </div>
-		<%-- 
+
+			<div class="col-lg-4 col-sm-6">
+				<a class="portfolio-box"> <img class="img-fluid"
+					src="${shop.photo }" alt="이미지">
+					<div class="portfolio-box-caption">
+						<div class="project-category text-white-50">
+							<a href="detail.do?shopno=${shop.shopno }">${shop.name}</a>
+						</div>
+						<div class="project-name">${shop.addr}</div>
+					</div>
+				</a>
+			</div>
+			<%-- 
 			<ul class="main_img">
 				<li><img alt="이미지" src="${shop.photo }"></li>
 				<li><a href="detail.do?shopno=${shop.shopno }">${shop.name}</a></li>
 				<li>${shop.addr}</li>
 			</ul> --%>
-			
-			
-			
+
+
+
 		</c:forEach>
 	</div>
 
