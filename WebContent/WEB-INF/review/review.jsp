@@ -1,53 +1,60 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<!DOCTYPE>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 <style>
-table {
-	margin: auto;
+img {
+	width: 100px;
+}
+
+section {
+	dislay: block;
+	height: 150px;
+}
+
+section ul {
+	list-style-type: none;
+	float: left;
+	display: block;
+}
+
+section ul li {
+	display: inline-block;
 }
 </style>
 </head>
 <body>
 	<c:set var="list" value="${requestScope.list}"></c:set>
 	<c:set var="shopno" value="${requestScope.shopno }"></c:set>
-	<div></div>
-	<table>
-		<thead>
-			<tr>
-				<th>¹øÈ£</th>
-				<th>³»¿ë</th>
-				<th>³¯Â¥</th>
-				<th>»çÁø</th>
-				<th>Á¡¼ö</th>
-				<th>°¡°Ô¹øÈ£</th>
-				<th>¾ÆÀÌµð</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="board" items="${list }">
-				<tr>
-					<td>${board.name }</td>
-					<c:set var="name" value="${board.name}"></c:set>
-					<td>${board.reviewno}</td>
-					<td>${board.content}</td>
-					<td>${board.date}</td>
-					<c:forEach var = "img" items="${board.photo }">
-					<td>${img}</td>
-					<td><img src = "reviewuploadimg/${img }">test2</td>
+	<c:set var="sessiondto" value="${sessionScope.dto }"></c:set>
+
+	<c:set var="id" value="${sessiondto.id }"></c:set>
+
+	<c:forEach var="board" items="${list }">
+		<section class="review">
+			<ul>
+				<li class="id">${board.id }</li>
+				<li class="date">${board.reviewno}</li>
+				<li class="content">${board.content}</li>
+				<ul>
+					<c:forEach var="img" items="${board.photo }">
+						<li class="reviewli"><img src="reviewuploadimg/${img }"></li>
 					</c:forEach>
-					<td>${board.gpa}</td>
-					<td>${board.shopno}</td>
-					<td>${board.id}</td>
-					
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	<a href="addreviewform.do?shopno=${shopno }&name=${name}">±Û¾²±â</a>
+				</ul>
+				<li>${board.gpa}</li>
+				<c:set var="name" value="${board.name }"></c:set>
+				<c:if test="${id eq board.id}">
+					<a href="deletemyreview.do?num=${board.reviewno}"><input type="button" value="ì‚­ì œ"></a>
+					<input type="button" value="ìˆ˜ì •" onclick="location.href='modifyreviewform.do?shopno=${shopno }&name=${name}'">
+				</c:if>
+			</ul>
+		</section>
+	</c:forEach>
+
+	<a href="addreviewform.do?shopno=${shopno }&name=${name}">ê¸€ì“°ê¸°</a>
 </body>
 </html>

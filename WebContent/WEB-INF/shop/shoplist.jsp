@@ -58,7 +58,7 @@ ul li {
 			type="submit" value="검색"> -->
 	</form>
 
-	<p><a href="shopadd.do"><b>글쓰기</b></a></p>
+	<p><a href="shopmove.do"><b>글쓰기</b></a></p>
 	
 	<div id=main_img_wrap>
 		<c:forEach var="shop" items="${requestScope.list }">

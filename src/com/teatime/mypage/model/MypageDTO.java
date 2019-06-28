@@ -8,14 +8,16 @@ public class MypageDTO {
 	private int shopno;
 	private String id;
 	private String content;
+	private int reviewno;
 
-	public MypageDTO(String name, float gpa, String photo, int shopno, String id, String content) {
+	public MypageDTO(String name, float gpa, String photo, int shopno, String id, String content, int reviewno) {
 		this.name = name;
 		this.gpa = gpa;
 		this.photo = photo;
 		this.shopno = shopno;
 		this.id = id;
 		this.content = content;
+		this.reviewno = reviewno;
 	}
 
 	public MypageDTO() {
@@ -68,6 +70,14 @@ public class MypageDTO {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+	
+	public int getReviewno() {
+		return reviewno;
+	}
+	
+	public void setReviewno(int reviewno) {
+		this.reviewno = reviewno;
 	}
 
 } // end MypageDTO class

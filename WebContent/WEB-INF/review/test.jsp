@@ -13,7 +13,7 @@
 <style>
 @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
 label{
-	text-align: left;
+   text-align: left;
 }
 input[type=text], select {
   width: 100%;
@@ -47,9 +47,7 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #45a049;
 }
-#starttime{
-	margin-right: 10px;
-}
+
 #shop {
 margin:0 auto;
 width:80%;
@@ -69,14 +67,14 @@ textarea {
   resize: none;
 }
 #mn{
-	display: inline-block;
-	position: relative;
-	left:0%;
+   display: inline-block;
+   position: relative;
+   left:0%;
 }
 #pr{
-	display: inline-block;
-	position: relative;
-	margin-left: 10px;
+   display: inline-block;
+   position: relative;
+   margin-left: 10px;
 }
 .delbtn {
   background-color: #007bff;
@@ -84,7 +82,7 @@ textarea {
   border: none;
   color: #ffffff;
   cursor: pointer;
-  /* display: inline-block; */
+  display: inline-block;
   font-family: 'BenchNine', Arial, sans-serif;
   font-size: 20px;
   line-height: 1em;
@@ -224,12 +222,7 @@ textarea {
   -webkit-transform:rotate(45deg);
   transform:rotate(45deg);
 }
-.cbox{
-	margin-left: 10px;
-}
-.dbtn{
-	top:1px;
-}
+
 .no-csstransforms .checks.etrans input[type="checkbox"]:checked + label:before {
   /*content:"\2713";*/
   content: "\2714";
@@ -245,78 +238,67 @@ textarea {
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
-/* $(document).ready(function(){
+$(document).ready(function(){
 $(".hover").mouseleave(
-		  function() {
-		    $(this).removeClass("hover");
-		  }
-		);
-}); */
+        function() {
+          $(this).removeClass("hover");
+        }
+      );
+});
 function add_item(){
-    var div = document.createElement('div');
-    div.innerHTML = document.getElementById('pre_set').innerHTML;
-    document.getElementById('field').appendChild(div);
+   var div = document.createElement('div');
+   div.innerHTML = document.getElementById('pre_set').innerHTML;
+   document.getElementById('field').appendChild(div);
 }
 
 function remove_item(obj){
-    document.getElementById('field').removeChild(obj.parentNode);
+   $('field').removeChild(obj.parentNode);
+   document.getElementById('field').removeChild(obj.parentNode);
 }
 </script>
 <body>
 <div id="shop">
 <h3>매장 등록</h3>
-  <form method="post" action="shopadds.do">
-  	<div class="form-label-group">
-  	  <input type="text" id="name" name="name" class="form-control" placeholder="매장 이름을 적어주세요.">
-  	  <label for="name">매장 이름</label>
-	</div>
-	<h5>음식 종류</h5>
-    <div class="checks etrans">
-  		<input type="checkbox" id="korean" name="korean" value="한식"> 
-  		<label for="korean" class="cbox">한식</label> 
-  		
-  		<input type="checkbox" id="japanese" name="japanese" value="일식"> 
-  		<label for="japanese" class="cbox">일식</label>
-  		 
-  		<input type="checkbox" id="chinese" name="chinese" value="중식"> 
-  		<label for="chinese" class="cbox">중식</label> 
-  		
-  		<input type="checkbox" id="yangsig" name="yangsig" value="양식"> 
-  		<label for="yangsig" class="cbox">양식</label>
-  	
-	</div>
-	<label for="content">매장 소개</label>
-	<textarea id="content" name="content" placeholder="매장 소개 해주세요."></textarea>
-	
-	<div class="form-label-group">
-    	<input type="text" id="addr" name="addr" placeholder="매장 주소를 입력해주세요.">
-    	<label for="addr">매장 주소</label>
-	</div>
-	
-	<label for="starttime">영업 시작 시간 </label>
+  <form method="post" action="shopadd.do">
+     <div class="form-label-group">
+       <input type="text" id="name" name="name" class="form-control" placeholder="매장 이름을 적어주세요.">
+       <label for="name">매장 이름</label>
+   </div>
+   
+   <label for="content">매장 소개</label>
+   <textarea id="content" name="content" placeholder="매장 소개 해주세요."></textarea>
+   
+   <div class="form-label-group">
+       <input type="text" id="addr" name="addr" placeholder="매장 주소를 입력해주세요.">
+       <label for="addr">매장 주소</label>
+   </div>
+   
+   <label for="workingtime">영업 시작 시간 </label>
     <input type="time" id="starttime" name="starttime" >
     
-    <label for="endtime"> 종료 시간</label>
+    <label for="workingtime"> 종료 시간</label>
     <input type="time" id="endtime" name="endtime" >
     
     <hr>
     <h3>메뉴</h3>
-    <div id="pre_set"  style="display:none">
+    <div class="checks etrans">
+        <input type="checkbox" id="foodkind"> 
+        <label for="foodkind">한식</label> 
+   </div>
+    <div id="pre_set" style="display:none">
     <div class="form-label-group" id="mn">
-		<input type="text" name="menuname" value="" style="width:200px">
-		<label for="menuname">메뉴이름</label>
-	</div>	
-	<div class="form-label-group" id="pr">
-		<input type="text" name="price" value="" style="width:100px"> 
-		<label for="menuname">가격</label>
-	</div>
-		<input  class="delbtn" type="button" onclick="remove_item(this)" value="삭제">
-    	<!-- <button class="delbtn" onclick="remove_item(this)">삭제</button> -->
-	</div>
+      <input type="text" name="menuname" value="" style="width:200px">
+      <label for="menuname">메뉴이름</label>
+   </div>   
+   <div class="form-label-group" id="pr">
+      <input type="text" name="price" value="" style="width:100px"> 
+      <label for="menuname">가격</label>
+   </div>
+       <button class="delbtn" onclick="remove_item(this)">삭제</button>
+   </div>
     <div id="field"></div>
-    <input type="button" value="메뉴 추가 " class="delbtn dbtn" onclick="add_item()">
+    <input type="button" value=" 추가 " onclick="add_item()">
     <input type="submit" value="등록">
-    <!-- <button class="delbtn" >등록</button> -->
   </form>
 </div>
 </body>

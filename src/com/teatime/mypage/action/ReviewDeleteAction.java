@@ -10,8 +10,9 @@ import javax.servlet.http.HttpSession;
 import com.teatime.comm.Action;
 import com.teatime.comm.ActionForward;
 import com.teatime.member.MemberDTO;
+import com.teatime.mypage.service.MypageService;
 
-public class ListAction implements Action {
+public class ReviewDeleteAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -19,29 +20,25 @@ public class ListAction implements Action {
 
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO) session.getAttribute("dto");
-		// dto.getId();
-/*		dto = new MemberDTO();
-		dto.setId("aaa");
-		dto.setNickname("길동");
-		dto.setMail("cy@teatime.com");
-		session.setAttribute("dto", dto);*/
-
 		ActionForward forward = new ActionForward();
+		System.out.println("여기 Action인데 들어올 수 있나요?" + dto);
+		
 		if (dto == null) {
+			System.out.println("혹시 여기로 들어오나요?");
 			forward.setRedirect(true);
 			forward.setPath("login.do");
 		} else {
-/*			MypageService service = MypageService.getInstance();
-			List<MemberDTO> list = service.memberListService(dto);
-			request.setAttribute("list", list);*/
+			System.out.println("여기는 Action : " + request.getParameter("num"));
+			int no = Integer.parseInt(request.getParameter("num")); // 여기서 문제..
+			MypageService service = MypageService.getInstance();
+			int result = service.deleteService(no);
+			request.setAttribute("result", result);
 
 			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/mypage/mypage.jsp");
-			// forward.setPath("/WEB-INF/mypage/mypage.jsp");
+			forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/mypage/deletemyreview.jsp");
 		}
 
 		return forward;
-
 	} // end execute method
 
-} // end ListAction class
+} // end ReviewDeleteAction class

@@ -66,7 +66,10 @@ public class FrontController extends HttpServlet {
 		act = ht.get(urlpath);		
 		System.out.println(urlpath);
 		System.out.println(act+"hh");//여기 까지 나오고 애러!!
-		ActionForward forward = act.execute(request, response);
+		ActionForward forward = null;
+		if(act!=null) {
+		forward = act.execute(request, response);
+		}
 		System.out.println(1);//여기는 나오지도 않음
 		if (forward != null) {
 			if (forward.isRedirect())

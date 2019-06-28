@@ -16,7 +16,7 @@ import com.teatime.review.model.ReviewDTO;
 import com.teatime.review.service.ReviewService;
 import com.teatime.shop.model.ShopDTO;
 
-public class AddReviewAction implements Action {
+public class ModifyReviewAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -33,7 +33,7 @@ public class AddReviewAction implements Action {
 			System.out.println("addreview");
 			// /templete.jsp?page=board/insertform.jsp
 			// act.setPath("/WEB-INF/board/add.jsp");
-			forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/review/addreivewform.jsp");
+			forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/review/modifyreviewform.jsp");
 		} else {
 			forward.setRedirect(true);
 			forward.setPath("login.do");

@@ -22,7 +22,7 @@ public class AddReviewResultAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		MemberDTO mdto = (MemberDTO) session.getAttribute("dto");
 		ActionForward forward = new ActionForward();
@@ -31,11 +31,8 @@ public class AddReviewResultAction implements Action {
 			int fileSize = 5 * 1024 * 1024;
 			// 업로드될 폴더 경로
 			String uploadPath = request.getServletContext().getRealPath("/reviewuploadimg");
-			
-			// try {
-
 			// 파일업로드
-			MultipartRequest multi = new MultipartRequest(request, uploadPath, fileSize, "euc-kr",
+			MultipartRequest multi = new MultipartRequest(request, uploadPath, fileSize, "utf-8",
 					new DefaultFileRenamePolicy());
 
 			// 파일이름 가져오기
@@ -46,15 +43,11 @@ public class AddReviewResultAction implements Action {
 				String name = names.nextElement();
 				fileName = multi.getFilesystemName(name);
 				img.add(fileName);
-				System.out.println(">>>>>>>>>>>system : " + fileName);
+				System.out.println(fileName);
 			}
 
 			ReviewDTO dto = new ReviewDTO();
 			String content = multi.getParameter("content");
-			// String date = multi.getParameter("shopname");
-			// System.out.println(date + " sss");
-			String photo = fileName;
-			// gpa 어떻게 가져올까?
 			String gpaString = multi.getParameter("gpa");
 			Float gpa = 0f;
 			if ("surprised".equals(gpaString)) {
@@ -62,8 +55,7 @@ public class AddReviewResultAction implements Action {
 			} else if ("happy".equals(gpaString)) {
 				gpa = 5f;
 			}
-			int shopno = Integer.parseInt(multi.getParameter("shopno"));
-//			String id = multi.getParameter("id");
+			int shopno = Integer.parseInt(multi.getParameter("shopno"));	
 			String id = mdto.getId();
 			dto.setContent(content);
 			// dto.setDate(date);
@@ -71,15 +63,8 @@ public class AddReviewResultAction implements Action {
 			dto.setGpa(gpa);
 			dto.setShopno(shopno);
 			dto.setId(id);
+			
 			System.out.println("=============================");
-			/*
-			 * System.out.println("content " + dto.getContent());
-			 * dto.setShopno(Integer.parseInt(multi.getParameter("shopno")));
-			 * dto.setPhoto(multi.getParameter("filedata")); System.out.println("file " +
-			 * multi.getParameter("filedata"));
-			 * System.out.println("============================="); //
-			 * System.out.println("photo" + multi.getParameter("photo"));
-			 */
 			int result = 0;
 			ReviewService service = ReviewService.getInstance();
 				result = service.addReview(dto, img);
@@ -103,41 +88,5 @@ public class AddReviewResultAction implements Action {
 		}
 		return forward;
 	}
-
-	//
-	// ReviewService service = ReviewService.getInstance();
-	// // int totalcount = service.getCount();
-	//
-	// // String title = request.getParameter("title");
-	// String content = request.getParameter("content");
-	// String date = request.getParameter("date1");
-	// String photo = request.getParameter("photo");
-	//// Float gpa = Float.parseFloat(request.getParameter("gpa"));
-	//// int shopno = Integer.parseInt(request.getParameter("shopno"));
-	// String id = request.getParameter("id");
-	// System.out.println("=====================");
-	// System.out.println(content );
-	// System.out.println(request.getParameter("name"));
-	// System.out.println(date);
-	// System.out.println(photo);
-	//// System.out.println(gpa);
-	//// System.out.println(shopno);
-	// System.out.println(id);
-	// ReviewDTO dto = new ReviewDTO();
-	// // dto.setTitle(title);
-	// dto.setContent(content);
-	//// dto.setDate(date);
-	// dto.setPhoto(photo);
-	//// dto.setGpa(gpa);
-	//// dto.setShopno(shopno);
-	// dto.setId(id);
-	//
-	//// int result = service.addReview(dto);
-	//// request.setAttribute("result", result);
-	// ActionForward forward = new ActionForward();
-	// forward.setRedirect(true);
-	// forward.setPath("detail.do?shopno="+1);
-	// return forward;
-	// }
 
 }

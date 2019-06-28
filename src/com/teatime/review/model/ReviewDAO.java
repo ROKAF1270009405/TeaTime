@@ -45,7 +45,6 @@ public class ReviewDAO {
 				dto.setShopno(rs.getInt("shopno"));
 				dto.setId(rs.getString("id"));
 				dto.setName(rs.getString("name"));
-
 				list.add(dto);
 			}
 		} finally {
@@ -76,15 +75,13 @@ public class ReviewDAO {
 			while(rs.next()) {
 				list.add(rs.getString("photo"));
 			}
-			System.out.println("list: "+list.size());
 		} finally {
 			if(pstmt!=null) {
 				pstmt.close();
 			}
+			if (rs != null)
+				rs.close();
 		}
-		
-		
-		
 		return list;
 	}
 	
@@ -99,8 +96,6 @@ public class ReviewDAO {
 		try {
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setString(1, dto.getContent());
-			// System.out.println(dto.getDate());
-//			java.sql.Date date = (java.sql.Date) new Date();
 			long d = System.currentTimeMillis();
 			Date date = new Date(d);
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
@@ -112,13 +107,11 @@ public class ReviewDAO {
 			pstmt.setFloat(3, dto.getGpa());
 			pstmt.setInt(4, dto.getShopno());
 			pstmt.setString(5, dto.getId());
-			System.out.println("dto.getid : " + dto.getId());
 			result = pstmt.executeUpdate();
 		} finally {
 			if (pstmt != null)
 				pstmt.close();
 		}
-
 		return result;
 	}
 	
@@ -154,22 +147,21 @@ public class ReviewDAO {
 			long d = System.currentTimeMillis();
 			Date date = new Date(d);
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-//			System.out.println("aaa" + java.sql.Date.valueOf(date1));
 			pstmt.setString(2, new java.sql.Date(d)+"%");
 //			pstmt.setString(3, dto.getPhoto());
 			pstmt.setFloat(3, dto.getGpa());
 			pstmt.setInt(4, dto.getShopno());
 			pstmt.setString(5, dto.getId());
-			System.out.println(sql.toString());
 			rs = pstmt.executeQuery();
 			if(rs!=null) {
 				rs.next();
 				id = rs.getInt(1);
-				System.out.println("=============id : " + id);
 			}
 		} finally {
 			if (pstmt != null)
 				pstmt.close();
+			if (rs != null)
+				rs.close();
 		}
 		return id;
 	}

@@ -7,7 +7,10 @@ import java.util.List;
 
 import javax.naming.NamingException;
 
+import com.teatime.best.model.BestDAO;
+import com.teatime.best.model.BestDTO;
 import com.teatime.comm.DBConn;
+import com.teatime.menu.model.MenuDTO;
 import com.teatime.shop.model.ShopDAO;
 import com.teatime.shop.model.ShopDTO;
 
@@ -88,6 +91,40 @@ public class ShopService {
 			return datacount;
 	}
 	
+	public int shopAddService(ShopDTO dto) {
+		DBConn db = DBConn.getdb();
+		Connection conn = null;
+		int result = 0;
+		try {
+			conn = db.getConnection();
+			conn.setAutoCommit(false);
+			ShopDAO dao = ShopDAO.getDAO();
+			result = dao.shopAdd(conn, dto);
+			conn.commit();
+		} catch (SQLException | NamingException e) {
+			try { conn.rollback(); } catch(SQLException e2) {}
+		} finally {	
+			if (conn != null) {	try {conn.close();} catch (SQLException e) {}}
+		}
+		return result;
+	}
 	
+	public int menuAddService(List<MenuDTO> menu) {
+		DBConn db = DBConn.getdb();
+		Connection conn = null;
+		int result = 0;
+		try {
+			conn = db.getConnection();
+			conn.setAutoCommit(false);
+			ShopDAO dao = ShopDAO.getDAO();
+			result = dao.menuAdd(conn, menu);
+			conn.commit();
+		} catch (SQLException | NamingException e) {
+			try { conn.rollback(); } catch(SQLException e2) {}
+		} finally {	
+			if (conn != null) {	try {conn.close();} catch (SQLException e) {}}
+		}
+		return result;
+	}
 	
 }
