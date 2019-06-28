@@ -21,13 +21,13 @@ public class ReviewAction implements Action {
 		System.out.println("hi");
 //		int totalcount = service.getCount();
 		int shopno = Integer.parseInt(request.getParameter("shopno"));
+//		int name = Integer.parseInt(request.getParameter("name"));
 		List<ReviewDTO> list = service.getList(shopno);
 		request.setAttribute("list", list);
 		request.setAttribute("shopno", shopno);
+//		request.setAttribute("name", name);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-//		forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/review/review.jsp");
-//		forward.setPath("/WEB-INF/detail/detail.jsp?page=/WEB-INF/review/review.jsp");
 		forward.setPath("/WEB-INF/review/review.jsp");
 		return forward;
 	}  
