@@ -20,18 +20,18 @@ public class CSDetailAction implements Action {
 			throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		MemberDTO member = (MemberDTO) session.getAttribute("Memberdto");
+		MemberDTO member = (MemberDTO) session.getAttribute("dto");
 		
 		ActionForward forward = new ActionForward();
 
-	/*	if(member==null)
+		if(member==null)
 		{
             forward.setRedirect(true);	
             forward.setPath("/login.do");
 			
 		}
 		else
-		{*/
+		{
 			int boardnum=Integer.parseInt(request.getParameter("num"));
 			
 			CustomerServiceService service = CustomerServiceService.getInstance();
@@ -39,16 +39,11 @@ public class CSDetailAction implements Action {
 			
 			request.setAttribute("data", data);
 			
-			System.out.println("내용"+data.getContent());
-			System.out.println("버노"+data.getQnano());
-			System.out.println("리플"+data.getReply());
-			
-			
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/customerservice/csdetail.jsp");
 			
-	/*	}
-		*/
+		}
+		
 		
 		
 		return forward;

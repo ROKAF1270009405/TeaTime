@@ -20,7 +20,8 @@ public class CustomerServiceDAO {
 
 	}
 
-	public List<CustomerServiceDTO> getListData(Connection conn, int startrow, int pagepercount, String id) throws SQLException {
+	public List<CustomerServiceDTO> getListData(Connection conn, int startrow, int pagepercount, String id)
+			throws SQLException {
 
 		StringBuilder sql = new StringBuilder();
 		ResultSet rs = null;
@@ -28,7 +29,7 @@ public class CustomerServiceDAO {
 
 		sql.append(" select qnano, title, state, id ");
 		sql.append(" from customerservice ");
-		sql.append(" where id = ?" );
+		sql.append(" where id = ?");
 		sql.append(" limit ?, ? ");
 
 		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
@@ -55,18 +56,26 @@ public class CustomerServiceDAO {
 		return list;
 	}
 
-	public int getCount(Connection conn) throws SQLException { // 전체 자료수 가져오는 메소드
+	public int getCount(Connection conn, String id) throws SQLException { // 전체 자료수 가져오는 메소드
 
 		StringBuilder sql = new StringBuilder();
+		ResultSet rs = null;
+
 		sql.append(" select count(*) ");
 		sql.append(" from customerservice ");
+		sql.append(" where id=? ");
 
 		int datacount = 0;
 
-		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString()); ResultSet rs = pstmt.executeQuery();) {
+		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+
 			if (rs.next()) {
 				datacount = rs.getInt(1);
 			}
+		}finally {
+			rsClose(rs);
 		}
 		return datacount;
 	}
@@ -81,7 +90,7 @@ public class CustomerServiceDAO {
 			pstmt.setString(2, dto.getContent());
 			pstmt.setString(3, dto.getId());
 			pstmt.setString(4, dto.getHp());
-			
+
 			pstmt.executeUpdate();
 		}
 	}
@@ -92,11 +101,11 @@ public class CustomerServiceDAO {
 		ResultSet rs = null;
 		StringBuilder sql = new StringBuilder();
 		CustomerServiceDTO data = new CustomerServiceDTO();
-		
+
 		sql.append(" select qnano, title, content, hp, regidate, csreply, replyregidate ");
 		sql.append(" from customerservice                          ");
 		sql.append(" where qnano=?                                  ");
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setInt(1, boardnum);
@@ -153,30 +162,29 @@ public class CustomerServiceDAO {
 		sql.append(" set title= ?, content= ?, hp= ? ");
 
 		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
-			
+
 			pstmt.setString(1, dto.getTitle());
 			pstmt.setString(2, dto.getContent());
 			pstmt.setString(3, dto.getHp());
-			
+
 			pstmt.executeUpdate();
 		}
 	}
 
-
-	public CustomerServiceDTO replyUpdate(Connection conn, CustomerServiceDTO data)  throws SQLException {
+	public CustomerServiceDTO replyUpdate(Connection conn, CustomerServiceDTO data) throws SQLException {
 		StringBuilder sql = new StringBuilder();
-		
+
 		sql.append(" update customerservice ");
 		sql.append(" set csreply = ?, state = 1 , replyregidate = now()");
 		sql.append(" where qnano= ?");
-		
-		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
-			
+
+		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
+
 			pstmt.setString(1, data.getReply());
 			pstmt.setInt(2, data.getQnano());
 			pstmt.executeUpdate();
 		}
-		
+
 		return data;
 	}
 }

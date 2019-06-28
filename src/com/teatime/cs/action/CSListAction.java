@@ -41,7 +41,7 @@ public class CSListAction implements Action {
 			}
 
 			int pagepercount = 10; // 1 페이지에 보여질 자료 수
-			int totalcount = service.getCount();
+			int totalcount = service.getCount(id);
 			int totalpage = (totalcount / pagepercount) + ((totalcount % pagepercount == 0) ? 0 : 1);
 			int startrow = (currpage - 1) * pagepercount;
 			int blocksize = 10; // 1블록 10개 페이지

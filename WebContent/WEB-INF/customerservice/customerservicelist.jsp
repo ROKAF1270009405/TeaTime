@@ -20,6 +20,7 @@
 		<h1>고객센터</h1>
 		<p>궁금하신 점을 문의하면 자세히 답변해드리겠습니다.</p>
 		<a href="csinsertform.do">글쓰기</a>
+		${id}
 	</div>
 	<div>
 		<c:set var="currpage" value="${requestScope.currpage}"></c:set>

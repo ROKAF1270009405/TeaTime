@@ -50,7 +50,7 @@ public class CustomerServiceService {
 		return list;
 	}
 
-	public int getCount() { // 자료 갯수를 가져옴
+	public int getCount(String id) { // 자료 갯수를 가져옴
 		
 		DBConn db = DBConn.getdb();
 		Connection conn = null;
@@ -60,7 +60,7 @@ public class CustomerServiceService {
 
 			conn = db.getConnection();
 			CustomerServiceDAO dao = CustomerServiceDAO.getDAO();
-			datacount = dao.getCount(conn);
+			datacount = dao.getCount(conn, id);
 
 		} catch (SQLException | NamingException e) {
 			System.out.println(e);
