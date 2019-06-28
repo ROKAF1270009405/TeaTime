@@ -75,7 +75,6 @@ public class CustomerServiceDAO {
 		StringBuilder sql = new StringBuilder();
 		sql.append(" insert into customerservice(title, content, id, hp) ");
 		sql.append(" values(?, ?, ?, ?)                            ");
-		System.out.println("id-----------"+dto.getId());
 		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString())) {
 
 			pstmt.setString(1, dto.getTitle());
@@ -97,7 +96,7 @@ public class CustomerServiceDAO {
 		sql.append(" select qnano, title, content, hp, regidate, csreply, replyregidate ");
 		sql.append(" from customerservice                          ");
 		sql.append(" where qnano=?                                  ");
-
+		
 		try {
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setInt(1, boardnum);

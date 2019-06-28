@@ -37,9 +37,9 @@ public class DuplicateCheck extends HttpServlet {
 		result = service.idCheckService(id);
 		
 		if(result == 0) {
-			out.println("아이디 사용 가능");
+			out.println(0);
 		} else {
-			out.println("중복된 아이디가 있습니다.");
+			out.println(1);
 		}
 	}
 

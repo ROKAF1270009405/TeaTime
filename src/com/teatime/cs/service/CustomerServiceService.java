@@ -115,6 +115,7 @@ public class CustomerServiceService {
 			conn.setAutoCommit(false);
 			CustomerServiceDAO dao = CustomerServiceDAO.getDAO();
 			data = dao.detailData(conn, boardnum);
+			
 			conn.commit();
 			
 		}catch (SQLException | NamingException e) {
