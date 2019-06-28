@@ -76,7 +76,7 @@ label {
 				<h1>문의사항</h1>
 				<hr>
 				<input id="num" type="hidden" value="${data.qnano}">
-				<li><label for="id">아이디</label>${sessionScope.dto.id}</li>
+				<li><label for="id">아이디</label>${data.id}</li>
 				<li><label for="hp">연락처</label>${data.hp}</li>
 				<li><label for="email">이메일</label>${sessionScope.dto.mail}</li>
 				<li><label for="date">작성일</label>${data.regidate}</li>
