@@ -18,8 +18,9 @@ public class BestAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String kind = request.getParameter("kind");				// 좋아요, 평점 기준
-		String startday = request.getParameter("startday");		//
-		String endday = request.getParameter("endday");
+		String startday = request.getParameter("startdate");		//
+		String endday = request.getParameter("enddate");
+		System.out.println(startday+", "+endday);
 		
 		//System.out.println("베스트 액션 진입..");
 		/*
