@@ -55,7 +55,7 @@ ul li {
 	float: right;
 }
 
-.main-p-left {
+#main-p-left {
 	margin: 10px;
 	display: inline-block;
 	float: left;
@@ -130,6 +130,12 @@ ul li {
 	color: #ffffff !important;
 	width: 100%;
 }
+.anchor{
+	width: 50px;
+	height: 50px;
+    margin-top: -100px;
+    margin-left: 47.5%;
+}
 </style>
 
 </head>
@@ -171,8 +177,11 @@ ul li {
 			</div>
 		</div>
 	</header>
+	
+	<a href="#main_img_wrap"><img src="http://localhost:8080/MiniPro2/img/anchor.png" class="anchor"></a>
+	
 	<br>
-	<h3 class="main-p-left">
+	<h3 id="main-p-left">
 		<b>TeaTime</b>
 	</h3>
 	<c:if test="${sessionScope.dto.authority==1}">

@@ -65,6 +65,8 @@ float : right;
   text-transform: uppercase;
   font-weight: 700;
   top:0px;
+  left: -18%;
+  margin-bottom: -15px !important;
 }
 .delbtn:before, .delbtn:after {
   border-color: transparent;
