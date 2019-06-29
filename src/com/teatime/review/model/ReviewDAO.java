@@ -109,7 +109,6 @@ public class ReviewDAO {
 			pstmt.setInt(4, dto.getShopno());
 			pstmt.setString(5, dto.getId());
 			result = pstmt.executeUpdate();
-			System.out.println("add review1!!!!");
 		} finally {
 			if (pstmt != null)
 				pstmt.close();
@@ -122,9 +121,6 @@ public class ReviewDAO {
 		sql.append("insert into reviewphoto(photo, reviewno)		");
 		sql.append("			values(?, ?)						");
 		PreparedStatement pstmt = null;
-		System.out.println(sql.toString());
-		System.out.println(img);
-		System.out.println(reviewno);
 		int result = 0;
 		try {
 			pstmt = conn.prepareStatement(sql.toString());
@@ -161,8 +157,6 @@ public class ReviewDAO {
 			pstmt.setFloat(3, dto.getGpa());
 			pstmt.setInt(4, dto.getShopno());
 			pstmt.setString(5, dto.getId());
-			System.out.println(dto);
-			System.out.println(sql.toString());
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 //				rs.next();
@@ -174,7 +168,6 @@ public class ReviewDAO {
 			if (rs != null)
 				rs.close();
 		}
-		System.out.println("hrer " + id);
 		return id;
 	}
 }
