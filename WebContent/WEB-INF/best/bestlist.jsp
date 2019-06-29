@@ -68,6 +68,65 @@ a {
 .site img{
 	
 }
+.delbtn {
+  background-color: #288cd2;
+  border-radius:15%;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  /* display: inline-block; */
+  font-family: 'BenchNine', Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1em;
+  margin-left: 10px;
+  outline: none;
+  padding: 5px 7.5px 5px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 700;
+  top:0px;
+}
+.delbtn:before, .delbtn:after {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 12px;
+  position: absolute;
+  width: 12px;
+}
+
+.delbtn:before {
+  border-color: #288cd2;
+  border-right-width: 2px;
+  border-top-width: 2px;
+  right: -5px;
+  top: -5px;
+}
+.delbtn:after {
+  border-bottom-width: 2px;
+  border-color: #288cd2;
+  border-left-width: 2px;
+  bottom: -5px;
+  left: -5px;
+}
+.delbtn:hover,
+.delbtn.hover {
+  background-color: #4CAF50;
+}
+.delbtn:hover:before,
+.delbtn.hover:before,
+.delbtn:hover:after,
+.delbtn.hover:after {
+  border-color:#4CAF50;
+  height: 100%;
+  width: 100%;
+}
+#list{
+	margin-bottom: 10px;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
@@ -76,19 +135,14 @@ a {
 	  /* let kind = $('.btn').val();
 	  console.log(kind);
 	   */
-	  $('#kind').on('change',function () {
-		  console.log('change!!!');
-	    console.log( $(this).val());	 
-		/*   if(kindtitle==="좋아요 베스트"){
-			  kindtitle = "평점 베스트";
-			  $('.btn').val('gpa');
-		  } else if(kindtitle==="평점 베스트"){
-			  kindtitle = "좋아요 베스트";
-			  $('.btn').val('good');
-		  }
-		  kind = $('.btn').val();
-		  $(this).text(kindtitle); */
-		  $('form').submit();
+	  $('.kind').on('change',function () {
+		  let startdate = $(this).val();
+		  $('#sp').css('display','');
+		  $('#enddate').css('display','');
+		  $('#enddate').attr('min', startdate);
+	    console.log( $(this).val());
+		  //$('form').submit();
+		  
 		 /*  $.ajax({
 			  url:"http://localhost:8080/MiniPro2/best.do",
 			  type:'GET',
@@ -110,13 +164,17 @@ a {
 
 
 <div class="mo">
+<div id="list">
 <form method="post" action="best.do" name="frm">
-	<select name="kind" id="kind">
-	<option value="">정렬 기준</option>
-		<option value="good">좋아요</option>
+	<select name="kind" id="kind" >
+	<optgroup label="정렬 기준" style="font-size: 13px"></optgroup>
+		<option value="good" selected="selected">좋아요</option>
 		<option value="gpa">평점</option>
 	</select>
+	<input type="date" name="startdate" id="startdate" class="kind"><span id="sp" style="display: none;">&nbsp;&nbsp;~&nbsp;&nbsp;</span><input type="date" name="enddate" id="enddate" style="display: none;">
+	<button class="delbtn">확인</button>	
 </form>
+</div>
 <!-- <form method="post" action="best.do">
 	<button class="btn" value="good" id="kind" name="kind">좋아요 베스트</button>
 </form> -->

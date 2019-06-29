@@ -24,32 +24,40 @@ public class BestDAO {
 		StringBuilder sb = new StringBuilder();
 		List<BestDTO> bestlist = new ArrayList<>();
 		sb.append(" select s.shopno, s.name, s.addr, s.photo, avg(gpa) as gpa, (select count(*) from good g where g.shopno = s.shopno) as good ");
-		sb.append(" from shop s join review r on s.shopno = r.shopno ");
+		sb.append(" from shop s left outer join review r on s.shopno = r.shopno ");
 		//System.out.println("kind : "+kind);
 		//System.out.println("startday : "+startday);
 		//System.out.println("endday : "+endday);
 		//날짜 기준
 		if(startday!=null && !("".equals(startday))) {
 			sb.append(" where r.date between ? and ");
-			if("none".equals(endday))
+			if("none".equals(endday)) {
+				System.out.println("하나 선택했네"+startday);
 				sb.append(" current_date()+1 "); //오늘날까지.
-			else 
-				sb.append(" '? 23:59:59' "); //사용자 지정날까지.
+			}
+			else {
+				System.out.println("두개 선택했네 "+startday+", "+endday);
+				sb.append(" ? "); //사용자 지정날까지.
+				//sb.append(" 23:59:59  ");
+			}
 		}
 		
 		if("good".equals(kind))
-			sb.append(" group by shopno order by good desc, gpa desc ");
+			sb.append(" group by shopno order by good desc, gpa desc, s.name ");
 		else 
-			sb.append(" group by shopno order by gpa desc, good desc ");
+			sb.append(" group by shopno order by gpa desc, good desc, s.name ");
 		//System.out.println(sb.toString());
 		try(PreparedStatement pstmt = conn.prepareStatement(sb.toString());){
+			System.out.println(sb.toString());
 			if(startday!=null && !("".equals(startday))) {
 				pstmt.setString(1, startday);
 				if(!("none".equals(endday))) {
-					//System.out.println("end day 가 있다");
+					System.out.println("end day 가 있다");
 					pstmt.setString(2, endday);
+					System.out.println(endday);
 				} 
 			} 
+			System.out.println(sb.toString());
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				BestDTO dto = new BestDTO();
