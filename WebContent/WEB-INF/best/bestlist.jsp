@@ -29,7 +29,7 @@ thead th {
     font-weight: bold;
     vertical-align: top;
     color: #fff;
-    background: #288cd2;
+    background: rgb(244,98,58);
     margin: 20px 10px;
     text-align: center;
 }
@@ -50,7 +50,7 @@ td{
     vertical-align: middle;
 }
 tr:nth-child(2n) {
-    background-color: #9DCFFF;
+    background-color: rgba(244,98,58,0.2) !important;
 }
 a {
 	text-decoration: none;
@@ -69,7 +69,7 @@ a {
 	
 }
 .delbtn {
-  background-color: #288cd2;
+  background-color: rgb(244,98,58);
   border-radius:15%;
   border: none;
   color: #ffffff;
@@ -99,7 +99,7 @@ a {
 }
 
 .delbtn:before {
-  border-color: #288cd2;
+  border-color: rgb(244,98,58);
   border-right-width: 2px;
   border-top-width: 2px;
   right: -5px;
@@ -107,20 +107,20 @@ a {
 }
 .delbtn:after {
   border-bottom-width: 2px;
-  border-color: #288cd2;
+  border-color: rgba(244,98,58,1.2);
   border-left-width: 2px;
   bottom: -5px;
   left: -5px;
 }
 .delbtn:hover,
 .delbtn.hover {
-  background-color: #4CAF50;
+  background-color: rgba(244,98,158,1.2);
 }
 .delbtn:hover:before,
 .delbtn.hover:before,
 .delbtn:hover:after,
 .delbtn.hover:after {
-  border-color:#4CAF50;
+  border-color:rgba(244,98,58,1.2);
   height: 100%;
   width: 100%;
 }
@@ -190,7 +190,7 @@ a {
 		<c:forEach var="best" items="${bestlist }">
 			<tr class="trs">
 				<td><div class="site"><img alt="이미지" src="${best.photo }"></div></td>
-				<td><c:out value="${best.name }"></c:out></td>
+				<td><a href="detail.do?shopno=${best.shopno }">${best.name }</a></td>
 				<td><fmt:formatNumber value="${best.gpa }" pattern=".0"/></td>
 				<td><c:out value="${best.addr }"></c:out></td>
 				<td><c:out value="${best.count }"></c:out></td>

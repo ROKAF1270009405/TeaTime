@@ -34,6 +34,10 @@ public class ShopAddsAction implements Action {
 		String workingtime = request.getParameter("starttime"); //영업 시작 시간
 		workingtime += " ~ "+request.getParameter("endtime"); //영업 종료 시간
 		
+		if(photo==null||photo.equals("")) {
+			photo="http://localhost:8080/MiniPro2/img/bg.jpg";
+		}
+		
 		String foodkind = ""; // 음식 종류
 		String korean = request.getParameter("korean"); // 한식
 		String japanese = request.getParameter("japanese"); // 일식

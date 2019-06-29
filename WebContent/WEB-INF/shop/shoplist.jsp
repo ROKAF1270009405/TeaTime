@@ -123,8 +123,14 @@ ul li {
 		<c:forEach var="shop" items="${requestScope.list }">
 
 			<div class="col-lg-4 col-sm-6">
-				<a class="portfolio-box"> <img class="img-fluid"
-					src="${shop.photo }" alt="이미지">
+				<a class="portfolio-box"> 
+				
+				
+				
+				<img class="img-fluid"src="${shop.photo }" alt="이미지">
+				
+				
+				
 					<div class="portfolio-box-caption">
 						<div class="project-category text-white-50">
 							<a href="detail.do?shopno=${shop.shopno }">${shop.name}</a>
