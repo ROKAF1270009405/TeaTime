@@ -17,7 +17,6 @@ public class LoginAction implements Action {
 		ActionForward act = new ActionForward();
 		act.setRedirect(false);
 		act.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/login/loginform.jsp");
-		
 		return act;
 	}
 

@@ -52,7 +52,7 @@ public class CSListAction implements Action {
 				endblock = totalpage;
 
 			List<CustomerServiceDTO> list = service.getList(startrow, pagepercount, id);
-			System.out.println(id);
+			
 			request.setAttribute("list", list);
 			request.setAttribute("totalpage", totalpage);
 			request.setAttribute("currpage", currpage);

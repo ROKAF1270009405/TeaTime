@@ -25,7 +25,7 @@ public class CSAddResultAction implements Action {
 		MemberDTO member = (MemberDTO) session.getAttribute("dto");
 
 		ActionForward forward = new ActionForward();
-
+		
 		if (member == null) { // 로그인 안되어있을시
 			forward.setRedirect(true);
 			forward.setPath("login.do");

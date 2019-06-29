@@ -19,22 +19,23 @@ public class ReviewModifyResultAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
-		MemberDTO dto = (MemberDTO) session.getAttribute("dto");
+		request.setCharacterEncoding("utf-8");
+		String content = request.getParameter("content");
+		// String gpa = request.getParameter("gpa");
+		MypageDTO dto = new MypageDTO();
+		dto.setContent(content);
+		// dto.setGpa(gpa);
 		
+		System.out.println("여긴 M.R.Action인데 난 content 값을 보고싶어 : " + content);
+		
+		MypageService service = MypageService.getInstance();
+		// int result = service.modifyService(dto);
+		//request.setAttribute("result", result);
+		//System.out.println("여긴 M.R.Action인데 난 result 값을 보고싶어 : " + result);
 		ActionForward forward = new ActionForward();
-		if (dto == null) {
-			forward.setRedirect(true);
-			forward.setPath("login.do");
-		} else {
-			MypageService service = MypageService.getInstance();
-			service.modifyService(dto);			
-			
-			forward.setRedirect(true);
-			forward.setPath("");	
-		}
-		
-		
+		forward.setRedirect(true);
+		forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/mypage/myreviewpage.jsp");
+
 		return forward;
 	} // end execute method
 

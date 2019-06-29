@@ -17,8 +17,11 @@
 }
 
 .tableboard {
-	margin-left: 100px;
+	min-height: 250px;
+	margin-left : 10%;
 	magint-right: 100px;
+	padding-right: 10%;
+	margin-left: 10%;
 }
 
 .stateth {
@@ -29,10 +32,17 @@
 	width: 100px;
 }
 
-thead tr th, #qnano, #state{
+thead tr th, #qnano, #state {
 	text-align: center;
 }
 
+#state1 {
+	color: #f4623a;
+}
+
+#title {
+	color: black;
+}
 </style>
 <body>
 	<section class="div1 page-section bg-primary">
@@ -67,36 +77,37 @@ thead tr th, #qnano, #state{
 			<tbody>
 				<c:forEach var="board" items="${list}">
 					<c:if test="${board.state==1}">
-						<tr class="table-light">
+						<tr class="table-secondary">
 					</c:if>
 					<c:if test="${board.state==0}">
-						<tr class="table-info">
+						<tr class="table-light">
 					</c:if>
 					<td id="qnano">${board.qnano}</td>
-					<td><a href="csdetail.do?num=${board.qnano}">${board.title}</a></td>
-					<td id="state"><c:if test="${board.state==1}">답변완료</c:if> <c:if
-							test="${board.state==0}">답변 대기중</c:if></td>
+					<td><a id="title" href="csdetail.do?num=${board.qnano}">${board.title}</a></td>
+					<td id="state"><c:if test="${board.state==1}">
+							<span id="state1">답변완료</span>
+						</c:if> <c:if test="${board.state==0}">답변 대기중</c:if></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<div id="page" class="row h-100 align-items-center justify-content-center text-center">
-			<c:if test="${startblock>1 }">
-				<a href="customerservicelist.do?currpage=${startblock-1 }">이전</a>
+	</div>
+	<div class="text-center">
+		<c:if test="${startblock>1 }">
+			<a href="customerservicelist.do?currpage=${startblock-1 }">이전</a>
+		</c:if>
+		<c:forEach var="i" begin="${startblock}" end="${endblock}">
+			<c:if test="${i==currpage }">
+				<c:out value="${i}"></c:out>
 			</c:if>
-			<c:forEach var="i" begin="${startblock}" end="${endblock}">
-				<c:if test="${i==currpage }">
-					<c:out value="${i}"> </c:out>
-				</c:if>
-				<c:if test="${i!=currpage}">
-					<a href="customerservicelist.do?currpage=${i}"><c:out
-							value="${i}"></c:out></a>
-				</c:if>
-			</c:forEach>
-			<c:if test="${endblock<totalpage}">
-				<a href="customerservicelist.do?currpage=${endblock+1}">다음</a>
+			<c:if test="${i!=currpage}">
+				<a href="customerservicelist.do?currpage=${i}"><c:out
+						value="${i}"></c:out></a>
 			</c:if>
-		</div>
+		</c:forEach>
+		<c:if test="${endblock<totalpage}">
+			<a href="customerservicelist.do?currpage=${endblock+1}">다음</a>
+		</c:if>
 	</div>
 </body>
 </html>

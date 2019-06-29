@@ -50,7 +50,7 @@ a {
 			<li>사진 : <%=mydto.getPhoto()%></li>
 			<li>리뷰 : <%=mydto.getContent()%></li>
 		</ul>
-		<a href="modify.do">수정</a>
+		<a href="modifymyreview.do?no=<%=mydto.getReviewno()%>">수정</a>
 		<a href="deletemyreview.do?num=<%=mydto.getReviewno()%>">삭제</a>
 	</div>
 

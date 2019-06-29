@@ -15,7 +15,7 @@
 	%>
 	<script>
 		alert('삭제 되었습니다!');
-		location.href = 'mypage.do';
+		location.href = 'teatime.do';
 	</script>
 
 	<%
@@ -23,7 +23,7 @@
 	%>
 	<script>
 		alert('삭제가 안 돼요!');
-		location.href = 'mypage.do';
+		location.href = 'teatime.do';
 	</script>
 
 	<%
