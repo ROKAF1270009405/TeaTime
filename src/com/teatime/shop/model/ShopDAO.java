@@ -24,16 +24,17 @@ public class ShopDAO {
 	public int shopAdd(Connection conn, ShopDTO dto) throws SQLException {
 		int result = 0;
 		StringBuilder sb = new StringBuilder();
-		sb.append(" insert into shop(name, content, addr, workingtime, foodkind, id) ");
-		sb.append(" values(?, ?, ?, ?, ?, ?) ");
+		sb.append(" insert into shop(name, photo, content, addr, workingtime, foodkind, id) ");
+		sb.append(" values(?, ?, ?, ?, ?, ?, ?) ");
 		
 		try(PreparedStatement pstmt = conn.prepareStatement(sb.toString());){
 			pstmt.setString(1, dto.getName());
-			pstmt.setString(2, dto.getContent());
-			pstmt.setString(3, dto.getAddr());
-			pstmt.setString(4, dto.getWorkingtime());
-			pstmt.setString(5, dto.getFoodkind());
-			pstmt.setString(6, dto.getId());
+			pstmt.setString(2, dto.getPhoto());
+			pstmt.setString(3, dto.getContent());
+			pstmt.setString(4, dto.getAddr());
+			pstmt.setString(5, dto.getWorkingtime());
+			pstmt.setString(6, dto.getFoodkind());
+			pstmt.setString(7, dto.getId());
 			result = pstmt.executeUpdate();
 		}
 		return result;

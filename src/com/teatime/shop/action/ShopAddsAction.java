@@ -29,6 +29,7 @@ public class ShopAddsAction implements Action {
 		ShopDTO sdto = new ShopDTO();
 		String shopname = request.getParameter("name"); // 매장이름
 		String content = request.getParameter("content"); // 매장 소개
+		String photo = request.getParameter("fileName1"); // 매장 사진
 		String addr = request.getParameter("addr"); // 매장 주소
 		String workingtime = request.getParameter("starttime"); //영업 시작 시간
 		workingtime += " ~ "+request.getParameter("endtime"); //영업 종료 시간
@@ -52,6 +53,7 @@ public class ShopAddsAction implements Action {
 		}
 		sdto.setId(mdto.getId());
 		sdto.setName(shopname);
+		sdto.setPhoto(photo);
 		sdto.setContent(content);
 		sdto.setAddr(addr);
 		sdto.setWorkingtime(workingtime);

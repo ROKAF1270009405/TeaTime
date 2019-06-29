@@ -1,8 +1,13 @@
+<%@page import="java.io.File"%>
+<%@page import="java.util.Enumeration"%>
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8">
   <title>Teatime</title>
   <!-- Custom fonts for this template-->
@@ -241,33 +246,160 @@ textarea {
   text-align: center;
   border: 1px solid #6cc0e5;
 }
-
+img {
+	width: 100px;
+	height: auto;
+}
+img:hover {
+	cursor: pointer;
+}
+.img_wrap{
+width:300px;
+margin-top: 50px;
+}
+.img_wrap img{
+	max-width:100%; 
+}
+#fileName1{
+	display: none;
+}
+#imgs{
+	display: inline-block;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
-/* $(document).ready(function(){
-$(".hover").mouseleave(
-		  function() {
-		    $(this).removeClass("hover");
-		  }
-		);
-}); */
 function add_item(){
     var div = document.createElement('div');
     div.innerHTML = document.getElementById('pre_set').innerHTML;
     document.getElementById('field').appendChild(div);
 }
-
 function remove_item(obj){
     document.getElementById('field').removeChild(obj.parentNode);
 }
+var count = 1;
+function change1(value){
+     /* $(value).next().attr("src","reviewimg/a.jpg"); */
+     if(value.files && value.files[0]){
+        $clone = $(".file1:first").clone().appendTo('#file');
+        console.log('ok');
+        let id = 'test' + count;
+        console.log($(value).attr('id'));
+        let b = $(value).attr('id');
+        $(value).attr('id','test' + count);
+        console.log($(value).attr('id'));
+        $(value).parent().attr("for", 'test'+count);
+        $clone.find('input').attr('name','test' + count);
+        
+           var reader = new FileReader();
+           let a = $(value).attr('id');
+           console.log(a+ "ggggg");
+           let v = count-1;
+           console.log(count-1);
+           let vv = 'test'+v;
+           console.log(b+"aaaaa");
+           reader.onload=function(e){
+              console.log("====================");
+              $('#'+b).parent().off();
+              console.log($('#'+b).parent());
+              $('#'+b).off();
+              console.log($('#'+b));
+              $('#'+b).next().off();
+              console.log($('#'+b).next());
+              $("#"+b).next().attr('src', e.target.result);
+              e.preventDefault();
+              console.log(e);
+              $("#"+b).on('click', function(val){
+                //console.log($(val).clear());
+                console.log($(this).next().remove());
+                $(this).remove();
+                console.log("==1=1=1=1=1=1=1=11122222111");
+                return false;
+              });
+              $(id).next().attr('src', e.target.result); 
+              }
+           /* value.files[0].select().clear(); */
+           reader.readAsDataURL(value.files[0]);
+           $(value).val("");
+           count++;
+     }
+}
+ function previewImage(targetObj, View_area) {
+	var preview = document.getElementById(View_area); //div id
+	var ua = window.navigator.userAgent;
+  //ie일때(IE8 이하에서만 작동)
+	if (ua.indexOf("MSIE") > -1) {
+		targetObj.select();
+		try {
+			var src = document.selection.createRange().text; // get file full path(IE9, IE10에서 사용 불가)
+			var ie_preview_error = document.getElementById("ie_preview_error_" + View_area);
+
+
+			if (ie_preview_error) {
+				preview.removeChild(ie_preview_error); //error가 있으면 delete
+			}
+
+			var img = document.getElementById(View_area); //이미지가 뿌려질 곳
+
+			//이미지 로딩, sizingMethod는 div에 맞춰서 사이즈를 자동조절 하는 역할
+			img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+src+"', sizingMethod='scale')";
+		} catch (e) {
+			if (!document.getElementById("ie_preview_error_" + View_area)) {
+				var info = document.createElement("<p>");
+				info.id = "ie_preview_error_" + View_area;
+				info.innerHTML = e.name;
+				preview.insertBefore(info, null);
+			}
+		}
+  //ie가 아닐때(크롬, 사파리, FF)
+	} else {
+		var files = targetObj.files;
+		for ( var i = 0; i < files.length; i++) {
+			var file = files[i];
+			var imageType = /image.*/; //이미지 파일일경우만.. 뿌려준다.
+			if (!file.type.match(imageType))
+				continue;
+			var prevImg = document.getElementById("prev_" + View_area); //이전에 미리보기가 있다면 삭제
+			if (prevImg) {
+				preview.removeChild(prevImg);
+			}
+			var img = document.createElement("img"); 
+			img.id = "prev_" + View_area;
+			img.classList.add("obj");
+			img.file = file;
+			img.style.width = '100px'; 
+			img.style.height = '100px';
+			preview.appendChild(img);
+			if (window.FileReader) { // FireFox, Chrome, Opera 확인.
+				var reader = new FileReader();
+				reader.onloadend = (function(aImg) {
+					return function(e) {
+						aImg.src = e.target.result;
+					};
+				})(img);
+				reader.readAsDataURL(file);
+			} else { // safari is not supported FileReader
+				//alert('not supported FileReader');
+				if (!document.getElementById("sfr_preview_error_"
+						+ View_area)) {
+					var info = document.createElement("p");
+					info.id = "sfr_preview_error_" + View_area;
+					info.innerHTML = "not supported FileReader";
+					preview.insertBefore(info, null);
+				}
+			}
+		}
+	}
+} 
+
 </script>
 <body>
 <div id="shop">
 <h3>매장 등록</h3>
-  <form method="post" action="shopadds.do">
+
+  <form method="post" action="shopadds.do" enctype="Multipart/form-data">
   	<div class="form-label-group">
-  	  <input type="text" id="name" name="name" class="form-control" placeholder="매장 이름을 적어주세요.">
+  	  <input type="text" id="name" name="name" class="form-control" placeholder="매장 이름을 적어주세요." autofocus required>
   	  <label for="name">매장 이름</label>
 	</div>
 	<h5>음식 종류</h5>
@@ -286,10 +418,10 @@ function remove_item(obj){
   	
 	</div>
 	<label for="content">매장 소개</label>
-	<textarea id="content" name="content" placeholder="매장 소개 해주세요."></textarea>
+	<textarea id="content" name="content" placeholder="매장 소개 해주세요." required></textarea>
 	
 	<div class="form-label-group">
-    	<input type="text" id="addr" name="addr" placeholder="매장 주소를 입력해주세요.">
+    	<input type="text" id="addr" name="addr" placeholder="매장 주소를 입력해주세요." required>
     	<label for="addr">매장 주소</label>
 	</div>
 	
@@ -297,7 +429,18 @@ function remove_item(obj){
     <input type="time" id="starttime" name="starttime" >
     
     <label for="endtime"> 종료 시간</label>
-    <input type="time" id="endtime" name="endtime" >
+    <input type="time" id="endtime" name="endtime" ><br>
+    <label for="">매장 사진</label><br>
+    
+    <!-- <div id="imgs"> -->
+	    <div id="file">
+	    	<label>
+		    	<input type="file" name="fileName1" id="fileName1" onchange="previewImage(this,'View_area')">
+				<img src="reviewimg/addimage.png">
+			</label>
+		</div>
+		<div id='View_area' style='position:relative; width: 100px; height: 100px; color: black; border: 0px solid black; dispaly: inline; '></div>
+	<!-- </div> -->
     
     <hr>
     <h3>메뉴</h3>
@@ -318,6 +461,7 @@ function remove_item(obj){
     <input type="submit" value="등록">
     <!-- <button class="delbtn" >등록</button> -->
   </form>
+
 </div>
 </body>
 </html>
