@@ -55,8 +55,19 @@ clear:both;
 				<ul>
 					<li class="id">${board.id }</li>
 					<li class="reivewno">${board.reviewno}</li>
-					<li>${board.gpa}</li>
 					<li class="date">${board.date }</li>
+					${board.gpa }
+					<c:if test="${board.gpa == 5.0}">
+						<li class="reviewli"><img src="/reviewimg/${happy.png}"></li>
+					</c:if>
+					<c:if test="${board.gpa == 2.5}">
+					dddd
+						<li class="reviewli"><img src="/reviewimg/${happy.png}"></li>
+					</c:if>
+					<c:if test="${board.gpa == 0}">
+					dddd
+						<li class="reviewli"><img src="/reviewimg/${happy.png}"></li>
+					</c:if>
 				</ul>
 				<div class="content">
 				<p>${board.content }</p>
