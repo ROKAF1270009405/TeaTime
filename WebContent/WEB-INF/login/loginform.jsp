@@ -36,7 +36,7 @@ body {
 	background-size: cover;
 }
 .main{
-	padding-top: 280px;
+	padding-top: 100px;
 }
 html, body{
 	height: 100%;
@@ -44,7 +44,7 @@ html, body{
 }
 
 #wrap{
-	min-height: 100%;
+	min-height:700px;
 	position: relative;
 }
 .join{
