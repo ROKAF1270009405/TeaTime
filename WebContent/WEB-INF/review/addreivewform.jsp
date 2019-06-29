@@ -288,14 +288,14 @@ list-style-type: none;
 </head>
 <body>
 	<jsp:useBean id="today" class="java.util.Date" />
-	<fmt:formatDate var="now" value="${today }" pattern="yyyyMMdd" />
+	<fmt:formatDate var="now" value="${today }" pattern="yyyy-MM-dd" />
 	<div id="shop">
 		<form method="post" action="addreviewresult.do"
 			enctype="multipart/form-data">
 			<h2>${param.name }</h2>
 			<ul>
 				<li class="form-label-group"><label for="date"><input name="date"
-						value="${now }" disabled class="form-control"></label></li>
+						value="${now }" class="form-control"></label></li>
 				
 				<li class="form-label-group"><label>
 				<input type="hidden" name="shopno" value="${param.shopno }" /></label></li>

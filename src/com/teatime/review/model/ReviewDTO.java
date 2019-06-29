@@ -17,6 +17,11 @@ public class ReviewDTO {
 	public String getName() {
 		return name;
 	}
+	@Override
+	public String toString() {
+		return "ReviewDTO [reviewno=" + reviewno + ", title=" + title + ", content=" + content + ", date=" + date
+				+ ", photo=" + photo + ", gpa=" + gpa + ", shopno=" + shopno + ", id=" + id + ", name=" + name + "]";
+	}
 	public void setName(String name) {
 		this.name = name;
 	}
