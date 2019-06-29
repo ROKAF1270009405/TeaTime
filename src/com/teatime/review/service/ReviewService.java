@@ -34,12 +34,14 @@ public class ReviewService {
 			for(int i = 0; i < list.size(); i++) {
 				ReviewDTO dto = list.get(i);
 				int reviewno = dao.getReviewNo(conn, list.get(i));
+//				System.out.println("reviewno : " + reviewno);
 				dto.setPhoto(dao.getPhotoList(conn, reviewno));
 				list.set(i, dto);
 			}
 			
 		} catch (NamingException | SQLException e) {
 			System.out.println(e);
+//			System.out.println("getlist");
 		} finally {
 			if (conn != null)
 				try {
