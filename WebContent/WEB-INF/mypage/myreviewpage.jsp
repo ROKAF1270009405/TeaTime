@@ -26,18 +26,16 @@ a {
 </style> -->
 </head>
 <body>
-
+	<h3>내가 쓴 리뷰 보기</h3>
 	<%
 		request.setCharacterEncoding("utf-8");
 		List<MypageDTO> list = (List<MypageDTO>) request.getAttribute("list");
 
 		for (int i = 0; i < list.size(); i++) {
+	%> <hr><%
 			MypageDTO mydto = list.get(i);
-
 			if (mydto.getContent() == null) {
 	%>
-
-	<p>이건 왜 안 뜨는건지 모르겠다..</p>
 
 	<%
 		} else {

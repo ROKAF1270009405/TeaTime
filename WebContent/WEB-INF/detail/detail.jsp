@@ -59,7 +59,7 @@ div {
 						return results[1] || 0;
 					}
 				}
-
+ 
 				/* $("#result").load("review.do");
 				console.log('hi'); */
 
