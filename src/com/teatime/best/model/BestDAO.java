@@ -24,22 +24,24 @@ public class BestDAO {
 		StringBuilder sb = new StringBuilder();
 		List<BestDTO> bestlist = new ArrayList<>();
 		sb.append(" select s.shopno, s.name, s.addr, s.photo, avg(gpa) as gpa, (select count(*) from good g where g.shopno = s.shopno) as good ");
-		sb.append(" from shop s left outer join review r on s.shopno = r.shopno ");
+		sb.append(" from shop s ");
+		sb.append(" left outer join review r on s.shopno = r.shopno ");
+		sb.append(" left outer join good g  on s.shopno = g.shopno ");
 		//System.out.println("kind : "+kind);
 		//System.out.println("startday : "+startday);
 		//System.out.println("endday : "+endday);
 		//날짜 기준
 		if(startday!=null && !("".equals(startday))) {
-			sb.append(" where r.date between ? and ");
-			if("none".equals(endday)) {
-				System.out.println("하나 선택했네"+startday);
+			if("good".equals(kind))
+				sb.append(" where g.date between ? and ");
+			else
+				sb.append(" where r.date between ? and ");
+			
+			if("none".equals(endday))
 				sb.append(" current_date()+1 "); //오늘날까지.
-			}
-			else {
-				System.out.println("두개 선택했네 "+startday+", "+endday);
+			else
 				sb.append(" ? "); //사용자 지정날까지.
 				//sb.append(" 23:59:59  ");
-			}
 		}
 		
 		if("good".equals(kind))
