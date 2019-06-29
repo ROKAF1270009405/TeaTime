@@ -10,6 +10,7 @@ import com.teatime.comm.DBConn;
 import com.teatime.member.MemberDTO;
 import com.teatime.mypage.model.MypageDAO;
 import com.teatime.mypage.model.MypageDTO;
+import com.teatime.review.model.ReviewDTO;
 
 public class MypageService {
 
@@ -47,9 +48,34 @@ public class MypageService {
 		}
 		return list;
 	} // end reviewService method
+	
+	// modify용 method
+	public ReviewDTO modiService(int reviewno) {
+		
+		Connection conn = null;
+		ReviewDTO dto = new ReviewDTO(); 
+		try {
+			DBConn db = DBConn.getdb();
+			conn = db.getConnection();
+			MypageDAO dao = MypageDAO.getDAO();
+			dto = dao.getModiReview(conn, reviewno);
+		} catch (SQLException | NamingException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		}
+		return dto;
+		
+	} // end modiService method
 
 	// 수정하기
-	public int modifyService(int reviewno) {
+	public int modifyService(ReviewDTO dto) {
 
 		Connection conn = null;
 		int result = 0;
@@ -59,8 +85,7 @@ public class MypageService {
 			conn = db.getConnection();
 			conn.setAutoCommit(false);
 			MypageDAO dao = MypageDAO.getDAO();
-			// result = dao.modifyreview(conn, reviewno);
-			System.out.println("여긴 service인데 난 result 값을 보고싶어 : " + result);
+			result = dao.modifyreview(conn, dto);
 			conn.commit();
 		} catch (SQLException | NamingException e) {
 			try {

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.teatime.member.MemberDTO;
+import com.teatime.review.model.ReviewDTO;
 
 public class MypageDAO {
 
@@ -71,27 +72,68 @@ public class MypageDAO {
 		return list;
 	} // end getReview method
 
+	// modify용 method
+	public ReviewDTO getModiReview(Connection conn, int reviewno) throws SQLException {
+
+		StringBuilder sql = new StringBuilder();
+		sql.append(" select reviewno, content      ");
+		sql.append(" from review                   ");
+		sql.append(" where reviewno = ?            ");
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ReviewDTO dto = new ReviewDTO();
+
+		try {
+
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, reviewno);
+			rs = pstmt.executeQuery();
+			System.out.println("MypageDAO : " + reviewno); // 78 잘 나옴
+			if (rs.next()) {
+				dto.setReviewno(rs.getInt("reviewno"));
+				dto.setContent(rs.getString("content"));
+				System.out.println("DAO야 여긴 : " + rs.getString("content")); // 잘 나오는데..?
+			}
+
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		}
+		return dto;
+	} // end getModiReview method
+
 	// 리뷰 수정하기
-	public int modifyreview(Connection conn, String modifyreviewno) throws SQLException {
+	public int modifyreview(Connection conn, ReviewDTO dto) throws SQLException {
 
 		StringBuilder sql = new StringBuilder();
 		sql.append(" update review               ");
-		sql.append(" set content = ?, gpa = ?    ");
-		sql.append(" where id = ?                ");
+		sql.append(" set content = ?             ");
+		sql.append(" where reviewno = ?                ");
 
 		PreparedStatement pstmt = null;
 		int result = 0;
 
 		try {
+			System.out.println(dto.getContent()+", "+dto.getReviewno());
+			System.out.println(sql.toString());
 			pstmt = conn.prepareStatement(sql.toString());
-			MypageDTO dto = new MypageDTO();
 			pstmt.setString(1, dto.getContent());
-			pstmt.setFloat(2, dto.getGpa());
-			pstmt.setString(3, modifyreviewno);
+			pstmt.setInt(2, dto.getReviewno());
 			result = pstmt.executeUpdate();
-			System.out.println("여긴 DAO인데 난 dto.getContent 값을 보고싶어 : " + dto.getContent());
-			System.out.println("여긴 DAO인데 난 dto.getGpa 값을 보고싶어 : " + dto.getGpa());
-			System.out.println("여긴 DAO인데 난 dto.getId 값을 보고싶어 : " + dto.getId());
 		} finally {
 			if (pstmt != null) {
 				try {
@@ -104,14 +146,14 @@ public class MypageDAO {
 
 		return result;
 	} // end modifyreview method
-	
+
 	// 리뷰 삭제하기
 	public int deletereview(Connection conn, int num) throws SQLException {
-		
+
 		StringBuilder sql = new StringBuilder();
 		sql.append(" delete from review        ");
 		sql.append(" where reviewno = ?        ");
-		
+
 		PreparedStatement pstmt = null;
 		int result = 0;
 		System.out.println("여기 DAO인데 들어올 수 있나요?");
@@ -120,7 +162,7 @@ public class MypageDAO {
 			pstmt.setInt(1, num);
 			System.out.println("여긴 DAO고 출력 될 값은 dto.getReviewno야 : " + num);
 			result = pstmt.executeUpdate();
-			
+
 		} finally {
 			if (pstmt != null) {
 				try {

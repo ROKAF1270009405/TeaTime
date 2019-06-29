@@ -10,11 +10,34 @@
 height : 10px !important;
 min-height: 0rem !important;
 } */
+html, body{
+	height: 100%;
+}
+
+footer {
+	width: 100%;
+	bottom:0;
+}
+
+#page {
+	height:100%;
+	min-height: 855px; 
+	position: relative;
+}
+
+#wrap{
+	min-height: 100%;
+}
+
+/*
+ 
 @media ( max-width : 990px) {
 	.masthead {
-		padding-top: 72px;
-	}
+		/* padding-top: 72px; */
 }
+}
+*
+/
 </style>
 <title>TeaTime</title>
 <!-- Font Awesome Icons -->
@@ -39,18 +62,24 @@ min-height: 0rem !important;
 
 </head>
 <body>
-	<header class="masthead">
-		<jsp:include page="header.jsp"></jsp:include>
-		<c:set var="page" value="${param.page }"></c:set>
-		<c:if test="${page!=null }">
-			<jsp:include page="${page }"></jsp:include>
-		</c:if>
-		<c:if test="${page==null }">
-			<jsp:include page="nodata.jsp"></jsp:include>
-		</c:if>
-		<jsp:include page="footer.jsp"></jsp:include>
-	</header>
+	<div id="wrap">
+		<header>
+			<jsp:include page="header.jsp"></jsp:include>
+		</header>
+		<div id="page">
+			<c:set var="page" value="${param.page }"></c:set>
+			<c:if test="${page!=null }">
+				<jsp:include page="${page }"></jsp:include>
+			</c:if>
+			<c:if test="${page==null }">
+				<jsp:include page="nodata.jsp"></jsp:include>
+			</c:if>
+		</div>
+		<footer>
+			<jsp:include page="footer.jsp"></jsp:include>
+		</footer>
 
+	</div>
 
 
 	<!-- Bootstrap core JavaScript -->
@@ -59,8 +88,7 @@ min-height: 0rem !important;
 		src="<%=request.getContextPath()%>/jquery/bootstrap.bundle.min.js"></script>
 
 	<!-- Plugin JavaScript -->
-	<script
-		src="<%=request.getContextPath()%>/jquery/jquery.easing.min.js"></script>
+	<script src="<%=request.getContextPath()%>/jquery/jquery.easing.min.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/jquery/jquery.magnific-popup.min.js"></script>
 

@@ -27,19 +27,12 @@ public class ModifyReviewAction implements Action {
 		MemberDTO mdto = (MemberDTO) session.getAttribute("dto");
 		ActionForward forward = new ActionForward();
 		if (mdto != null) {
-			int shopno = Integer.parseInt(request.getParameter("shopno"));
-			request.setAttribute("shopno", shopno);
+
 			int reviewno = Integer.parseInt(request.getParameter("reviewno"));
-//			System.out.println(reviewno);
-			
-			// reviewno 에 맞는 ReviewDTO 객체 가져오기
-			// dto 객체 setattribute 로 넘겨주기
+			System.out.println("ModifyReviewAction : " + reviewno); // 78 잘 나옴
 			MypageService service = MypageService.getInstance();
-			// MypageDTO dto = service.modifyService(reviewno);
-			// request.setAttribute("dto", dto);
-			
-			List<ReviewDTO> list = (List<ReviewDTO>) request.getAttribute("list");
-			request.setAttribute("list", list);
+			ReviewDTO rdto = service.modiService(reviewno);
+			request.setAttribute("rdto", rdto);
 			forward.setRedirect(false);
 //			System.out.println("addreview");
 			// /templete.jsp?page=board/insertform.jsp

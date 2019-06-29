@@ -11,14 +11,13 @@
 <meta name="author" content="">
 
 <title>TeaTime</title>
-
-
 </head>
-
-<body id="page-top">
+<style>
+</style>
+<body>
 
 	<!-- Footer -->
-	<footer class="bg-light py-5">
+	<footer id="footer" class="bg-light py-5">
 		<div class="container">
 			<div class="small text-center text-muted">Copyright &copy; 2019
 				- Start Bootstrap</div>

@@ -1,3 +1,4 @@
+<%@page import="com.teatime.review.model.ReviewDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE>
@@ -16,10 +17,15 @@
 </script>
 </head>
 <body>
+	
+	<%
+		ReviewDTO rdto = (ReviewDTO) request.getAttribute("rdto");
+	%>
+
 	<jsp:useBean id="today" class="java.util.Date" />
 	<fmt:formatDate var="now" value="${today }" pattern="yyyyMMdd" />
 	<div id="shop">
-		<form method="post" action="addreviewresult.do"
+		<form method="post" action="modifyresultmyreview.do"
 			enctype="multipart/form-data">
 			<h2>${param.name }</h2>
 			<ul>
@@ -31,8 +37,13 @@
 				<li class="form-label-group"><label>
 				
 				<li><label for="content"> <textarea rows="10"
-							cols="30" placeholder="리뷰를 입력해주세요." name="content"></textarea>
+							cols="30" name="content"><%=rdto.getContent()%></textarea>
 				</label>  
+						<label for="reviewno"></label>
+ 		<input type="hidden" id="reviewno" name="reviewno" value="<%=rdto.getReviewno()%>">
+ 		
+ 			rdto.getReviewno : <%=rdto.getReviewno()%> <!-- 78 잘 나옴 -->
+				</li>
 				 
 				<li>
 					<button type="button" class="gpa">
