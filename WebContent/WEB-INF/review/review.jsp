@@ -60,6 +60,7 @@ float : right;
   margin-left: 10px;
   outline: none;
   padding: 5px 7.5px 5px;
+  top: -20px !important;
   position: relative;
   text-transform: uppercase;
   font-weight: 700;
