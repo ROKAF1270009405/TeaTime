@@ -30,7 +30,7 @@ public class ModifyReviewAction implements Action {
 			int shopno = Integer.parseInt(request.getParameter("shopno"));
 			request.setAttribute("shopno", shopno);
 			int reviewno = Integer.parseInt(request.getParameter("reviewno"));
-			System.out.println(reviewno);
+//			System.out.println(reviewno);
 			
 			// reviewno 에 맞는 ReviewDTO 객체 가져오기
 			// dto 객체 setattribute 로 넘겨주기
@@ -41,7 +41,7 @@ public class ModifyReviewAction implements Action {
 			List<ReviewDTO> list = (List<ReviewDTO>) request.getAttribute("list");
 			request.setAttribute("list", list);
 			forward.setRedirect(false);
-			System.out.println("addreview");
+//			System.out.println("addreview");
 			// /templete.jsp?page=board/insertform.jsp
 			// act.setPath("/WEB-INF/board/add.jsp");
 			forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/review/modifyreviewform.jsp");

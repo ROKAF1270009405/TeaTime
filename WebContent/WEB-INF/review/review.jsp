@@ -39,6 +39,10 @@ float:right;
 .content{
 clear:both;
 }
+.delbtn{
+float : right;
+}
+
 </style>
 
 </head>

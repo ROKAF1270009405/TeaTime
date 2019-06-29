@@ -67,6 +67,7 @@ public class ReviewDAO {
 		sql.append("from reviewphoto			");
 		sql.append("where reviewno = ? 			");
 		PreparedStatement pstmt = null;
+//		System.out.println(sql.toString());
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement(sql.toString());
@@ -140,14 +141,18 @@ public class ReviewDAO {
 		sql.append("where content = ? and date like ? and gpa=? and shopno=? and id=?		");
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		
 		int id = 0;
 		try {
 			pstmt = conn.prepareStatement(sql.toString());
+//			System.out.println(sql.toString());
+//			System.out.println(dto.getContent());
 			pstmt.setString(1, dto.getContent());
-			long d = System.currentTimeMillis();
-			Date date = new Date(d);
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			pstmt.setString(2, new java.sql.Date(d)+"%");
+//			long d = System.currentTimeMillis();
+//			Date date = new Date(d);
+//			System.out.println(dto.getDate());
+//			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			pstmt.setString(2, dto.getDate()+"%");
 //			pstmt.setString(3, dto.getPhoto());
 			pstmt.setFloat(3, dto.getGpa());
 			pstmt.setInt(4, dto.getShopno());
