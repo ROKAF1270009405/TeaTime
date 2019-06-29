@@ -8,6 +8,12 @@
 <title>Insert title here</title>
 </head>
 <link rel="stylesheet" type="text/css" href="css/form.css">
+<style>
+.btn1 {
+	width: 100%;
+	padding: 14px 20px;
+}
+</style>
 <body>
 	<c:set var="num" value="${requestScope.num}"></c:set>
 	<div id="shop">
@@ -15,14 +21,15 @@
 		<hr>
 		<form method="post" action="csreplyresult.do">
 			<ul>
-				<li><label for="title">제목</label>
+				<li><label for="title">제목</label> <input type="hidden"
+					value="${num}" name="num" id="num">
 					<p>문의에 대한 답변입니다.</p>
 				<li><label for="replycontent">내용</label> <textarea
 						id="replycontent" name="replycontent" rows="10" cols="30"
 						placeholder="내용을 입력해주세요."></textarea></li>
 			</ul>
 			<input type="submit" value="완료">
-			<button class="btn btn-secondary" type="button"
+			<button class="btn btn-secondary btn1" type="button"
 				onclick="location.href='customerservicelist.do'">취소</button>
 		</form>
 	</div>

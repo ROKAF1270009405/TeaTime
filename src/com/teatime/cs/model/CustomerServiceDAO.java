@@ -109,7 +109,7 @@ public class CustomerServiceDAO {
 		StringBuilder sql = new StringBuilder();
 		CustomerServiceDTO data = new CustomerServiceDTO();
 
-		sql.append(" select qnano, title, content, hp, regidate, csreply, replyregidate ");
+		sql.append(" select qnano, title, content, hp, regidate, csreply, replyregidate, id ");
 		sql.append(" from customerservice                          ");
 		sql.append(" where qnano=?                                  ");
 
@@ -126,6 +126,7 @@ public class CustomerServiceDAO {
 				data.setRegidate(rs.getString("regidate"));
 				data.setReply(rs.getString("csreply"));
 				data.setReplyregidate(rs.getString("replyregidate"));
+				data.setId(rs.getString("id"));
 			}
 		} finally {
 			rsClose(rs);
