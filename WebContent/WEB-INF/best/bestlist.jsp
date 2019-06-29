@@ -47,7 +47,7 @@ th:nth-child(4){
 }
 td{
     padding: 10px;
-    vertical-align: top;
+    vertical-align: middle;
 }
 tr:nth-child(2n) {
     background-color: #9DCFFF;
@@ -126,6 +126,10 @@ a {
 }
 #list{
 	margin-bottom: 10px;
+}
+.trs td:nth-child(1) img{
+	width: 300px;
+		
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
