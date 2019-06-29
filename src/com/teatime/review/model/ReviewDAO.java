@@ -158,9 +158,9 @@ public class ReviewDAO {
 			pstmt.setInt(4, dto.getShopno());
 			pstmt.setString(5, dto.getId());
 			rs = pstmt.executeQuery();
-			if(rs!=null) {
-				rs.next();
-				id = rs.getInt(1);
+			if(rs.next()) {
+//				rs.next();
+				id = rs.getInt("reviewno");
 			}
 		} finally {
 			if (pstmt != null)

@@ -26,7 +26,6 @@ public class ShopDAO {
 		StringBuilder sb = new StringBuilder();
 		sb.append(" insert into shop(name, photo, content, addr, workingtime, foodkind, id) ");
 		sb.append(" values(?, ?, ?, ?, ?, ?, ?) ");
-		
 		try(PreparedStatement pstmt = conn.prepareStatement(sb.toString());){
 			pstmt.setString(1, dto.getName());
 			pstmt.setString(2, dto.getPhoto());
@@ -76,6 +75,8 @@ public class ShopDAO {
 		sql.append(" on s.shopno = m.shopno ");
 				
 		// 일단 지금은 번호 순서 -> 좋아요 and 각종 필터링 할떄 수정 함녀 될듯
+		
+		
 		if(!(filter==0) && !"".equals(text)){
 			if(filter == 1) {
 				sql.append(" where s.name like ? ");
@@ -87,8 +88,12 @@ public class ShopDAO {
 				sql.append(" where foodkind like ? ");
 			}   
 		}
+		
+		
 		sql.append(" group by s.name ");
 		sql.append(" order by shopno desc ");
+
+		
 		try {
 			
 			pstmt = conn.prepareStatement(sql.toString());
@@ -103,7 +108,7 @@ public class ShopDAO {
 				data.setShopno(rs.getInt("shopno"));
 				data.setName(rs.getString("name"));
 				data.setAddr(rs.getString("addr"));
-				data.setPhoto(rs.getString("photo"));
+				data.setPhoto(rs.getString("photo"));				
 				arr.add(data);
 			}
 		} catch (SQLException e) {

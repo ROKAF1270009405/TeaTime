@@ -35,13 +35,14 @@ div {
 
 .shop-header-img{
 	width: 70%;
+	height : 400px;
 	margin: 0 auto 0 auto;
 	overflow: hidden;
 }
 
 .shop-header-img img {
 	width: 100%;
-	height: 400px;
+	height: auto;
 }
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -106,7 +107,7 @@ div {
 	<c:set var="shopno" value="${detail.shopno}"></c:set>
 
 	<div class="shop-header-img">
-		<img src="${detail.photo }" alt="매장이미지">
+		<img src="${detail.photo }" alt="http://localhost:8080/MiniPro2/img/bg.jpg">
 	</div>
 	<br>
 
