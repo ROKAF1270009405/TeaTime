@@ -14,6 +14,7 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
+	padding:200px 0px 100px;
 }
 
 .tableboard {

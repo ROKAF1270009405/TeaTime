@@ -32,7 +32,6 @@ public class CSAddResultAction implements Action {
 
 		} else {
 			String hp = request.getParameter("hp");
-			String email = request.getParameter("email");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 			String id = member.getId();
