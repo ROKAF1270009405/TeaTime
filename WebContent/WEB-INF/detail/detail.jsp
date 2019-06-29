@@ -35,13 +35,14 @@ div {
 
 .shop-header-img{
 	width: 70%;
+	height : 400px;
 	margin: 0 auto 0 auto;
 	overflow: hidden;
 }
 
 .shop-header-img img {
 	width: 100%;
-	height: 400px;
+	height: auto;
 }
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
