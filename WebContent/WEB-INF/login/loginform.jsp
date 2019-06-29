@@ -17,6 +17,8 @@
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <script src="jquery/modernizr.custom.63321.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+      <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <!--[if lte IE 7]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
 <style>
 @import
@@ -33,6 +35,7 @@ body {
 	color: #fff;
 	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 }
+
 </style>
 <script type="text/javascript"
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -52,7 +55,21 @@ body {
 		</section>
 		<div id="naverIdLogin"></div>
 	  <p class="text--center"><a href="signup.do">회원가입</a> <span class="fontawesome-arrow-right"></span></p>
+	    <div id="naver_id_login"></div>
 	</div>
+	
+	
+	
+	 <script type="text/javascript">
+  	var naver_id_login = new naver_id_login("6rXHgI2ZoOW_8CoLjVmW", "http://localhost:8080/MiniPro2/naverlogin.do");
+  	var state = naver_id_login.getUniqState();
+  	naver_id_login.setButton("white", 2,40);
+  	naver_id_login.setDomain("http://localhost:8080/MiniPro2/teatime.do");
+  	naver_id_login.setState(state);
+  	naver_id_login.setPopup();
+  	naver_id_login.init_naver_id_login();
+  </script>
+	
 	<!-- jQuery if needed -->
 	<!-- <script type="text/javascript" src="jquery/jquery.placeholder.min.js"></script> -->
 	<!-- <script type="text/javascript">
@@ -81,5 +98,8 @@ var naverLogin = new naver.LoginWithNaverId(
 	naverLogin.init();
 	
 </script> -->
+
+
+
 </body>
 </html>
