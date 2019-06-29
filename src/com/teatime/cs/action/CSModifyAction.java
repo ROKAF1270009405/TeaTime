@@ -22,7 +22,6 @@ public class CSModifyAction implements Action {
 		HttpSession session = request.getSession();
 		MemberDTO member = (MemberDTO) session.getAttribute("dto");
 		
-		
 		int num=Integer.parseInt(request.getParameter("num"));
 		
 		CustomerServiceService service = CustomerServiceService.getInstance();

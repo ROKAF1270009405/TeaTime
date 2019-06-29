@@ -14,13 +14,19 @@ ul li {
 }
 
 ul {
-	margin: 0px;
-	padding: 0px;
+	width: 100%;
+	padding: 0px 40px;
 	display: inline-block;
+	padding: 0px 40px;
 }
 
 label {
 	width: 100px;
+}
+
+.btn1 {
+	width: 100%;
+	padding: 14px 20px;
 }
 </style>
 
@@ -33,7 +39,6 @@ label {
 				<li><label for="id">아이디</label>${id}</li>
 				<li><label for="hp">연락처</label><input type="text" name="hp"
 					id="hp" required="required" placeholder="연락처를 입력해주세요."></li>
-				<li><label for="email">이메일</label>${email}</li>
 				<li><label for="title">제목</label><input type="text"
 					name="title" id="title" required="required"
 					placeholder="제목을 입력해주세요."></li>
@@ -42,7 +47,7 @@ label {
 				</li>
 			</ul>
 			<input type="submit" value="완료" class="btn btn-primary">
-			<button class="btn btn-secondary" type="button"
+			<button class="btn btn-secondary btn1" type="button"
 				onclick="location.href='customerservicelist.do'">취소</button>
 	</div>
 	</form>

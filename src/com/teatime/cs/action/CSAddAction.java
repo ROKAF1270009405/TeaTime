@@ -31,9 +31,7 @@ public class CSAddAction implements Action {
 
 		} else {
 			String id = member.getId();
-			String email = member.getMail();
 			session.setAttribute("id", id);
-			session.setAttribute("email", email);
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/customerservice/csinsertform.jsp");
 		}

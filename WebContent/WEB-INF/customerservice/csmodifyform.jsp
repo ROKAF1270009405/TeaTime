@@ -25,7 +25,6 @@ label {
 				<li><label for="id">아이디</label>${sessionScope.dto.id}</li>
 				<li><label for="hp">연락처</label><input type="text" name="hp"
 					id="hp" required="required" value="${data.hp}"></li>
-				<li><label for="email">이메일</label>${sessionScope.dto.mail}</li>
 				<li><label for="title">제목</label><input type="text"
 					name="title" id="title" required="required" value="${data.title}"></li>
 				<li><label for="content">내용</label> <textarea id="content"

@@ -36,6 +36,17 @@ body {
 	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 }
 
+button{
+background : rgb(244, 98, 58) !important;
+
+}
+
+h5{
+	display: inline-block !important;
+	margin-left: 67%;
+	font-weight: bold !important;
+	font-size: 1em !important;
+}
 </style>
 <script type="text/javascript"
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -54,7 +65,7 @@ body {
 			</form>
 		</section>
 		<div id="naverIdLogin"></div>
-	  <p class="text--center"><a href="signup.do">회원가입</a> <span class="fontawesome-arrow-right"></span></p>
+	  <p class="text--center"><a href="signup.do"><h5>회원가입</h5></a> <span class="fontawesome-arrow-right"></span></p>
 	    <div id="naver_id_login"></div>
 	</div>
 	

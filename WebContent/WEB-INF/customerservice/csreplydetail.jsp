@@ -12,6 +12,8 @@
 	<c:set var="data" value="${requestScope.data}"></c:set>
 	<div id="shop">
 		<c:if test="${data!=null}">
+			<h1>문의답변</h1>
+			<hr>
 			<ul>
 				<li><label>제목</label>문의에 대한 답변입니다.</li>
 				<li><label>작성일</label>${data.replyregidate}</li>

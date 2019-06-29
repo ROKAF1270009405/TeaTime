@@ -20,7 +20,6 @@ public class CSReplyDetailAction implements Action {
 		request.setCharacterEncoding("utf-8");
 
 		int num = Integer.parseInt(request.getParameter("num"));
-		String replycontent = request.getParameter("replycontent");
 		CustomerServiceService service = CustomerServiceService.getInstance();
 		CustomerServiceDTO data= service.detailService(num);
 		//data.setReply(replycontent);
