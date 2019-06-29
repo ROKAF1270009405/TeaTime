@@ -98,7 +98,7 @@ div {
 
 	<table>
 		<tr>
-			<td>aadasdadsSDdd</td>
+			<td></td>
 		</tr>
 	</table>
 	<div id="result"></div>

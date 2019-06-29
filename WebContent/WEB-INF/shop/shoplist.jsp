@@ -112,7 +112,7 @@ ul li {
 	<c:if test="${sessionScope.dto.authority==1}">
 
 		<p class="main-p-right">
-			<a href="shopadd.do"><b>글쓰기</b></a>
+			<a href="shopmove.do"><b>글쓰기</b></a>
 		</p>
 
 	</c:if>
