@@ -8,22 +8,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <style>
-.wrap {
-	witdh: 1600px;
-	display: inline-block;
+<style>
+
+h3 {
+margin-top: 50px;
 }
 
 ul {
 	list-style: none;
-	position: relative;
-	width: 300px;
 }
-
-a {
-	display: block;
-}
-</style> -->
+</style>
 </head>
 <body>
 	<h3>내가 쓴 리뷰 보기</h3>
@@ -47,6 +41,7 @@ a {
 			<li>사진 : <%=mydto.getPhoto()%></li>
 			<li>리뷰 : <%=mydto.getContent()%></li>
 		</ul>
+		
 		<a href="modifymyreview.do?reviewno=<%=mydto.getReviewno()%>">수정</a>
 		<a href="deletemyreview.do?num=<%=mydto.getReviewno()%>">삭제</a>
 	</div>
