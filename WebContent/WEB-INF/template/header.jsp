@@ -11,6 +11,18 @@
 <meta name="author" content="">
 
 <title>TeaTime</title>
+
+<style>
+
+ #mainNav .navbar-brand:hover {
+    color: #f4623a;
+  }
+  #mainNav .navbar-nav .nav-item .nav-link:hover {
+    color: #f4623a;
+  }
+
+</style>
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 
