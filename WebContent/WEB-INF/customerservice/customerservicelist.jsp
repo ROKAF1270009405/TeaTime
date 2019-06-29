@@ -9,12 +9,16 @@
 
 </head>
 <style>
+body{
+	margin-top: 80px;
+}
+
 .div1 {
 	background-image: url('img/cslist.png');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
-	padding:200px 0px 100px;
+	padding:200px 0px;
 }
 
 .tableboard {

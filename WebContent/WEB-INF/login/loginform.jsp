@@ -16,9 +16,14 @@
 <link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <script src="jquery/modernizr.custom.63321.js"></script>
-<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
-      <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript"
+	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
+	charset="utf-8"></script>
+<script type="text/javascript"
+	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+	charset="utf-8"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <!--[if lte IE 7]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
 <style>
 @import
@@ -30,57 +35,86 @@ body {
 	-moz-background-size: cover;
 	background-size: cover;
 }
+.main{
+	padding-top: 280px;
+}
+html, body{
+	height: 100%;
+	margin: 0;
+}
+
+#wrap{
+	min-height: 100%;
+	position: relative;
+}
+.join{
+	text-align: center;
+}
 
 .container>header h1, .container>header h2 {
 	color: #fff;
 	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 }
 
-button{
-background : rgb(244, 98, 58) !important;
-
+button {
+	background: rgb(244, 98, 58) !important;
 }
 
-h5{
+h5 {
 	display: inline-block !important;
-	margin-left: 67%;
+	/* margin-left: 67%; */
 	font-weight: bold !important;
 	font-size: 1em !important;
 }
+
+#naver_id_login{
+	display: inline-block;
+}
+
 </style>
 <script type="text/javascript"
-		src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 </head>
 <body>
-	<div class="container">
-		<section class="main">
-			<form class="form-5 clearfix" method="post" action="logincheck.do" name="frm">
-				<p>
-					<input type="text" id="id" name="id" placeholder="Username" autofocus required>
-					<input type="password" name="pwd" id="pwd" placeholder="Password" required>
-				</p>
-				<button type="submit" name="submit">
-					<i class="icon-arrow-right"></i> <span>↓</span>
-				</button>
-			</form>
-		</section>
-		<div id="naverIdLogin"></div>
-	  <p class="text--center"><a href="signup.do"><h5>회원가입</h5></a> <span class="fontawesome-arrow-right"></span></p>
-	    <div id="naver_id_login"></div>
+	<div id="wrap">
+		<div class="container">
+			<section class="main">
+				<form class="form-5 clearfix" method="post" action="logincheck.do"
+					name="frm">
+					<p>
+						<input type="text" id="id" name="id" placeholder="Username"
+							autofocus required> <input type="password" name="pwd"
+							id="pwd" placeholder="Password" required>
+					</p>
+					<button type="submit" name="submit">
+						<i class="icon-arrow-right"></i> <span>↓</span>
+					</button>
+				</form>
+			</section>
+			<!-- <div id="naverIdLogin"></div> -->
+			<div class="join">
+			<div id="naver_id_login"></div>
+			<!-- <p class="text--center"> -->
+				<a href="signup.do" class="btn btn-primary"><h5>회원가입</h5></a><!--  <span
+					class="fontawesome-arrow-right"></span> -->
+			<!-- </p> -->
+			</div>
+		</div>
+
+
+
+		<script type="text/javascript">
+			var naver_id_login = new naver_id_login("6rXHgI2ZoOW_8CoLjVmW",
+					"http://localhost:8080/MiniPro2/naverlogin.do");
+			var state = naver_id_login.getUniqState();
+			naver_id_login.setButton("black", 2, 40);
+			naver_id_login
+					.setDomain("http://localhost:8080/MiniPro2/teatime.do");
+			naver_id_login.setState(state);
+			naver_id_login.setPopup();
+			naver_id_login.init_naver_id_login();
+		</script>
 	</div>
-	
-	
-	
-	 <script type="text/javascript">
-  	var naver_id_login = new naver_id_login("6rXHgI2ZoOW_8CoLjVmW", "http://localhost:8080/MiniPro2/naverlogin.do");
-  	var state = naver_id_login.getUniqState();
-  	naver_id_login.setButton("white", 2,40);
-  	naver_id_login.setDomain("http://localhost:8080/MiniPro2/teatime.do");
-  	naver_id_login.setState(state);
-  	naver_id_login.setPopup();
-  	naver_id_login.init_naver_id_login();
-  </script>
-	
 	<!-- jQuery if needed -->
 	<!-- <script type="text/javascript" src="jquery/jquery.placeholder.min.js"></script> -->
 	<!-- <script type="text/javascript">
@@ -88,7 +122,7 @@ h5{
 			$('input, textarea').placeholder();
 		});
 	</script> -->
-<!-- <script type="text/javascript">
+	<!-- <script type="text/javascript">
 var naver_id_login = new naver_id_login("TuceI6ryHcQLt78CA67C", "http://localhost:8080/MiniPro2/login.do");
 var state = naver_id_login.getUniqState();
 naver_id_login.setButton("white", 2, 40);
