@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 <style>
 button {
-	background-color: white;
+	background-color: #f2f2f2;
 	border-style: none;
 }
 
