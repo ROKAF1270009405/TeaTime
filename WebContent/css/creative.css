@@ -7063,6 +7063,7 @@ button.bg-danger:focus {
 
 .bg-light {
   background-color: #f8f9fa !important;
+  margin-top: 50px;
 }
 
 a.bg-light:hover, a.bg-light:focus,

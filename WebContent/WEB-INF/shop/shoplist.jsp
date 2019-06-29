@@ -64,6 +64,72 @@ ul li {
 .clear-hr {
 	clear: both;
 }
+.delbtn b{
+	color: #ffffff !important;
+}
+.delbtn {
+	background-color: rgb(244, 98, 58);
+	border-radius: 15%;
+	border: none;
+	cursor: pointer;
+	/* display: inline-block; */
+	font-family: 'BenchNine', Arial, sans-serif;
+	font-size: 20px;
+	line-height: 1em;
+	margin-left: 10px;
+	outline: none;
+	padding: 5px 7.5px 5px;
+	position: relative;
+	text-transform: uppercase;
+	font-weight: 700;
+	top: 0px;
+	float:right;
+	margin-right: 50px;
+}
+
+.delbtn:before, .delbtn:after {
+	border-color: transparent;
+	color: #ffffff !important;
+	-webkit-transition: all 0.25s;
+	transition: all 0.25s;
+	border-style: solid;
+	border-width: 0;
+	content: "";
+	height: 12px;
+	position: absolute;
+	width: 12px;
+}
+
+.delbtn:before {
+	border-color: rgb(244, 98, 58);
+	border-right-width: 2px;
+	border-top-width: 2px;
+	color: #ffffff !important;
+	right: -5px;
+	top: -5px;
+}
+
+.delbtn:after {
+	border-bottom-width: 2px;
+	border-color: rgba(244, 98, 58, 1.2);
+	border-left-width: 2px;
+	bottom: -5px;
+	left: -5px;
+	color: #ffffff !important;
+}
+
+.delbtn:hover, .delbtn.hover {
+	background-color: rgb(242, 71, 24);
+	color: #ffffff !important;
+}
+
+.delbtn:hover:before, .delbtn.hover:before, .delbtn:hover:after, .delbtn.hover:after
+	{
+	border-color: rgba(244, 98, 58, 1.2);
+	height: 100%;
+	color: #ffffff !important;
+	width: 100%;
+}
 </style>
 
 </head>
@@ -105,15 +171,15 @@ ul li {
 			</div>
 		</div>
 	</header>
-
-	<p class="main-p-left">
+	<br>
+	<h3 class="main-p-left">
 		<b>TeaTime</b>
-	</p>
+	</h3>
 	<c:if test="${sessionScope.dto.authority==1}">
 
-		<p class="main-p-right">
+		<button class="delbtn">
 			<a href="shopmove.do"><b>글쓰기</b></a>
-		</p>
+		</button>
 
 	</c:if>
 
@@ -123,14 +189,11 @@ ul li {
 		<c:forEach var="shop" items="${requestScope.list }">
 
 			<div class="col-lg-4 col-sm-6">
-				<a class="portfolio-box"> 
-				
-				
-				
-				<img class="img-fluid"src="${shop.photo }" alt="이미지">
-				
-				
-				
+				<a class="portfolio-box"> <img class="img-fluid"
+					src="${shop.photo }" alt="이미지">
+
+
+
 					<div class="portfolio-box-caption">
 						<div class="project-category text-white-50">
 							<a href="detail.do?shopno=${shop.shopno }">${shop.name}</a>

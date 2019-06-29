@@ -114,7 +114,7 @@ a {
 }
 .delbtn:hover,
 .delbtn.hover {
-  background-color: rgba(244,98,158,1.2);
+  background-color: rgb(242, 71, 24);
 }
 .delbtn:hover:before,
 .delbtn.hover:before,
