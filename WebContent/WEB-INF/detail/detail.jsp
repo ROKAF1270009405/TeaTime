@@ -107,7 +107,7 @@ div {
 	<c:set var="shopno" value="${detail.shopno}"></c:set>
 
 	<div class="shop-header-img">
-		<img src="${detail.photo }" alt="매장이미지">
+		<img src="${detail.photo }" alt="http://localhost:8080/MiniPro2/img/bg.jpg">
 	</div>
 	<br>
 
