@@ -17,6 +17,14 @@ margin-top: 50px;
 ul {
 	list-style: none;
 }
+
+ul li {
+margin: 10px;
+}
+
+img {
+	width: 300px;
+}
 </style>
 </head>
 <body>
@@ -38,12 +46,12 @@ ul {
 		<ul>
 			<li>매장명 : <%=mydto.getName()%></li>
 			<li>평점 : <%=mydto.getGpa()%></li>
-			<li>사진 : <%=mydto.getPhoto()%></li>
+			<li><img src="<%=mydto.getPhoto()%>" alt="이미지"></li>
 			<li>리뷰 : <%=mydto.getContent()%></li>
 		</ul>
 		
-		<a href="modifymyreview.do?reviewno=<%=mydto.getReviewno()%>">수정</a>
-		<a href="deletemyreview.do?num=<%=mydto.getReviewno()%>">삭제</a>
+		<a href="modifymyreview.do?reviewno=<%=mydto.getReviewno()%>">리뷰 수정</a>
+		<a href="deletemyreview.do?num=<%=mydto.getReviewno()%>">리뷰 삭제</a>
 	</div>
 
 	<%
