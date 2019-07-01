@@ -168,12 +168,14 @@ public class CustomerServiceDAO {
 
 		sql.append(" update customerservice ");
 		sql.append(" set title= ?, content= ?, hp= ? ");
-
+		sql.append(" where qnano=? ");
+		System.out.println("숫자"+dto.getQnano());
 		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
 
 			pstmt.setString(1, dto.getTitle());
 			pstmt.setString(2, dto.getContent());
 			pstmt.setString(3, dto.getHp());
+			pstmt.setInt(4, dto.getQnano());
 
 			pstmt.executeUpdate();
 		}
