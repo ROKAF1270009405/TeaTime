@@ -10,7 +10,12 @@
 <link rel="stylesheet" type="text/css" href="css/form.css">
 <style>
 label {
-	width:80px;
+	width: 80px;
+}
+
+.btn1 {
+	width: 100%;
+	padding: 14px 20px;
 }
 </style>
 <body>
@@ -31,7 +36,7 @@ label {
 						name="content" rows="10" cols="30">${data.content}</textarea></li>
 			</ul>
 			<input type="submit" value="완료">
-			<button class="btn btn-secondary" type="button"
+			<button class="btn btn-secondary btn1" type="button"
 				onclick="location.href='csdetail.do?num=${data.qnano}'">취소</button>
 		</form>
 	</div>
