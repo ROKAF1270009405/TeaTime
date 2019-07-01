@@ -9,10 +9,6 @@
 
 </head>
 <style>
-body{
-	margin-top: 80px;
-}
-
 .div1 {
 	background-image: url('img/cslist.png');
 	background-repeat: no-repeat;
