@@ -139,6 +139,10 @@ div {
 				<td>${detail.addr }</td>
 			</tr>
 			<tr>
+				<td>음식종류</td>
+				<td>${detail.foodkind }</td>
+			</tr>
+			<tr>
 				<td>영업시간</td>
 				<td>${detail.workingtime }</td>
 			</tr>

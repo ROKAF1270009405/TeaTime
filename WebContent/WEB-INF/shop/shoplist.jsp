@@ -153,8 +153,6 @@ ul li {
 <body> 
 
 
-
-
 	<header class="teatime">
 		<div class="container h-100">
 			<div
