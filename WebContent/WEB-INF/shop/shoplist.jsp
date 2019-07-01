@@ -193,7 +193,16 @@ ul li {
 	<h3 id="main-p-left">
 		<b>TeaTime</b>
 	</h3>
+	
+	
 	<c:if test="${sessionScope.dto.authority==1}">
+
+		<a href="shopmove.do"><button class="delbtn">
+			<b>글쓰기</b>
+		</button></a>
+
+	</c:if>
+	<c:if test="${sessionScope.dto.authority==0}">
 
 		<a href="shopmove.do"><button class="delbtn">
 			<b>글쓰기</b>
