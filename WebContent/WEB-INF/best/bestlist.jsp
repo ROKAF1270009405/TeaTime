@@ -10,6 +10,7 @@
 <head>
 <meta charset="utf-8">
 <title>List</title>
+<link rel="stylesheet" href="css/top.css">
 <style>
 .mo{
 	width:80%;
@@ -129,10 +130,10 @@ a {
 }
 .trs td:nth-child(1) img{
 	width: 300px;
-		
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="jquery/top.js"></script>
 <script>
   $(document).ready(function(){
 	  $('.trs:odd').css("background-color","#9DCFFF");
@@ -198,6 +199,7 @@ a {
 		</c:forEach>
 		</tbody>
 	</table>
+<a href=""><img class="top" src="img/chevron-arrow-up.png" alt="맨위로"></a>
 </div>
 </body>
 </html>
