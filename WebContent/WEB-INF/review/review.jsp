@@ -108,6 +108,7 @@ float : right;
   height: 100%;
   width: 100%;
 }
+
 </style>
 
 </head>
@@ -157,9 +158,9 @@ float : right;
 				
 					<a href="deletemyreview.do?num=${board.reviewno}" class="btnnext">
 					
-					<input type="button" value="삭제" class="delbtn">
+					<input type="button" value="삭제" class="delbtnss">
 						</a>
-					<input type="button" value="수정" class="delbtn"
+					<input type="button" value="수정" class="delbtnyy"
 						onclick="location.href='modifyreviewform.do?shopno=${shopno }&name=${name}&reviewno=${board.reviewno }'">
 					
 				</c:if>

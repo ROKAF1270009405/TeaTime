@@ -24,12 +24,10 @@ public class ReviewDeleteAction implements Action {
 		System.out.println("여기 Action인데 들어올 수 있나요?" + dto);
 		
 		if (dto == null) {
-			System.out.println("혹시 여기로 들어오나요?");
 			forward.setRedirect(true);
 			forward.setPath("login.do");
 		} else {
-			System.out.println("여기는 Action : " + request.getParameter("num"));
-			int no = Integer.parseInt(request.getParameter("num")); // 여기서 문제..
+			int no = Integer.parseInt(request.getParameter("num"));
 			MypageService service = MypageService.getInstance();
 			int result = service.deleteService(no);
 			request.setAttribute("result", result);
