@@ -128,7 +128,7 @@ public class MypageDAO {
 		int result = 0;
 
 		try {
-			System.out.println(dto.getContent()+", "+dto.getReviewno());
+			System.out.println(dto.getContent() + ", " + dto.getReviewno());
 			System.out.println(sql.toString());
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setString(1, dto.getContent());

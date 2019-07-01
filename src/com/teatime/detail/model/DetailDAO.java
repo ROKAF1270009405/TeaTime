@@ -46,7 +46,7 @@ public class DetailDAO {
 		ResultSet rs = null;
 		DetailDTO dto = new DetailDTO();
 		StringBuilder sql = new StringBuilder();
-		sql.append(" select s.shopno, name, s.content, addr, photo, workingtime, s.date, ifnull(avg(gpa), 0) as gpa, (select count(*) from good g where s.shopno = g.shopno) as good ");
+		sql.append(" select s.shopno, name, s.content, addr, photo, workingtime, s.date, round(ifnull(avg(gpa), 0),1) as gpa, (select count(*) from good g where s.shopno = g.shopno) as good ");
 		sql.append(" from shop s left outer join review r on s.shopno = r.shopno ");
 		sql.append(" where s.shopno = ? ");
 		sql.append(" group by shopno ");
