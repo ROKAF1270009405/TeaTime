@@ -42,7 +42,47 @@ public class DetailDAO {
 		return result;
 	}
 	
-	
-	
-	
+	public DetailDTO details(Connection conn, int shopno) throws SQLException {
+		ResultSet rs = null;
+		DetailDTO dto = new DetailDTO();
+		StringBuilder sql = new StringBuilder();
+		sql.append(" select s.shopno, name, s.content, addr, photo, workingtime, s.date, ifnull(avg(gpa), 0) as gpa, (select count(*) from good g where s.shopno = g.shopno) as good ");
+		sql.append(" from shop s left outer join review r on s.shopno = r.shopno ");
+		sql.append(" where s.shopno = ? ");
+		sql.append(" group by shopno ");
+		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {  
+			pstmt.setInt(1, shopno);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				dto.setShopno(rs.getInt("s.shopno"));
+				dto.setName(rs.getString("name"));
+				dto.setContent(rs.getString("s.content"));
+				dto.setPhoto(rs.getString("photo"));
+				dto.setAddr(rs.getString("addr"));
+				dto.setWorkingtime(rs.getString("workingtime"));
+				dto.setDate(rs.getString("s.date"));
+				dto.setGpa(rs.getFloat("gpa"));
+				dto.setGood(rs.getInt("good"));
+			}
+		} catch (SQLException e) {
+			throw e;
+		}
+		return dto;
+	}
+
+/*	public int good(Connection conn, int no) {
+		int result = 0; 
+		StringBuilder sql = new StringBuilder();
+		sql.append("  ");
+		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {  
+			
+			pstmt.setInt(1, shopno);
+			result = pstmt.executeQuery();
+			
+		} catch (SQLException e) {
+			throw e;
+		}
+		return result;
+	}
+	*/
 }

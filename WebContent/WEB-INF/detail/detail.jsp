@@ -44,10 +44,21 @@ div {
 	width: 100%;
 	height: auto;
 }
+#goodimg{
+	width: 30px;
+	height: 30px;
+}
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
 	$(document).ready(
+			$('.good').mouseover(function(){
+				$(this).attr('scr', 'img/positive-vote2.png');
+			});
+			$('.good').mouseout(function(){
+				$(this).attr('scr', 'img/positive-vote.png');
+			});
+			
 			function() {
 				$.urlParam = function(name) {
 
@@ -112,7 +123,8 @@ div {
 	<br>
 
 	<div class="detail-wrap">
-		<h3>${detail.name }</h3>
+		<h3>${detail.name }<span>${detail.gpa} / ${detail.good }<a href="good.do?no=${detail.shopno}"><img id="goodimg" alt="이미지" src="img/positive-vote.png"></a></span></h3>
+		
 		<hr>
 		<table>
 			<tr>

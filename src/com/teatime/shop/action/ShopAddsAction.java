@@ -37,6 +37,8 @@ public class ShopAddsAction implements Action {
 		if(photo==null||photo.equals("")) {
 			photo="http://localhost:8080/MiniPro2/img/bg.jpg";
 		}
+		System.out.println("매장 정보 : "+shopname);
+		System.out.println("사진 정보 : " + photo);
 		
 		String foodkind = ""; // 음식 종류
 		String korean = request.getParameter("korean"); // 한식
@@ -64,6 +66,7 @@ public class ShopAddsAction implements Action {
 		sdto.setFoodkind(foodkind);
 		ShopService service = ShopService.getInstance();
 		int result = service.shopAddService(sdto);
+		System.out.println("등록 여부 : "  + result);
 		
 		//메뉴 테이블
 		String[] menuname = request.getParameterValues("menuname"); //메뉴 이름
@@ -78,12 +81,14 @@ public class ShopAddsAction implements Action {
 					dto.setPrice(price[i]);
 					menu.add(dto);
 				}
-				service.menuAddService(menu);
+				int ck = service.menuAddService(menu);
+				System.out.println("메뉴 등록 여부 : " + ck);
 			}
 		}
 		ActionForward act=new ActionForward();
 		act.setRedirect(false);
 		act.setPath("teatime.do");
+		System.out.println("이동 : "+act);
 		return act;
 	}
 

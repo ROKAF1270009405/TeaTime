@@ -27,6 +27,8 @@ public class ShopDAO {
 		sb.append(" insert into shop(name, photo, content, addr, workingtime, foodkind, id) ");
 		sb.append(" values(?, ?, ?, ?, ?, ?, ?) ");
 		try(PreparedStatement pstmt = conn.prepareStatement(sb.toString());){
+			System.out.println("매장 등록 : "+sb.toString());
+			System.out.println(dto.getName()+", "+dto.getPhoto()+", "+dto.getContent()+", "+dto.getAddr()+", "+dto.getWorkingtime()+", "+dto.getFoodkind()+", "+dto.getId());
 			pstmt.setString(1, dto.getName());
 			pstmt.setString(2, dto.getPhoto());
 			pstmt.setString(3, dto.getContent());

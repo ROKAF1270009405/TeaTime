@@ -136,6 +136,10 @@ ul li {
     margin-top: -100px;
     margin-left: 47.5%;
 }
+.img-fluid{
+	width: 100%;
+	height:300px; 
+}
 </style>
 
 </head>

@@ -397,7 +397,7 @@ function change1(value){
 <div id="shop">
 <h3>매장 등록</h3>
 
-  <form method="post" action="shopadds.do" enctype="Multipart/form-data">
+  <form method="post" action="shopadds.do">
   	<div class="form-label-group">
   	  <input type="text" id="name" name="name" class="form-control" placeholder="매장 이름을 적어주세요." autofocus required>
   	  <label for="name">매장 이름</label>
@@ -430,16 +430,17 @@ function change1(value){
     
     <label for="endtime"> 종료 시간</label>
     <input type="time" id="endtime" name="endtime" ><br>
-    <label for="">매장 사진</label><br>
+    <label for="fileName1">매장 사진</label><br>
     
     <!-- <div id="imgs"> -->
-	    <div id="file">
+    <input type="file" name="fileName1" id="fileName1">
+	<!--     <div id="file">
 	    	<label>
 		    	<input type="file" name="fileName1" id="fileName1" onchange="previewImage(this,'View_area')">
 				<img src="reviewimg/addimage.png">
 			</label>
 		</div>
-		<div id='View_area' style='position:relative; width: 100px; height: 100px; color: black; border: 0px solid black; dispaly: inline; '></div>
+		<div id='View_area' style='position:relative; width: 100px; height: 100px; color: black; border: 0px solid black; dispaly: inline; '></div> -->
 	<!-- </div> -->
     
     <hr>

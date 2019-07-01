@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.teatime.comm.Action;
 import com.teatime.comm.ActionForward;
+import com.teatime.detail.model.DetailDTO;
 import com.teatime.detail.service.DetailService;
 import com.teatime.shop.model.ShopDTO;
 
@@ -33,16 +34,16 @@ public class DetailAction implements Action {
 		// int shopno = Integer.parseInt(request.getParameter("shopno"));
 		
 		
-
-	
-	
 	String no = request.getParameter("shopno");System.out.println(no);
-	int shopno = 1;if(no!=null&&!no.equals(""))shopno=Integer.parseInt(no);System.out.println("if 이후 : "+no);
-
-	System.out.println("shopno : "+shopno);
+	int shopno = 1;
+	if(no!=null&&!no.equals(""))
+		shopno=Integer.parseInt(no);
 	DetailService service = DetailService.getService();
-	ShopDTO dto = service.detailService(shopno);request.setAttribute("dto",dto);
-	ActionForward forward = new ActionForward();forward.setRedirect(false);forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/detail/detail.jsp");
+	DetailDTO dto = service.detailService(shopno);
+	request.setAttribute("dto",dto);
+	ActionForward forward = new ActionForward();
+	forward.setRedirect(false);
+	forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/detail/detail.jsp");
 	// forward.setPath("review.do");
 
 	return forward;
