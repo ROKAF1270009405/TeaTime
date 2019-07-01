@@ -51,10 +51,10 @@ img {
 			<li>리뷰 : <%=mydto.getContent()%></li>
 		</ul>
 
-		<a href="modifymyreview.do?reviewno=<%=mydto.getReviewno()%>">리뷰 수정</a>
-		<a href="deletemyreview.do?num=<%=mydto.getReviewno()%>">리뷰 삭제</a>
+		<a
+			href="modifyreviewform.do?reviewno=<%=mydto.getReviewno()%>&shopno=<%=mydto.getShopno()%>&name=<%=mydto.getName()%>">리뷰
+			수정</a> <a href="deletemyreview.do?num=<%=mydto.getReviewno()%>">리뷰 삭제</a>
 	</div>
-
 	<%
 		}
 		}

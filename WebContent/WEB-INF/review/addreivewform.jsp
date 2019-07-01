@@ -317,7 +317,7 @@ list-style-type: none;
 				</li>
 
 				<li id="file"><label class="file1"> <label for="test0"	class="uploadlabel1"> 
-				<input id="test0" type="file" name="board_file" onchange="change1(this)"> 
+				<input id="test0" type="file" name="board_file" onchange="change1(this)" pattern="([^\s]+(\.(?i)(jpg|png|gif|bmp))$)"> 
 							<img src="reviewimg/addimage.png">
 					</label>
 					
