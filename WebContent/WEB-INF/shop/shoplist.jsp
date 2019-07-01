@@ -139,6 +139,7 @@ ul li {
 .img-fluid{
 	width: 100%;
 	overflow: hidden;
+	height: 300px;
 }
 .img-fluid img{
 	height: 300px;
