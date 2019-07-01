@@ -10,6 +10,7 @@ public class DetailDTO {
 	private String addr;
 	private String workingtime;
 	private String date;
+	private String foodkind;
 	
 	// 좋아요횟수
 	private int good;
@@ -21,7 +22,7 @@ public class DetailDTO {
 	}
 
 	public DetailDTO(int shopno, String name, String content, String photo, String addr, String workingtime,
-			String date, int good, float gpa) {
+			String date, int good, float gpa, String foodkind) {
 		this.shopno = shopno;
 		this.name = name;
 		this.content = content;
@@ -31,6 +32,16 @@ public class DetailDTO {
 		this.date = date;
 		this.good = good;
 		this.gpa = gpa;
+		this.foodkind = foodkind;
+	}
+	
+
+	public String getFoodkind() {
+		return foodkind;
+	}
+
+	public void setFoodkind(String foodkind) {
+		this.foodkind = foodkind;
 	}
 
 	public int getShopno() {
