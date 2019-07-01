@@ -433,15 +433,15 @@ function change1(value){
     <label for="fileName1">매장 사진</label><br>
     
     <!-- <div id="imgs"> -->
-    <input type="file" name="fileName1" id="fileName1">
-	<!--     <div id="file">
+    <!-- <input type="file" name="fileName1" id="fileName1"> -->
+    <div id="file">
 	    	<label>
 		    	<input type="file" name="fileName1" id="fileName1" onchange="previewImage(this,'View_area')">
 				<img src="reviewimg/addimage.png">
 			</label>
 		</div>
-		<div id='View_area' style='position:relative; width: 100px; height: 100px; color: black; border: 0px solid black; dispaly: inline; '></div> -->
-	<!-- </div> -->
+		<div id='View_area' style='position:relative; width: 100px; height: 100px; color: black; border: 0px solid black; dispaly: inline; '></div>
+	</div>
     
     <hr>
     <h3>메뉴</h3>
