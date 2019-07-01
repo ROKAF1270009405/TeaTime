@@ -154,12 +154,14 @@ float : right;
 
 				<c:set var="name" value="${board.name }"></c:set>
 				<c:if test="${id eq board.id}">
-					<a href="deletemyreview.do?num=${board.reviewno}" class="btnnext"><input
-						type="button" value="삭제" class="delbtn">
-						</button></a>
+				
+					<a href="deletemyreview.do?num=${board.reviewno}" class="btnnext">
+					
+					<input type="button" value="삭제" class="delbtn">
+						</a>
 					<input type="button" value="수정" class="delbtn"
 						onclick="location.href='modifyreviewform.do?shopno=${shopno }&name=${name}&reviewno=${board.reviewno }'">
-					</button>
+					
 				</c:if>
 			</div>
 	</c:forEach>

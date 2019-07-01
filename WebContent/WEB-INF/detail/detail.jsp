@@ -50,14 +50,9 @@ div {
 }
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 	$(document).ready(
-			$('.good').mouseover(function(){
-				$(this).attr('scr', 'img/positive-vote2.png');
-			});
-			$('.good').mouseout(function(){
-				$(this).attr('scr', 'img/positive-vote.png');
-			});
 			
 			function() {
 				$.urlParam = function(name) {
@@ -87,6 +82,13 @@ div {
 						console.log('error');
 					}
 				});
+				
+			 	/* $('.good').mouseover(function(){
+					$(this).attr('scr', 'img/positive-vote2.png');
+				});
+				$('.good').mouseout(function(){
+					$(this).attr('scr', 'img/positive-vote.png');
+				});  */
 			});
 
 	//좋아요 test
@@ -106,6 +108,7 @@ div {
 				alert("ajax실패")
 			}
 		});
+
 	}
 
 	//좋아요 test

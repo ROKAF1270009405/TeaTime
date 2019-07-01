@@ -138,8 +138,12 @@ ul li {
 }
 .img-fluid{
 	width: 100%;
-	height:300px; 
+	overflow: hidden;
 }
+.img-fluid img{
+	height: 300px;
+}
+
 </style>
 
 </head>
