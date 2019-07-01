@@ -32,7 +32,7 @@ public class ReviewListAction implements Action {
 			List<MypageDTO> list = service.reviewService(dto);
 			request.setAttribute("list", list);
 			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/template/main.jsp?page=/WEB-INF/mypage/myreviewpage.jsp");
+			forward.setPath("/WEB-INF/mypage/myreviewpage.jsp");
 		}
 		System.out.println("이동");
 		return forward;

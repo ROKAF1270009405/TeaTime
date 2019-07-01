@@ -63,6 +63,8 @@ float : right;
   top: -20px !important;
   position: relative;
   text-transform: uppercase;
+  margin-right: 15px;
+  margin-top: -20px;
   font-weight: 700;
   top:0px;
   left: -18%;

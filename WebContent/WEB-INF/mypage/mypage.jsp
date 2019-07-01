@@ -80,7 +80,7 @@
 
 		<strong>E-mail</strong> <div class="back-div"><%=dto.getMail()%></div><br>
 		
-	<button class="modi-button">수정</button>&nbsp;&nbsp;&nbsp;&nbsp;<button>돌아가기</button>
+	<button class="modi-button">수정</button>&nbsp;&nbsp;&nbsp;&nbsp;<a href="teatime.do"><button>돌아가기</button></a>
 	
 		<div id="result"></div>
 	
