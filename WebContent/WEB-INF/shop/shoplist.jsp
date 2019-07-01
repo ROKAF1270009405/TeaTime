@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="css/top.css">
+<script src="jquery/top.js"></script>
 <style>
 .teatime {
 	background-image: url('http://localhost:8080/MiniPro2/img/cup.jpg');
@@ -188,7 +190,7 @@ ul li {
 	</header>
 	
 	<a href="#main_img_wrap"><img src="http://localhost:8080/MiniPro2/img/anchor.png" class="anchor"></a>
-	
+	<a href=""><img class="top" src="img/chevron-arrow-up.png" alt="맨위로"></a>
 	<br>
 	<h3 id="main-p-left">
 		<b>TeaTime</b>
