@@ -186,9 +186,9 @@ ul li {
 	</h3>
 	<c:if test="${sessionScope.dto.authority==1}">
 
-		<button class="delbtn">
-			<a href="shopmove.do"><b>글쓰기</b></a>
-		</button>
+		<a href="shopmove.do"><button class="delbtn">
+			<b>글쓰기</b>
+		</button></a>
 
 	</c:if>
 
