@@ -79,8 +79,8 @@ public class ReviewModifyResultAction implements Action {
 					System.out.println("addreviewresultaction");
 //					System.out.println(result);
 //					 if(result >= 1){
-					forward.setRedirect(false);
-					forward.setPath("detail.do");
+					forward.setRedirect(true);
+					forward.setPath("detail.do?shopno="+shopno);
 
 		return forward;
 	} // end execute method
