@@ -30,6 +30,8 @@
     		margin-top: 50px;
 	}
 </style>
+<link rel="stylesheet" href="css/top.css">
+<script src="jquery/top.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
 	$(document).ready(
@@ -72,6 +74,7 @@
 	%>
 
 	<div class="my-div">
+	<a href=""><img class="top" src="img/chevron-arrow-up.png" alt="맨위로"></a>
 		<h1 class="admin"><%=dto.getNickname()%></h1><h4>님의 마이페이지 입니다.</h4><hr>
 
 		<strong>아이디</strong>  <div class="back-div"><%=dto.getId()%></div><br>
