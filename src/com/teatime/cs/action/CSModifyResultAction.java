@@ -32,6 +32,7 @@ public class CSModifyResultAction implements Action {
 		
 		CustomerServiceDTO dto= new CustomerServiceDTO();
 		
+		dto.setQnano(num);
 		dto.setHp(hp);
 		dto.setContent(content);
 		dto.setTitle(title);

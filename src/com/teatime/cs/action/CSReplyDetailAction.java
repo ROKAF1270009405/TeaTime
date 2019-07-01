@@ -24,8 +24,6 @@ public class CSReplyDetailAction implements Action {
 		CustomerServiceDTO data= service.detailService(num);
 		//data.setReply(replycontent);
 		
-		System.out.println("내용"+data.getReply());
-
 		request.setAttribute("data", data);
 
 		ActionForward forward = new ActionForward();
