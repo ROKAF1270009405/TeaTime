@@ -11,9 +11,9 @@
 <style>
 	
 	.my-div{
-		width: 70%;
-		
+		width: 70%;		
 		margin: 0 auto 0 auto;
+		margin-top: 100px;
 		background-color: rgba(0,0,0,0.1);
 		padding: 10px;
 	}
