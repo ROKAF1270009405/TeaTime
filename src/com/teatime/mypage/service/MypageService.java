@@ -151,4 +151,5 @@ public class MypageService {
 	 * conn.close(); } catch (SQLException e) { System.out.println(e.getMessage());
 	 * } } } return list; } // end memberListService method
 	 */
+	
 } // end MypageService class
