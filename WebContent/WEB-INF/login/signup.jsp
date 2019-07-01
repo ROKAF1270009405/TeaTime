@@ -143,6 +143,7 @@ $(document).ready(function(){
               <label for="email">Email address</label>
             </div>
           </div>
+          <input type="hidden" id="naverid" name="naverid" value="0">
           <button type="submit" class="btn btn-primary btn-block">회원가입</button>
         </form>
         <div class="text-center">
