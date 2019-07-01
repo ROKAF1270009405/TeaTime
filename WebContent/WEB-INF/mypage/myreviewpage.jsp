@@ -9,9 +9,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
 h3 {
-margin-top: 50px;
+	margin-top: 50px;
 }
 
 ul {
@@ -19,7 +18,7 @@ ul {
 }
 
 ul li {
-margin: 10px;
+	margin: 10px;
 }
 
 img {
@@ -34,8 +33,10 @@ img {
 		List<MypageDTO> list = (List<MypageDTO>) request.getAttribute("list");
 
 		for (int i = 0; i < list.size(); i++) {
-	%> <hr><%
-			MypageDTO mydto = list.get(i);
+	%>
+	<hr>
+	<%
+		MypageDTO mydto = list.get(i);
 			if (mydto.getContent() == null) {
 	%>
 
@@ -49,7 +50,7 @@ img {
 			<li><img src="<%=mydto.getPhoto()%>" alt="이미지"></li>
 			<li>리뷰 : <%=mydto.getContent()%></li>
 		</ul>
-		
+
 		<a href="modifymyreview.do?reviewno=<%=mydto.getReviewno()%>">리뷰 수정</a>
 		<a href="deletemyreview.do?num=<%=mydto.getReviewno()%>">리뷰 삭제</a>
 	</div>
