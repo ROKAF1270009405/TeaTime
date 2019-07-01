@@ -78,7 +78,7 @@ public class AddReviewResultAction implements Action {
 //			System.out.println(result);
 //			 if(result >= 1){
 			forward.setRedirect(true);
-			forward.setPath("teatime.do");
+			forward.setPath("detail.do?shopno="+shopno);
 //			 } else {
 
 			// }
